@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Softlogy - Soporte Técnico</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="orb o1"></div>
+<div class="orb o2"></div>
+<div class="orb o3"></div>
+
+<div class="container">
+
+  <div class="header">
+    <div class="brand">
+      <img src="logo.png" alt="Softlogy" class="brand-logo">
+      <div class="brand-text">
+        <h1>SOFTLOGY &middot; SOPORTE</h1>
+        <div class="tagline">Technologically Together</div>
+      </div>
+    </div>
+    <div class="clock-box">
+      <div class="clock" id="clock">--:--:--</div>
+      <div class="date" id="date">&mdash;</div>
+    </div>
+  </div>
+
+  <div class="shift-indicator">
+    <div class="pulse-ring"></div>
+    <div class="shift-info">
+      <div class="shift-label">Turno activo</div>
+      <div class="shift-name" id="shift-name">&mdash;</div>
+      <div class="shift-message" id="shift-message">Cargando informaci&oacute;n de disponibilidad...</div>
+    </div>
+  </div>
+
+  <div class="week-indicator" id="week-indicator">Semana de rotaci&oacute;n: --</div>
+
+  <div class="grid" id="contacts-grid">
+    <div class="status-msg">Cargando contactos...</div>
+  </div>
+
+  <div class="footer">
+    Informaci&oacute;n actualizada autom&aacute;ticamente seg&uacute;n el horario de turno vigente.<br>
+    Para consultas fuera de horario, escr&iacute;banos a <strong>soporte@softlogy.com</strong>
+  </div>
+
+</div>
+
+<script>
+// ============================================================
+// CONFIG: Rutas de los archivos JSON
+// turnos.json  → generado por Power Automate desde MS Shifts
+// parejas.json → configuración estática de rotación y teléfonos
+// ============================================================
+const TURNOS_URL  = 'turnos.json';
+const PAREJAS_URL = 'parejas.json';
+
+// ============================================================
+// SVG Icons
+// ============================================================
+const waSvg = '<svg class="ch-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>';
+const phoneSvg = '<svg class="ch-icon" viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>';
+
+// ============================================================
+// UTILIDADES
+// ============================================================
+
+/** Calcula la semana de rotación (1-5) basándose en la fecha de inicio */
+function getSemanaRotacion(fechaInicio) {
+  const inicio = new Date(fechaInicio + 'T00:00:00');
+  const ahora  = new Date();
+  const diffMs = ahora - inicio;
+  const diffSemanas = Math.floor(diffMs / (7 * 24 * 60 * 60 * 1000));
+  return (diffSemanas % 5) + 1;
+}
+
+/** Determina el turno actual por hora */
+function getTurnoActual() {
+  const hora = new Date().getHours();
+  if (hora >= 7 && hora < 16)  return { tipo: 'diurno', nombre: 'Diurno \u00b7 7:00 a.m. - 4:00 p.m.', mensaje: 'Equipo completo de soporte disponible. Comun\u00edquese con cualquiera de las l\u00edneas habilitadas.' };
+  if (hora >= 16 && hora < 22) return { tipo: 'tarde',  nombre: 'Tarde \u00b7 4:00 p.m. - 10:00 p.m.', mensaje: 'Turno de la tarde activo. Las l\u00edneas a continuaci\u00f3n atender\u00e1n su solicitud.' };
+  return { tipo: 'noche', nombre: 'Noche \u00b7 10:00 p.m. - 7:00 a.m.', mensaje: 'Turno nocturno. Para gesti\u00f3n inmediata escr\u00edbanos por WhatsApp.' };
+}
+
+/** Extrae el nivel del rol (N1, N2, LIDER) para poder comparar turnos.json con parejas.json */
+function extraerNivel(rol) {
+  const r = (rol || '').toUpperCase();
+  if (r.includes('N1')) return 'N1';
+  if (r.includes('N2')) return 'N2';
+  if (r.includes('LID') || r.includes('LÍD')) return 'LIDER';
+  return r;
+}
+
+/** Busca un nombre en el mapa de equipos (coincidencia parcial, case-insensitive) */
+function buscarEnEquipos(displayName, equipos) {
+  const nombre = displayName.toUpperCase();
+  for (const key of Object.keys(equipos)) {
+    if (nombre.includes(key) || key.includes(nombre)) return key;
+  }
+  return null;
+}
+
+/** Carga un JSON con cache-bust */
+async function fetchJSON(url) {
+  const res = await fetch(url + '?v=' + Date.now());
+  if (!res.ok) throw new Error('No se pudo cargar ' + url);
+  return res.json();
+}
+
+// ============================================================
+// CÓDIGOS DE IDENTIFICACIÓN
+// ============================================================
+const CODIGOS = {
+  'ANYELY':  'AP',
+  'JOSE':    'JB',
+  'SAMUEL':  'SC',
+  'JACKSON': 'JO',
+  'EVELIO':  'EP'
+};
+
+// ============================================================
+// RENDER
+// ============================================================
+
+function crearTarjeta(nombre, telefono, rol, badge, isBackup) {
+  const phoneClean = telefono.replace(/\s/g, '');
+  const codigo = CODIGOS[nombre] || nombre.charAt(0);
+  const card = document.createElement('div');
+  card.className = 'card' + (isBackup ? ' backup' : '');
+  card.innerHTML =
+    '<div class="card-orb">' + codigo + '</div>' +
+    '<div class="badge ' + (isBackup ? 'backup-badge' : 'active') + '">' + badge + '</div>' +
+    '<div class="position">' + rol + '</div>' +
+    '<div class="channels">' +
+      '<a href="https://wa.me/57' + phoneClean + '" target="_blank" class="ch-btn wa" title="WhatsApp">' + waSvg + '</a>' +
+      '<a href="tel:+57' + phoneClean + '" class="ch-btn tel" title="Llamar">' + phoneSvg + '</a>' +
+    '</div>' +
+    '<a href="tel:+57' + phoneClean + '" class="phone-display">' + telefono + '</a>';
+  return card;
+}
+
+async function renderContactos() {
+  const grid = document.getElementById('contacts-grid');
+  const turno = getTurnoActual();
+
+  document.getElementById('shift-name').textContent = turno.nombre;
+  document.getElementById('shift-message').textContent = turno.mensaje;
+
+  let parejas, turnos;
+
+  // Cargar parejas.json (siempre necesario)
+  try {
+    parejas = await fetchJSON(PAREJAS_URL);
+  } catch (e) {
+    grid.innerHTML = '<div class="status-msg error">Error al cargar parejas.json: ' + e.message + '</div>';
+    return;
+  }
+
+  // Calcular semana de rotación
+  const semana = getSemanaRotacion(parejas.semanaInicio);
+  const rotacionActual = parejas.rotacion.find(function(r) { return r.semana === semana; });
+  document.getElementById('week-indicator').textContent = 'Semana de rotaci\u00f3n: ' + semana + ' de 5';
+
+  // Intentar cargar turnos.json de Power Automate
+  try {
+    turnos = await fetchJSON(TURNOS_URL);
+  } catch (e) {
+    // Si no existe turnos.json, usar solo parejas.json como fallback
+    turnos = null;
+  }
+
+  grid.innerHTML = '';
+
+  if (turno.tipo === 'diurno') {
+    // DIURNO: mostrar todos excepto Soporte 1 (reservado para tarde/noche)
+    // Todos aparecen como "En turno", sin backup (backup solo aplica después de 4pm)
+    Object.keys(parejas.equipos).forEach(function(nombre) {
+      if (rotacionActual && nombre === rotacionActual.soporte1) return;
+      const persona = parejas.equipos[nombre];
+      grid.appendChild(crearTarjeta(nombre, persona.tel, persona.rol, 'En turno', false));
+    });
+
+  } else if (turno.tipo === 'tarde' || turno.tipo === 'noche') {
+    // TARDE/NOCHE: Soporte 1 + Soporte 2 como backup
+    if (rotacionActual) {
+      const s1 = rotacionActual.soporte1;
+      const s2 = rotacionActual.soporte2;
+
+      if (s1 && parejas.equipos[s1]) {
+        grid.appendChild(crearTarjeta(s1, parejas.equipos[s1].tel, parejas.equipos[s1].rol, 'Soporte principal', false));
+      }
+      if (s2 && parejas.equipos[s2]) {
+        grid.appendChild(crearTarjeta(s2, parejas.equipos[s2].tel, parejas.equipos[s2].rol, 'Backup', true));
+      }
+    } else {
+      grid.innerHTML = '<div class="status-msg">No se encontr\u00f3 rotaci\u00f3n para la semana ' + semana + '</div>';
+    }
+  }
+
+  // Si no se renderizó nada
+  if (grid.children.length === 0) {
+    grid.innerHTML = '<div class="status-msg">No hay contactos disponibles para este turno.</div>';
+  }
+}
+
+// ============================================================
+// RELOJ
+// ============================================================
+function actualizarReloj() {
+  const ahora = new Date();
+  document.getElementById('clock').textContent = ahora.toLocaleTimeString('es-CO', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+  document.getElementById('date').textContent  = ahora.toLocaleDateString('es-CO', { weekday: 'long', day: 'numeric', month: 'long' });
+}
+
+// ============================================================
+// INIT
+// ============================================================
+renderContactos();
+actualizarReloj();
+setInterval(actualizarReloj, 1000);
+setInterval(renderContactos, 5 * 60 * 1000); // Refresca cada 5 minutos
+</script>
+</body>
+</html>
