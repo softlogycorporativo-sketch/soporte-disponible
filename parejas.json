@@ -1,11 +1,11 @@
 {
   "semanaInicio": "2026-04-06",
   "equipos": {
-    "ANYELY":  { "tel": "317 5014031", "rol": "Analista Soporte N1" },
-    "JOSE":    { "tel": "318 8140721", "rol": "Analista Soporte N2" },
-    "SAMUEL":  { "tel": "318 0714549", "rol": "Analista Soporte N2" },
-    "JACKSON": { "tel": "311 5991435", "rol": "Analista Soporte N1" },
-    "EVELIO":  { "tel": "317 5742822", "rol": "Analista Soporte N1" }
+    "ANYELY":  { "tel": "317 5014031", "rol": "Analista Soporte N1", "cod": "AP" },
+    "JOSE":    { "tel": "318 8140721", "rol": "Analista Soporte N2", "cod": "JO" },
+    "SAMUEL":  { "tel": "318 0714549", "rol": "Analista Soporte N2", "cod": "SC" },
+    "JACKSON": { "tel": "311 5991435", "rol": "Analista Soporte N1", "cod": "JB" },
+    "EVELIO":  { "tel": "317 5742822", "rol": "Analista Soporte N1", "cod": "EP" }
   },
   "rotacion": [
     { "semana": 1, "soporte1": "ANYELY",  "soporte2": "JOSE" },
