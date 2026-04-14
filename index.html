@@ -28,23 +28,40 @@
   </div>
 
   <div class="shift-indicator">
-    <div class="pulse-ring"></div>
+    <div class="pulse-ring" id="pulse-ring"></div>
     <div class="shift-info">
-      <div class="shift-label">Turno activo</div>
+      <div class="shift-label" id="shift-label">Estado</div>
       <div class="shift-name" id="shift-name">&mdash;</div>
       <div class="shift-message" id="shift-message">Cargando informaci&oacute;n de disponibilidad...</div>
     </div>
   </div>
 
-  <div class="week-indicator" id="week-indicator">Semana de rotaci&oacute;n: --</div>
+  <div class="admin-only" id="week-indicator">Semana de rotaci&oacute;n: --</div>
 
   <div class="grid" id="contacts-grid">
     <div class="status-msg">Cargando contactos...</div>
   </div>
 
+  <div id="fuera-horario" class="fuera-horario" style="display:none;">
+    <div class="fuera-icon">&#x1F319;</div>
+    <h2>Fuera de horario de atenci&oacute;n</h2>
+    <p>Nuestro horario de soporte por WhatsApp es de <strong>lunes a domingo, 7:00 a.m. a 10:00 p.m.</strong></p>
+    <div class="emergencia-box">
+      <div class="emergencia-titulo">&#x1F4DE; Emergencias fuera de horario</div>
+      <div class="emergencia-numeros">
+        <a href="tel:+573115991435" class="emergencia-tel">311 5991435</a>
+        <span class="emergencia-sep">/</span>
+        <a href="tel:+573175014031" class="emergencia-tel">317 5014031</a>
+      </div>
+    </div>
+    <div class="emergencia-correo">
+      &#x1F4E9; Solicitudes y requerimientos: <a href="mailto:soportefe@softlogyco.com"><strong>soportefe@softlogyco.com</strong></a>
+    </div>
+  </div>
+
   <div class="footer">
-    Informaci&oacute;n actualizada autom&aacute;ticamente seg&uacute;n el horario de turno vigente.<br>
-    Para consultas fuera de horario, escr&iacute;banos a <strong>soporte@softlogy.com</strong>
+    Este canal es exclusivo para soporte de facturaci&oacute;n electr&oacute;nica y reporte de novedades urgentes.<br>
+    &#x1F4E9; Solicitudes y requerimientos: <strong>soportefe@softlogyco.com</strong>
   </div>
 
   <div class="bitacora" id="bitacora"></div>
@@ -53,12 +70,11 @@
 
 <script>
 // ============================================================
-// CONFIG: Rutas de los archivos JSON
-// turnos.json  → generado por Power Automate desde MS Shifts
-// parejas.json → configuración estática de rotación y teléfonos
+// CONFIG
 // ============================================================
 const TURNOS_URL  = 'turnos.json';
 const PAREJAS_URL = 'parejas.json';
+const ES_ADMIN = window.location.search.includes('admin');
 
 // ============================================================
 // SVG Icons
@@ -70,7 +86,6 @@ const phoneSvg = '<svg class="ch-icon" viewBox="0 0 24 24"><path d="M20.01 15.38
 // UTILIDADES
 // ============================================================
 
-/** Calcula la semana de rotación (1-5) basándose en la fecha de inicio */
 function getSemanaRotacion(fechaInicio) {
   const inicio = new Date(fechaInicio + 'T00:00:00');
   const ahora  = new Date();
@@ -79,33 +94,28 @@ function getSemanaRotacion(fechaInicio) {
   return (diffSemanas % 5) + 1;
 }
 
-/** Determina el turno actual por hora */
 function getTurnoActual() {
   const hora = new Date().getHours();
-  if (hora >= 7 && hora < 16)  return { tipo: 'diurno', nombre: 'Diurno \u00b7 7:00 a.m. - 4:00 p.m.', mensaje: 'Equipo completo de soporte disponible. Comun\u00edquese con cualquiera de las l\u00edneas habilitadas.' };
-  if (hora >= 16 && hora < 22) return { tipo: 'tarde',  nombre: 'Tarde \u00b7 4:00 p.m. - 10:00 p.m.', mensaje: 'Turno de la tarde activo. Las l\u00edneas a continuaci\u00f3n atender\u00e1n su solicitud.' };
-  return { tipo: 'noche', nombre: 'Noche \u00b7 10:00 p.m. - 7:00 a.m.', mensaje: 'Turno nocturno. Para gesti\u00f3n inmediata escr\u00edbanos por WhatsApp.' };
+  if (hora >= 7 && hora < 16) return {
+    tipo: 'diurno',
+    nombre: 'Soporte disponible',
+    mensaje: 'Nuestro equipo est\u00e1 listo para atenderle. Comun\u00edquese por WhatsApp o llamada.',
+    disponible: true
+  };
+  if (hora >= 16 && hora < 22) return {
+    tipo: 'tarde',
+    nombre: 'Soporte disponible',
+    mensaje: 'Estamos atendiendole. Comun\u00edquese con las l\u00edneas habilitadas.',
+    disponible: true
+  };
+  return {
+    tipo: 'noche',
+    nombre: 'Fuera de horario',
+    mensaje: 'Nuestro horario de atenci\u00f3n es de 7:00 a.m. a 10:00 p.m.',
+    disponible: false
+  };
 }
 
-/** Extrae el nivel del rol (N1, N2, LIDER) para poder comparar turnos.json con parejas.json */
-function extraerNivel(rol) {
-  const r = (rol || '').toUpperCase();
-  if (r.includes('N1')) return 'N1';
-  if (r.includes('N2')) return 'N2';
-  if (r.includes('LID') || r.includes('LÍD')) return 'LIDER';
-  return r;
-}
-
-/** Busca un nombre en el mapa de equipos (coincidencia parcial, case-insensitive) */
-function buscarEnEquipos(displayName, equipos) {
-  const nombre = displayName.toUpperCase();
-  for (const key of Object.keys(equipos)) {
-    if (nombre.includes(key) || key.includes(nombre)) return key;
-  }
-  return null;
-}
-
-/** Carga un JSON con cache-bust */
 async function fetchJSON(url) {
   const res = await fetch(url + '?v=' + Date.now());
   if (!res.ok) throw new Error('No se pudo cargar ' + url);
@@ -135,76 +145,91 @@ function crearTarjeta(nombre, telefono, rol, badge, isBackup, codigo) {
 
 async function renderContactos() {
   const grid = document.getElementById('contacts-grid');
+  const fueraHorario = document.getElementById('fuera-horario');
+  const pulseRing = document.getElementById('pulse-ring');
   const turno = getTurnoActual();
 
   document.getElementById('shift-name').textContent = turno.nombre;
   document.getElementById('shift-message').textContent = turno.mensaje;
+  document.getElementById('shift-label').textContent = turno.disponible ? 'Estado' : 'Estado';
+
+  // Mostrar/ocultar elementos admin
+  if (ES_ADMIN) {
+    document.querySelectorAll('.admin-only').forEach(function(el) { el.style.display = ''; });
+  }
+
+  // Cambiar indicador visual según disponibilidad
+  if (!turno.disponible) {
+    pulseRing.classList.add('offline');
+    document.querySelector('.shift-indicator').classList.add('offline');
+  } else {
+    pulseRing.classList.remove('offline');
+    document.querySelector('.shift-indicator').classList.remove('offline');
+  }
 
   let parejas, turnos;
 
-  // Cargar parejas.json (siempre necesario)
   try {
     parejas = await fetchJSON(PAREJAS_URL);
   } catch (e) {
-    grid.innerHTML = '<div class="status-msg error">Error al cargar parejas.json: ' + e.message + '</div>';
+    grid.innerHTML = '<div class="status-msg error">Error al cargar configuraci\u00f3n: ' + e.message + '</div>';
     return;
   }
 
-  // Calcular semana de rotación
   const semana = getSemanaRotacion(parejas.semanaInicio);
   const rotacionActual = parejas.rotacion.find(function(r) { return r.semana === semana; });
   document.getElementById('week-indicator').textContent = 'Semana de rotaci\u00f3n: ' + semana + ' de 5';
 
-  // Intentar cargar turnos.json de Power Automate
   try {
     turnos = await fetchJSON(TURNOS_URL);
   } catch (e) {
-    // Si no existe turnos.json, usar solo parejas.json como fallback
     turnos = null;
   }
 
   grid.innerHTML = '';
 
-  if (turno.tipo === 'diurno') {
-    // DIURNO: mostrar todos excepto Soporte 1 (reservado para tarde/noche)
-    // Todos aparecen como "En turno", sin backup (backup solo aplica después de 4pm)
-    Object.keys(parejas.equipos).forEach(function(nombre) {
-      if (rotacionActual && nombre === rotacionActual.soporte1) return;
-      const persona = parejas.equipos[nombre];
-      grid.appendChild(crearTarjeta(nombre, persona.tel, persona.rol, 'En turno', false, persona.cod));
-    });
+  if (turno.tipo === 'noche') {
+    // FUERA DE HORARIO: ocultar grid, mostrar panel de emergencia
+    grid.style.display = 'none';
+    fueraHorario.style.display = 'block';
 
-  } else if (turno.tipo === 'tarde' || turno.tipo === 'noche') {
-    // TARDE/NOCHE: Soporte 1 + Soporte 2 como backup
-    if (rotacionActual) {
-      const s1 = rotacionActual.soporte1;
-      const s2 = rotacionActual.soporte2;
+  } else {
+    // EN HORARIO: mostrar contactos
+    grid.style.display = '';
+    fueraHorario.style.display = 'none';
 
-      if (s1 && parejas.equipos[s1]) {
-        grid.appendChild(crearTarjeta(s1, parejas.equipos[s1].tel, parejas.equipos[s1].rol, 'Soporte principal', false, parejas.equipos[s1].cod));
+    if (turno.tipo === 'diurno') {
+      Object.keys(parejas.equipos).forEach(function(nombre) {
+        if (rotacionActual && nombre === rotacionActual.soporte1) return;
+        const persona = parejas.equipos[nombre];
+        grid.appendChild(crearTarjeta(nombre, persona.tel, persona.rol, 'Disponible', false, persona.cod));
+      });
+
+    } else if (turno.tipo === 'tarde') {
+      if (rotacionActual) {
+        const s1 = rotacionActual.soporte1;
+        const s2 = rotacionActual.soporte2;
+        if (s1 && parejas.equipos[s1]) {
+          grid.appendChild(crearTarjeta(s1, parejas.equipos[s1].tel, parejas.equipos[s1].rol, 'Disponible', false, parejas.equipos[s1].cod));
+        }
+        if (s2 && parejas.equipos[s2]) {
+          grid.appendChild(crearTarjeta(s2, parejas.equipos[s2].tel, parejas.equipos[s2].rol, 'Respaldo', true, parejas.equipos[s2].cod));
+        }
       }
-      if (s2 && parejas.equipos[s2]) {
-        grid.appendChild(crearTarjeta(s2, parejas.equipos[s2].tel, parejas.equipos[s2].rol, 'Backup', true, parejas.equipos[s2].cod));
-      }
-    } else {
-      grid.innerHTML = '<div class="status-msg">No se encontr\u00f3 rotaci\u00f3n para la semana ' + semana + '</div>';
+    }
+
+    if (grid.children.length === 0) {
+      grid.innerHTML = '<div class="status-msg">No hay contactos disponibles en este momento.</div>';
     }
   }
 
-  // Si no se renderizó nada
-  if (grid.children.length === 0) {
-    grid.innerHTML = '<div class="status-msg">No hay contactos disponibles para este turno.</div>';
-  }
-
-  // Bitácora: última actualización de turnos.json
+  // Bitácora
   const bitacora = document.getElementById('bitacora');
   if (turnos && turnos.actualizado) {
     const fecha = new Date(turnos.actualizado);
-    bitacora.innerHTML = '\u26a1 turnos.json actualizado: ' +
-      fecha.toLocaleDateString('es-CO', { day: 'numeric', month: 'short', year: 'numeric' }) + ' \u00b7 ' +
+    bitacora.textContent = '\u00dalt. sincronizado: ' +
+      fecha.toLocaleDateString('es-CO', { day: 'numeric', month: 'short' }) + ' ' +
       fecha.toLocaleTimeString('es-CO', { hour: '2-digit', minute: '2-digit', hour12: true });
-  } else {
-    bitacora.innerHTML = '\u26a0 turnos.json no disponible \u2014 usando datos de respaldo';
   }
 }
 
@@ -223,7 +248,7 @@ function actualizarReloj() {
 renderContactos();
 actualizarReloj();
 setInterval(actualizarReloj, 1000);
-setInterval(renderContactos, 5 * 60 * 1000); // Refresca cada 5 minutos
+setInterval(renderContactos, 5 * 60 * 1000);
 </script>
 </body>
 </html>
