@@ -421,6 +421,9 @@ body {
 
 .footer strong { color: var(--sl-blue-glow); }
 
+/* ---- Admin only ---- */
+.admin-only { display: none; }
+
 /* ---- Bitácora ---- */
 .bitacora {
   position: fixed;
@@ -437,6 +440,88 @@ body {
   z-index: 10;
 }
 
+/* ---- Fuera de horario ---- */
+.fuera-horario {
+  text-align: center;
+  padding: 50px 30px;
+  background: rgba(10, 31, 77, 0.3);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  border: 1px solid rgba(91, 155, 213, 0.15);
+  margin-bottom: 35px;
+}
+
+.fuera-icon { font-size: 48px; margin-bottom: 16px; }
+
+.fuera-horario h2 {
+  font-size: 22px;
+  color: var(--sl-text);
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.fuera-horario p {
+  color: var(--sl-text-dim);
+  font-size: 15px;
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
+.emergencia-box {
+  background: rgba(30, 75, 168, 0.2);
+  border: 1px solid rgba(91, 155, 213, 0.25);
+  border-radius: 14px;
+  padding: 22px;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.emergencia-titulo {
+  font-size: 13px;
+  color: var(--sl-text-dim);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 12px;
+}
+
+.emergencia-numeros {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.emergencia-tel {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--sl-text);
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: color 0.3s;
+}
+
+.emergencia-tel:hover { color: var(--sl-accent); }
+
+.emergencia-sep { color: var(--sl-text-dim); font-size: 20px; }
+
+.emergencia-correo {
+  font-size: 14px;
+  color: var(--sl-text-dim);
+  line-height: 1.6;
+}
+
+.emergencia-correo a {
+  color: var(--sl-blue-glow);
+  text-decoration: none;
+}
+
+.emergencia-correo a:hover { text-decoration: underline; }
+
+/* ---- Offline indicator ---- */
+.pulse-ring.offline::before { background: var(--sl-backup); }
+.pulse-ring.offline::after { background: var(--sl-backup); }
+.shift-indicator.offline { border-left-color: var(--sl-backup); }
+
 /* ---- Responsive ---- */
 @media (max-width: 600px) {
   .header { flex-direction: column; gap: 15px; text-align: center; }
@@ -444,4 +529,8 @@ body {
   .brand-text h1 { font-size: 18px; }
   .grid { grid-template-columns: 1fr; }
   .card { padding: 24px 20px; }
+  .emergencia-numeros { flex-direction: column; gap: 6px; }
+  .emergencia-sep { display: none; }
+  .emergencia-tel { font-size: 20px; }
+  .fuera-horario { padding: 30px 20px; }
 }
