@@ -113,27 +113,16 @@ async function fetchJSON(url) {
 }
 
 // ============================================================
-// CÓDIGOS DE IDENTIFICACIÓN
-// ============================================================
-const CODIGOS = {
-  'ANYELY':  'AP',
-  'JOSE':    'JB',
-  'SAMUEL':  'SC',
-  'JACKSON': 'JO',
-  'EVELIO':  'EP'
-};
-
-// ============================================================
 // RENDER
 // ============================================================
 
-function crearTarjeta(nombre, telefono, rol, badge, isBackup) {
+function crearTarjeta(nombre, telefono, rol, badge, isBackup, codigo) {
   const phoneClean = telefono.replace(/\s/g, '');
-  const codigo = CODIGOS[nombre] || nombre.charAt(0);
+  const cod = codigo || nombre.charAt(0);
   const card = document.createElement('div');
   card.className = 'card' + (isBackup ? ' backup' : '');
   card.innerHTML =
-    '<div class="card-orb">' + codigo + '</div>' +
+    '<div class="card-orb">' + cod + '</div>' +
     '<div class="badge ' + (isBackup ? 'backup-badge' : 'active') + '">' + badge + '</div>' +
     '<div class="position">' + rol + '</div>' +
     '<div class="channels">' +
@@ -182,7 +171,7 @@ async function renderContactos() {
     Object.keys(parejas.equipos).forEach(function(nombre) {
       if (rotacionActual && nombre === rotacionActual.soporte1) return;
       const persona = parejas.equipos[nombre];
-      grid.appendChild(crearTarjeta(nombre, persona.tel, persona.rol, 'En turno', false));
+      grid.appendChild(crearTarjeta(nombre, persona.tel, persona.rol, 'En turno', false, persona.cod));
     });
 
   } else if (turno.tipo === 'tarde' || turno.tipo === 'noche') {
@@ -192,10 +181,10 @@ async function renderContactos() {
       const s2 = rotacionActual.soporte2;
 
       if (s1 && parejas.equipos[s1]) {
-        grid.appendChild(crearTarjeta(s1, parejas.equipos[s1].tel, parejas.equipos[s1].rol, 'Soporte principal', false));
+        grid.appendChild(crearTarjeta(s1, parejas.equipos[s1].tel, parejas.equipos[s1].rol, 'Soporte principal', false, parejas.equipos[s1].cod));
       }
       if (s2 && parejas.equipos[s2]) {
-        grid.appendChild(crearTarjeta(s2, parejas.equipos[s2].tel, parejas.equipos[s2].rol, 'Backup', true));
+        grid.appendChild(crearTarjeta(s2, parejas.equipos[s2].tel, parejas.equipos[s2].rol, 'Backup', true, parejas.equipos[s2].cod));
       }
     } else {
       grid.innerHTML = '<div class="status-msg">No se encontr\u00f3 rotaci\u00f3n para la semana ' + semana + '</div>';
