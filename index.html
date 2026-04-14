@@ -47,6 +47,8 @@
     Para consultas fuera de horario, escr&iacute;banos a <strong>soporte@softlogy.com</strong>
   </div>
 
+  <div class="bitacora" id="bitacora"></div>
+
 </div>
 
 <script>
@@ -203,6 +205,17 @@ async function renderContactos() {
   // Si no se renderizó nada
   if (grid.children.length === 0) {
     grid.innerHTML = '<div class="status-msg">No hay contactos disponibles para este turno.</div>';
+  }
+
+  // Bitácora: última actualización de turnos.json
+  const bitacora = document.getElementById('bitacora');
+  if (turnos && turnos.actualizado) {
+    const fecha = new Date(turnos.actualizado);
+    bitacora.innerHTML = '\u26a1 turnos.json actualizado: ' +
+      fecha.toLocaleDateString('es-CO', { day: 'numeric', month: 'short', year: 'numeric' }) + ' \u00b7 ' +
+      fecha.toLocaleTimeString('es-CO', { hour: '2-digit', minute: '2-digit', hour12: true });
+  } else {
+    bitacora.innerHTML = '\u26a0 turnos.json no disponible \u2014 usando datos de respaldo';
   }
 }
 
