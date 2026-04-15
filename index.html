@@ -95,7 +95,15 @@ function getSemanaRotacion(fechaInicio) {
 }
 
 function getTurnoActual() {
-  const hora = new Date().getHours();
+  // Simulación de hora via ?hora=NN (solo modo admin, para pruebas)
+  const params = new URLSearchParams(window.location.search);
+  const horaParam = params.get('hora');
+  let hora;
+  if (ES_ADMIN && horaParam !== null && !isNaN(parseInt(horaParam, 10))) {
+    hora = parseInt(horaParam, 10);
+  } else {
+    hora = new Date().getHours();
+  }
   if (hora >= 7 && hora < 16) return {
     tipo: 'diurno',
     nombre: 'Soporte disponible',
