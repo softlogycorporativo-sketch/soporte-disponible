@@ -118,9 +118,9 @@ function getTurnoActual() {
   };
   return {
     tipo: 'noche',
-    nombre: 'Fuera de horario',
-    mensaje: 'Nuestro horario de atenci\u00f3n es de 7:00 a.m. a 10:00 p.m.',
-    disponible: false
+    nombre: 'Soporte disponible',
+    mensaje: 'Estamos atendiendole. Comun\u00edquese con las l\u00edneas habilitadas.',
+    disponible: true
   };
 }
 
@@ -166,14 +166,9 @@ async function renderContactos() {
     document.querySelectorAll('.admin-only').forEach(function(el) { el.style.display = ''; });
   }
 
-  // Cambiar indicador visual según disponibilidad
-  if (!turno.disponible) {
-    pulseRing.classList.add('offline');
-    document.querySelector('.shift-indicator').classList.add('offline');
-  } else {
-    pulseRing.classList.remove('offline');
-    document.querySelector('.shift-indicator').classList.remove('offline');
-  }
+  // Siempre disponible: limpiar cualquier estado offline previo
+  pulseRing.classList.remove('offline');
+  document.querySelector('.shift-indicator').classList.remove('offline');
 
   let parejas, turnos;
 
@@ -210,41 +205,33 @@ async function renderContactos() {
   }
 
   grid.innerHTML = '';
+  grid.style.display = '';
+  fueraHorario.style.display = 'none';
 
-  if (turno.tipo === 'noche') {
-    // FUERA DE HORARIO: ocultar grid, mostrar panel de emergencia
-    grid.style.display = 'none';
-    fueraHorario.style.display = 'block';
+  if (turno.tipo === 'diurno') {
+    Object.keys(parejas.equipos).forEach(function(nombre) {
+      if (rotacionActual && nombre === rotacionActual.soporte1) return;
+      const persona = parejas.equipos[nombre];
+      if (estaNoDispPorTel(persona.tel)) return; // excluir licencia/permiso activo
+      grid.appendChild(crearTarjeta(nombre, persona.tel, persona.rol, 'Disponible', false, persona.cod));
+    });
 
   } else {
-    // EN HORARIO: mostrar contactos
-    grid.style.display = '';
-    fueraHorario.style.display = 'none';
-
-    if (turno.tipo === 'diurno') {
-      Object.keys(parejas.equipos).forEach(function(nombre) {
-        if (rotacionActual && nombre === rotacionActual.soporte1) return;
-        const persona = parejas.equipos[nombre];
-        if (estaNoDispPorTel(persona.tel)) return; // excluir licencia/permiso activo
-        grid.appendChild(crearTarjeta(nombre, persona.tel, persona.rol, 'Disponible', false, persona.cod));
-      });
-
-    } else if (turno.tipo === 'tarde') {
-      if (rotacionActual) {
-        const s1 = rotacionActual.soporte1;
-        const s2 = rotacionActual.soporte2;
-        if (s1 && parejas.equipos[s1] && !estaNoDispPorTel(parejas.equipos[s1].tel)) {
-          grid.appendChild(crearTarjeta(s1, parejas.equipos[s1].tel, parejas.equipos[s1].rol, 'Disponible', false, parejas.equipos[s1].cod));
-        }
-        if (s2 && parejas.equipos[s2] && !estaNoDispPorTel(parejas.equipos[s2].tel)) {
-          grid.appendChild(crearTarjeta(s2, parejas.equipos[s2].tel, parejas.equipos[s2].rol, 'Respaldo', true, parejas.equipos[s2].cod));
-        }
+    // Tarde (16-22) y Noche (22-7): soporte1 (en turno) + soporte2 (respaldo) segun rotacion
+    if (rotacionActual) {
+      const s1 = rotacionActual.soporte1;
+      const s2 = rotacionActual.soporte2;
+      if (s1 && parejas.equipos[s1] && !estaNoDispPorTel(parejas.equipos[s1].tel)) {
+        grid.appendChild(crearTarjeta(s1, parejas.equipos[s1].tel, parejas.equipos[s1].rol, 'Disponible', false, parejas.equipos[s1].cod));
+      }
+      if (s2 && parejas.equipos[s2] && !estaNoDispPorTel(parejas.equipos[s2].tel)) {
+        grid.appendChild(crearTarjeta(s2, parejas.equipos[s2].tel, parejas.equipos[s2].rol, 'Respaldo', true, parejas.equipos[s2].cod));
       }
     }
+  }
 
-    if (grid.children.length === 0) {
-      grid.innerHTML = '<div class="status-msg">No hay contactos disponibles en este momento.</div>';
-    }
+  if (grid.children.length === 0) {
+    grid.innerHTML = '<div class="status-msg">No hay contactos disponibles en este momento.</div>';
   }
 
   // Bitácora
