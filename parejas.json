@@ -1,11 +1,11 @@
 {
   "semanaInicio": "2026-04-06",
   "equipos": {
-    "ANYELY":  { "tel": "317 5014031", "rol": "Analista Soporte N1", "cod": "AP" },
-    "JOSE":    { "tel": "318 8140721", "rol": "Analista Soporte N2", "cod": "JO" },
-    "SAMUEL":  { "tel": "318 0714549", "rol": "Analista Soporte N2", "cod": "SC" },
-    "JACKSON": { "tel": "311 5991435", "rol": "Analista Soporte N1", "cod": "JB" },
-    "EVELIO":  { "tel": "317 5742822", "rol": "Analista Soporte N1", "cod": "EP" }
+    "ANYELY":  { "tel": "317 5014031", "rol": "Analista Soporte N1", "cod": "AP", "userId": "a652c964-a766-48f5-bad0-4dd3274d6e0d" },
+    "JOSE":    { "tel": "318 8140721", "rol": "Analista Soporte N2", "cod": "JO", "userId": "86921654-dfb1-414d-aced-22e351f7098b" },
+    "SAMUEL":  { "tel": "318 0714549", "rol": "Analista Soporte N2", "cod": "SC", "userId": "1fa9cc40-7123-48db-a311-a1b434138628" },
+    "JACKSON": { "tel": "311 5991435", "rol": "Analista Soporte N1", "cod": "JB", "userId": "01c641a4-d404-4e2e-a1be-60d46c66e833" },
+    "EVELIO":  { "tel": "317 5742822", "rol": "Analista Soporte N1", "cod": "EP", "userId": "4675c01e-55d0-48ce-9baf-fc37dc6026d8" }
   },
   "rotacion": [
     { "semana": 1, "soporte1": "ANYELY",  "soporte2": "JOSE" },
