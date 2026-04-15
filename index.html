@@ -76,6 +76,14 @@ const TURNOS_URL  = 'turnos.json';
 const PAREJAS_URL = 'parejas.json';
 const ES_ADMIN = window.location.search.includes('admin');
 
+// Simulaci\u00f3n de hora para pruebas: ?hora=0 ... ?hora=23
+const HORA_SIMULADA = (function() {
+  const m = window.location.search.match(/[?&]hora=(\d{1,2})/);
+  if (!m) return null;
+  const h = parseInt(m[1], 10);
+  return (h >= 0 && h <= 23) ? h : null;
+})();
+
 // ============================================================
 // SVG Icons
 // ============================================================
@@ -95,7 +103,7 @@ function getSemanaRotacion(fechaInicio) {
 }
 
 function getTurnoActual() {
-  const hora = new Date().getHours();
+  const hora = (HORA_SIMULADA !== null) ? HORA_SIMULADA : new Date().getHours();
   if (hora >= 7 && hora < 16) return {
     tipo: 'diurno',
     nombre: 'Soporte disponible',
@@ -110,9 +118,9 @@ function getTurnoActual() {
   };
   return {
     tipo: 'noche',
-    nombre: 'Fuera de horario',
-    mensaje: 'Nuestro horario de atenci\u00f3n es de 7:00 a.m. a 10:00 p.m.',
-    disponible: false
+    nombre: 'Disponible solo llamadas urgentes',
+    mensaje: 'Fuera de horario de WhatsApp. Comun\u00edquese \u00fanicamente por llamada a los n\u00fameros de la persona principal o el respaldo.',
+    disponible: true
   };
 }
 
@@ -188,39 +196,34 @@ async function renderContactos() {
 
   grid.innerHTML = '';
 
-  if (turno.tipo === 'noche') {
-    // FUERA DE HORARIO: ocultar grid, mostrar panel de emergencia
-    grid.style.display = 'none';
-    fueraHorario.style.display = 'block';
+  // Siempre mostrar contactos, ocultar panel de fuera de horario
+  grid.style.display = '';
+  fueraHorario.style.display = 'none';
 
-  } else {
-    // EN HORARIO: mostrar contactos
-    grid.style.display = '';
-    fueraHorario.style.display = 'none';
+  if (turno.tipo === 'diurno') {
+    Object.keys(parejas.equipos).forEach(function(nombre) {
+      if (rotacionActual && nombre === rotacionActual.soporte1) return;
+      const persona = parejas.equipos[nombre];
+      grid.appendChild(crearTarjeta(nombre, persona.tel, persona.rol, 'Disponible', false, persona.cod));
+    });
 
-    if (turno.tipo === 'diurno') {
-      Object.keys(parejas.equipos).forEach(function(nombre) {
-        if (rotacionActual && nombre === rotacionActual.soporte1) return;
-        const persona = parejas.equipos[nombre];
-        grid.appendChild(crearTarjeta(nombre, persona.tel, persona.rol, 'Disponible', false, persona.cod));
-      });
-
-    } else if (turno.tipo === 'tarde') {
-      if (rotacionActual) {
-        const s1 = rotacionActual.soporte1;
-        const s2 = rotacionActual.soporte2;
-        if (s1 && parejas.equipos[s1]) {
-          grid.appendChild(crearTarjeta(s1, parejas.equipos[s1].tel, parejas.equipos[s1].rol, 'Disponible', false, parejas.equipos[s1].cod));
-        }
-        if (s2 && parejas.equipos[s2]) {
-          grid.appendChild(crearTarjeta(s2, parejas.equipos[s2].tel, parejas.equipos[s2].rol, 'Respaldo', true, parejas.equipos[s2].cod));
-        }
+  } else if (turno.tipo === 'tarde' || turno.tipo === 'noche') {
+    if (rotacionActual) {
+      const s1 = rotacionActual.soporte1;
+      const s2 = rotacionActual.soporte2;
+      const badgePrincipal = turno.tipo === 'noche' ? 'Urgencias' : 'Disponible';
+      const badgeBackup    = turno.tipo === 'noche' ? 'Urgencias' : 'Respaldo';
+      if (s1 && parejas.equipos[s1]) {
+        grid.appendChild(crearTarjeta(s1, parejas.equipos[s1].tel, parejas.equipos[s1].rol, badgePrincipal, false, parejas.equipos[s1].cod));
+      }
+      if (s2 && parejas.equipos[s2]) {
+        grid.appendChild(crearTarjeta(s2, parejas.equipos[s2].tel, parejas.equipos[s2].rol, badgeBackup, true, parejas.equipos[s2].cod));
       }
     }
+  }
 
-    if (grid.children.length === 0) {
-      grid.innerHTML = '<div class="status-msg">No hay contactos disponibles en este momento.</div>';
-    }
+  if (grid.children.length === 0) {
+    grid.innerHTML = '<div class="status-msg">No hay contactos disponibles en este momento.</div>';
   }
 
   // Bitácora
