@@ -167,7 +167,10 @@
     <div class="week-line" id="weekLine">—</div>
     <div class="refresh-row">
       <div class="src" id="dataSrc">Cargando...</div>
-      <button class="btn-refresh" id="btnRefresh">&#x21bb; Actualizar</button>
+      <div style="display:flex;gap:6px;">
+        <button class="btn-refresh" id="btnSync" title="Sincronizar Planner">&#x2B06; Planner</button>
+        <button class="btn-refresh" id="btnRefresh">&#x21bb; Actualizar</button>
+      </div>
     </div>
   </header>
   <div class="day-row" id="filterDia"></div>
@@ -230,7 +233,7 @@ const ESTADO_ORDER = ["En Curso","Pendiente","En Espera","Completado"];
 const LINDA_ESTADOS = ["OK","En Curso","Pendiente","En Espera"];
 const MESES = ["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
 const REV_KEY = "panel_revisiones";
-const GH_TOKEN = "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";
+const GH_TOKEN = "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";
 const GH_API = "https://api.github.com/repos/softlogycorporativo-sketch/soporte-disponible/contents/estado.json";
 
 let tareas = [], revisiones = {}, lastUpdate = null;
@@ -279,6 +282,24 @@ document.getElementById("btnRefresh").addEventListener("click", async()=>{
   await loadEstados();
   renderAll();
   setTimeout(()=>{ btn.innerHTML='&#x21bb; Actualizar'; },600);
+});
+
+document.getElementById("btnSync").addEventListener("click", async()=>{
+  if(!SYNC_URL){ alert("Configura la URL del flujo de sincronización (SYNC_URL) en el código."); return; }
+  const btn=document.getElementById("btnSync");
+  const badge=document.getElementById("syncBadge");
+  btn.disabled=true; btn.innerHTML='<span class="spinning">&#x2B06;</span> Sync...';
+  badge.textContent="Sincronizando Planner..."; badge.className="sync-badge saving";
+  try{
+    const r=await fetch(SYNC_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:"{}"});
+    if(!r.ok&&r.status!==202) throw new Error("HTTP "+r.status);
+    badge.textContent="Planner sincronizado"; badge.className="sync-badge ok";
+    // Esperar unos segundos para que el flujo termine y actualice estado.json
+    setTimeout(async()=>{ await loadEstados(); renderAll(); },8000);
+  } catch(e){
+    console.error(e); badge.textContent="Error al sincronizar"; badge.className="sync-badge error";
+  }
+  btn.disabled=false; btn.innerHTML='&#x2B06; Planner';
 });
 
 // ── LOAD ──
@@ -525,7 +546,8 @@ document.getElementById("actClose").addEventListener("click",closeBar);
 function closeBar(){ document.getElementById("actionBar").classList.remove("show"); selectedId=null; }
 
 // ── CREAR TAREA ──
-const FLOW_URL = ""; // ← Pega aquí la URL del flujo Power Automate (HTTP trigger)
+const SYNC_URL = "https://defaulta40856b5235f4600a3d45cce33adbf.ef.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/7caed77cad8f4edca19b433c60f31948/triggers/manual/paths/invoke?api-version=1";
+const FLOW_URL = ""; // ← URL del flujo "Crear tarea" (HTTP trigger)
 const PLAN_MAP = {
   "Anyely":  {plan:"-e74DpLy3UCev4PsTqE9dWUAAlJt", bucket:"fRCB6pEVKESR78COvEnmgGUAEVXB", user:"a652c964-a766-48f5-bad0-4dd3274d6e0d"},
   "Samuel":  {plan:"b8mN-b7eMEO3zc3Q3CL0QmUAHBIo", bucket:"HCOM9CWRukOZ7Z6DsJqJ9WUAOu8o", user:"1fa9cc40-7123-48db-a311-a1b434138628"},
