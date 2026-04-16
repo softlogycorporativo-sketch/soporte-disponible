@@ -313,32 +313,35 @@ async function loadEstados(){
       const meta=await r.json();
       currentSha=meta.sha;
       const d=JSON.parse(decodeURIComponent(escape(atob(meta.content.replace(/\n/g,"")))));
-      if(d&&Array.isArray(d.estados)){
-        tareas=d.estados.filter(e=>e.id&&e.title&&e.tecnico);
-        lastUpdate=d.actualizado||null;
-        // Cargar revisiones desde el JSON (fuente principal)
-        if(d.revisiones&&typeof d.revisiones==="object"){
+      // Soportar ambos formatos: array plano [...] u objeto {estados:[...]}
+      const arr=Array.isArray(d)?d:(d&&Array.isArray(d.estados)?d.estados:null);
+      if(arr){
+        tareas=arr.filter(e=>e.id&&e.title&&e.tecnico);
+        lastUpdate=(d&&d.actualizado)||new Date().toISOString();
+        // Cargar revisiones si el JSON las tiene
+        const revObj=d&&!Array.isArray(d)&&d.revisiones?d.revisiones:null;
+        if(revObj&&typeof revObj==="object"){
           const local=loadRevLocal();
-          // Merge: para cada tarea, usar la más reciente entre JSON y localStorage
-          const merged={...d.revisiones};
+          const merged={...revObj};
           for(const k in local){
             if(!merged[k]||new Date(local[k].fecha)>new Date(merged[k].fecha||0)) merged[k]=local[k];
           }
           revisiones=merged;
         }
         badge.textContent="En vivo desde Planner"; badge.className="sync-badge ok";
-      } else throw new Error("formato");
+      } else throw new Error("formato no reconocido");
     } else {
       // Sin token: solo lectura via URL directa
       const r=await fetch(ESTADO_URL+"?t="+Date.now(),{cache:"no-store"});
       if(!r.ok) throw new Error(r.status);
       const d=await r.json();
-      if(d&&Array.isArray(d.estados)){
-        tareas=d.estados.filter(e=>e.id&&e.title&&e.tecnico);
-        lastUpdate=d.actualizado||null;
-        if(d.revisiones) revisiones={...revisiones,...d.revisiones};
+      const arr2=Array.isArray(d)?d:(d&&Array.isArray(d.estados)?d.estados:null);
+      if(arr2){
+        tareas=arr2.filter(e=>e.id&&e.title&&e.tecnico);
+        lastUpdate=(d&&d.actualizado)||new Date().toISOString();
+        if(d&&!Array.isArray(d)&&d.revisiones) revisiones={...revisiones,...d.revisiones};
         badge.textContent="Solo lectura"; badge.className="sync-badge ok";
-      } else throw new Error("formato");
+      } else throw new Error("formato no reconocido");
     }
   } catch(e){ console.error("LOAD ERROR:",e); badge.textContent="Error: "+e.message.substring(0,60); badge.className="sync-badge error"; }
 }
@@ -560,7 +563,7 @@ const fab=document.getElementById("fabAdd");
 const modal=document.getElementById("modalCrear");
 
 // Mostrar FAB cuando app está visible
-function showFab(){ fab.classList.remove("hidden"); }
+function showFab(){ document.getElementById("fabAdd").classList.remove("hidden"); }
 
 document.getElementById("modalClose").addEventListener("click",closeModal);
 modal.addEventListener("click",e=>{ if(e.target===modal) closeModal(); });
