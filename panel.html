@@ -291,10 +291,15 @@ document.getElementById("btnSync").addEventListener("click", async()=>{
   btn.disabled=true; btn.innerHTML='<span class="spinning">&#x2B06;</span> Sync...';
   badge.textContent="Sincronizando Planner..."; badge.className="sync-badge saving";
   try{
-    const r=await fetch(SYNC_URL,{method:"POST",mode:"no-cors"});
-    // mode:no-cors → status siempre es 0 (opaque), no podemos leerlo
+    // Usar iframe oculto para evitar CORS
+    let iframe=document.getElementById("syncFrame");
+    if(!iframe){ iframe=document.createElement("iframe"); iframe.id="syncFrame"; iframe.name="syncFrame"; iframe.style.display="none"; document.body.appendChild(iframe); }
+    const form=document.createElement("form");
+    form.method="POST"; form.action=SYNC_URL; form.target="syncFrame";
+    form.style.display="none"; document.body.appendChild(form);
+    form.submit(); form.remove();
     badge.textContent="Sincronización enviada, esperando..."; badge.className="sync-badge saving";
-    setTimeout(async()=>{ await loadEstados(); renderAll(); },8000);
+    setTimeout(async()=>{ await loadEstados(); renderAll(); badge.textContent="Datos actualizados"; badge.className="sync-badge ok"; },10000);
   } catch(e){
     console.error("SYNC ERROR:",e);
     badge.textContent="Error: "+e.message.substring(0,80); badge.className="sync-badge error";
