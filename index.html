@@ -2,264 +2,310 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Softlogy - Soporte Técnico</title>
-<link rel="stylesheet" href="styles.css">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Panel">
+<meta name="theme-color" content="#0f172a">
+<title>Panel Soporte</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: #0f172a; color: #e2e8f0; min-height: 100vh;
+    -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent;
+    padding-bottom: env(safe-area-inset-bottom); padding-top: env(safe-area-inset-top);
+  }
+  .hidden { display: none !important; }
+
+  /* PIN GATE */
+  .pin-gate { position:fixed; inset:0; background:#020617; display:flex; align-items:center; justify-content:center; z-index:9999; padding:24px; }
+  .pin-box { display:flex; flex-direction:column; align-items:center; gap:20px; max-width:280px; width:100%; }
+  .pin-icon { font-size:42px; opacity:0.4; }
+  .pin-label { font-size:13px; color:#64748b; text-align:center; letter-spacing:0.5px; }
+  .pin-input { font-size:28px; letter-spacing:12px; text-align:center; padding:14px 12px 14px 24px; width:100%; background:#1e293b; border:1px solid #334155; border-radius:12px; color:#f1f5f9; outline:none; font-family:inherit; transition:border-color .15s; }
+  .pin-input:focus { border-color:#475569; }
+  .pin-input.error { border-color:#b91c1c; animation:shake .25s ease; }
+  @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
+  .pin-error { font-size:12px; color:#ef4444; height:14px; }
+
+  /* APP */
+  .app { max-width:640px; margin:0 auto; padding:16px 14px 80px; }
+
+  /* HEADER */
+  .app-header { background:linear-gradient(135deg,#1e293b,#0f172a); border:1px solid #1e293b; border-radius:16px; padding:16px; margin-bottom:16px; }
+  .date-line { font-size:20px; font-weight:600; color:#f1f5f9; text-transform:capitalize; }
+  .week-line { font-size:12px; color:#64748b; margin-top:2px; }
+  .refresh-row { margin-top:12px; padding-top:12px; border-top:1px solid #1e293b; display:flex; align-items:center; justify-content:space-between; }
+  .refresh-row .src { font-size:11px; color:#64748b; }
+  .refresh-row .src b { color:#94a3b8; }
+  .btn-refresh { background:#1e293b; border:1px solid #334155; color:#94a3b8; padding:6px 14px; border-radius:999px; font-size:12px; cursor:pointer; font-family:inherit; }
+  .btn-refresh:active { background:#334155; }
+  .spinning { animation:spin 1s linear infinite; }
+  @keyframes spin { to{transform:rotate(360deg)} }
+
+  /* STATS */
+  .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:6px; margin-bottom:14px; }
+  .stat { background:#1e293b; border:1px solid #1e293b; border-radius:12px; padding:12px 8px; text-align:center; }
+  .stat .n { font-size:22px; font-weight:700; line-height:1; }
+  .stat .l { font-size:10px; color:#64748b; margin-top:4px; text-transform:uppercase; letter-spacing:.5px; }
+  .stat.ok .n { color:#10b981; }
+  .stat.curso .n { color:#f59e0b; }
+  .stat.espera .n { color:#a78bfa; }
+  .stat.pend .n { color:#64748b; }
+
+  /* FILTERS */
+  .filter-row { display:flex; gap:6px; overflow-x:auto; margin-bottom:10px; padding:2px 0; scrollbar-width:none; }
+  .filter-row::-webkit-scrollbar { display:none; }
+  .filter-btn { padding:6px 12px; border-radius:999px; background:#1e293b; border:1px solid #334155; color:#94a3b8; font-size:12px; cursor:pointer; white-space:nowrap; font-family:inherit; transition:all .15s; }
+  .filter-btn.active { background:#334155; color:#f1f5f9; border-color:#475569; }
+
+  /* SECTION */
+  .section-title { font-size:12px; font-weight:600; color:#64748b; text-transform:uppercase; letter-spacing:1px; margin:16px 0 8px 4px; display:flex; align-items:center; gap:8px; }
+  .section-title .count { background:#334155; color:#94a3b8; font-size:10px; padding:2px 8px; border-radius:999px; }
+
+  /* TASK */
+  .task { display:flex; align-items:flex-start; gap:10px; background:#1e293b; border:1px solid #1e293b; border-radius:10px; padding:10px 12px; margin-bottom:6px; }
+  .task.done { opacity:.5; }
+  .task.done .task-title { text-decoration:line-through; }
+  .task-main { flex:1; min-width:0; }
+  .task-title { font-size:14px; color:#e2e8f0; line-height:1.3; font-weight:500; word-wrap:break-word; }
+  .task-sub { font-size:11px; color:#64748b; margin-top:3px; }
+  .badge { flex-shrink:0; font-size:10px; font-weight:600; padding:4px 8px; border-radius:999px; text-transform:uppercase; letter-spacing:.3px; }
+  .badge-Completado { background:rgba(16,185,129,.15); color:#6ee7b7; }
+  .badge-EnCurso { background:rgba(245,158,11,.15); color:#fcd34d; }
+  .badge-EnEspera { background:rgba(167,139,250,.18); color:#c4b5fd; }
+  .badge-Pendiente { background:rgba(100,116,139,.18); color:#94a3b8; }
+
+  /* STATUS DOT */
+  .sdot { width:8px; height:8px; border-radius:50%; flex-shrink:0; margin-top:5px; }
+  .sdot-Completado { background:#10b981; }
+  .sdot-EnCurso { background:#f59e0b; box-shadow:0 0 0 3px rgba(245,158,11,.2); }
+  .sdot-EnEspera { background:#a78bfa; }
+  .sdot-Pendiente { background:#475569; }
+
+  /* EMPTY */
+  .empty { background:#1e293b; border-radius:12px; padding:28px 16px; text-align:center; color:#64748b; font-size:13px; }
+
+  /* SYNC BADGE */
+  .sync-badge { position:fixed; bottom:10px; right:10px; background:rgba(15,23,42,.92); backdrop-filter:blur(8px); border:1px solid #1e293b; font-size:10px; color:#64748b; padding:6px 10px; border-radius:999px; z-index:100; }
+  .sync-badge.ok { color:#10b981; border-color:#064e3b; }
+  .sync-badge.error { color:#ef4444; border-color:#7f1d1d; }
+</style>
 </head>
 <body>
-<div class="orb o1"></div>
-<div class="orb o2"></div>
-<div class="orb o3"></div>
 
-<div class="container">
-
-  <div class="header">
-    <div class="brand">
-      <img src="logo.png" alt="Softlogy" class="brand-logo">
-      <div class="brand-text">
-        <h1>SOFTLOGY &middot; SOPORTE</h1>
-        <div class="tagline">Technologically Together</div>
-      </div>
-    </div>
-    <div class="clock-box">
-      <div class="clock" id="clock">--:--:--</div>
-      <div class="date" id="date">&mdash;</div>
-    </div>
+<div id="pinGate" class="pin-gate">
+  <div class="pin-box">
+    <div class="pin-icon">🔒</div>
+    <div class="pin-label">Ingrese PIN para continuar</div>
+    <input type="password" id="pinInput" class="pin-input" inputmode="numeric" pattern="[0-9]*" maxlength="4" autofocus autocomplete="off">
+    <div id="pinError" class="pin-error"></div>
   </div>
-
-  <div class="shift-indicator">
-    <div class="pulse-ring" id="pulse-ring"></div>
-    <div class="shift-info">
-      <div class="shift-label" id="shift-label">Estado</div>
-      <div class="shift-name" id="shift-name">&mdash;</div>
-      <div class="shift-message" id="shift-message">Cargando informaci&oacute;n de disponibilidad...</div>
-    </div>
-  </div>
-
-  <div class="admin-only" id="week-indicator">Semana de rotaci&oacute;n: --</div>
-
-  <div class="grid" id="contacts-grid">
-    <div class="status-msg">Cargando contactos...</div>
-  </div>
-
-  <div id="fuera-horario" class="fuera-horario" style="display:none;">
-    <div class="fuera-icon">&#x1F319;</div>
-    <h2>Fuera de horario de atenci&oacute;n</h2>
-    <p>Nuestro horario de soporte por WhatsApp es de <strong>lunes a domingo, 7:00 a.m. a 10:00 p.m.</strong></p>
-    <div class="emergencia-box">
-      <div class="emergencia-titulo">&#x1F4DE; Emergencias fuera de horario</div>
-      <div class="emergencia-numeros">
-        <a href="tel:+573115991435" class="emergencia-tel">311 5991435</a>
-        <span class="emergencia-sep">/</span>
-        <a href="tel:+573175014031" class="emergencia-tel">317 5014031</a>
-      </div>
-    </div>
-    <div class="emergencia-correo">
-      &#x1F4E9; Solicitudes y requerimientos: <a href="mailto:soportefe@softlogyco.com"><strong>soportefe@softlogyco.com</strong></a>
-    </div>
-  </div>
-
-  <div class="footer">
-    Este canal es exclusivo para soporte de facturaci&oacute;n electr&oacute;nica y reporte de novedades urgentes.<br>
-    &#x1F4E9; Solicitudes y requerimientos: <strong>soportefe@softlogyco.com</strong>
-  </div>
-
-  <div class="bitacora" id="bitacora"></div>
-
 </div>
 
+<div id="app" class="app hidden">
+  <header class="app-header">
+    <div class="date-line" id="todayDate">—</div>
+    <div class="week-line" id="weekLine">—</div>
+    <div class="refresh-row">
+      <div class="src" id="dataSrc">Cargando...</div>
+      <button class="btn-refresh" id="btnRefresh">&#x21bb; Actualizar</button>
+    </div>
+  </header>
+
+  <div class="stats" id="stats"></div>
+
+  <div class="filter-row" id="filterTecnico"></div>
+  <div class="filter-row" id="filterEstado"></div>
+
+  <main id="taskList"></main>
+</div>
+
+<div id="syncBadge" class="sync-badge">—</div>
+
 <script>
-// ============================================================
-// CONFIG
-// ============================================================
-const TURNOS_URL  = 'turnos.json';
-const PAREJAS_URL = 'parejas.json';
-const ES_ADMIN = window.location.search.includes('admin');
+const PIN = "1105";
+const ESTADO_URL = "./estado.json";
+const REFRESH_MS = 60 * 1000;
+const TECH_ORDER = ["Anyely","Samuel","Jose","Evelio","Jackson"];
+const ESTADO_ORDER = ["En Curso","Pendiente","En Espera","Completado"];
+const MESES = ["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
+const DIAS = ["domingo","lunes","martes","miércoles","jueves","viernes","sábado"];
 
-// ============================================================
-// SVG Icons
-// ============================================================
-const waSvg = '<svg class="ch-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>';
-const phoneSvg = '<svg class="ch-icon" viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>';
+let tareas = [];
+let lastUpdate = null;
+let filterTec = null;
+let filterEst = null;
+let refreshTimer = null;
 
-// ============================================================
-// UTILIDADES
-// ============================================================
+// === PIN ===
+const pinGate = document.getElementById("pinGate");
+const pinInput = document.getElementById("pinInput");
+const pinError = document.getElementById("pinError");
+const appEl = document.getElementById("app");
 
-function getSemanaRotacion(fechaInicio) {
-  const inicio = new Date(fechaInicio + 'T00:00:00');
-  const ahora  = new Date();
-  const diffMs = ahora - inicio;
-  const diffSemanas = Math.floor(diffMs / (7 * 24 * 60 * 60 * 1000));
-  return (diffSemanas % 5) + 1;
-}
-
-function getTurnoActual() {
-  // Simulación de hora via ?hora=NN (solo modo admin, para pruebas)
-  const params = new URLSearchParams(window.location.search);
-  const horaParam = params.get('hora');
-  let hora;
-  if (ES_ADMIN && horaParam !== null && !isNaN(parseInt(horaParam, 10))) {
-    hora = parseInt(horaParam, 10);
-  } else {
-    hora = new Date().getHours();
-  }
-  if (hora >= 7 && hora < 16) return {
-    tipo: 'diurno',
-    nombre: 'Soporte disponible',
-    mensaje: 'Nuestro equipo est\u00e1 listo para atenderle. Comun\u00edquese por WhatsApp o llamada.',
-    disponible: true
-  };
-  if (hora >= 16 && hora < 22) return {
-    tipo: 'tarde',
-    nombre: 'Soporte disponible',
-    mensaje: 'Estamos atendiendole. Comun\u00edquese con las l\u00edneas habilitadas.',
-    disponible: true
-  };
-  return {
-    tipo: 'noche',
-    nombre: 'Soporte disponible',
-    mensaje: 'Estamos atendiendole. Comun\u00edquese con las l\u00edneas habilitadas.',
-    disponible: true
-  };
-}
-
-async function fetchJSON(url) {
-  const res = await fetch(url + '?v=' + Date.now());
-  if (!res.ok) throw new Error('No se pudo cargar ' + url);
-  return res.json();
-}
-
-// ============================================================
-// RENDER
-// ============================================================
-
-function crearTarjeta(nombre, telefono, rol, badge, isBackup, codigo) {
-  const phoneClean = telefono.replace(/\s/g, '');
-  const cod = codigo || nombre.charAt(0);
-  const card = document.createElement('div');
-  card.className = 'card' + (isBackup ? ' backup' : '');
-  card.innerHTML =
-    '<div class="card-orb">' + cod + '</div>' +
-    '<div class="badge ' + (isBackup ? 'backup-badge' : 'active') + '">' + badge + '</div>' +
-    '<div class="position">' + rol + '</div>' +
-    '<div class="channels">' +
-      '<a href="https://wa.me/57' + phoneClean + '" target="_blank" class="ch-btn wa" title="WhatsApp">' + waSvg + '</a>' +
-      '<a href="tel:+57' + phoneClean + '" class="ch-btn tel" title="Llamar">' + phoneSvg + '</a>' +
-    '</div>' +
-    '<a href="tel:+57' + phoneClean + '" class="phone-display">' + telefono + '</a>';
-  return card;
-}
-
-async function renderContactos() {
-  const grid = document.getElementById('contacts-grid');
-  const fueraHorario = document.getElementById('fuera-horario');
-  const pulseRing = document.getElementById('pulse-ring');
-  const turno = getTurnoActual();
-
-  document.getElementById('shift-name').textContent = turno.nombre;
-  document.getElementById('shift-message').textContent = turno.mensaje;
-  document.getElementById('shift-label').textContent = turno.disponible ? 'Estado' : 'Estado';
-
-  // Mostrar/ocultar elementos admin
-  if (ES_ADMIN) {
-    document.querySelectorAll('.admin-only').forEach(function(el) { el.style.display = ''; });
-  }
-
-  // Siempre disponible: limpiar cualquier estado offline previo
-  pulseRing.classList.remove('offline');
-  document.querySelector('.shift-indicator').classList.remove('offline');
-
-  let parejas, turnos;
-
-  try {
-    parejas = await fetchJSON(PAREJAS_URL);
-  } catch (e) {
-    grid.innerHTML = '<div class="status-msg error">Error al cargar configuraci\u00f3n: ' + e.message + '</div>';
-    return;
-  }
-
-  const semana = getSemanaRotacion(parejas.semanaInicio);
-  const rotacionActual = parejas.rotacion.find(function(r) { return r.semana === semana; });
-  document.getElementById('week-indicator').textContent = 'Semana de rotaci\u00f3n: ' + semana + ' de 5';
-
-  try {
-    turnos = await fetchJSON(TURNOS_URL);
-  } catch (e) {
-    turnos = null;
-  }
-
-  // Construir set de teléfonos marcados como no disponibles (licencia/permiso) desde turnos.json
-  // Power Automate escribe noDisponible:true/false en cada contacto, según timesOff activo.
-  const telsNoDisp = {};
-  if (turnos && Array.isArray(turnos.contactos)) {
-    turnos.contactos.forEach(function(c) {
-      if (c && c.noDisponible && c.tel) {
-        const telClean = String(c.tel).replace(/\s/g, '');
-        telsNoDisp[telClean] = true;
-      }
-    });
-  }
-  function estaNoDispPorTel(telRaw) {
-    return telsNoDisp[String(telRaw).replace(/\s/g, '')] === true;
-  }
-
-  grid.innerHTML = '';
-  grid.style.display = '';
-  fueraHorario.style.display = 'none';
-
-  if (turno.tipo === 'diurno') {
-    Object.keys(parejas.equipos).forEach(function(nombre) {
-      if (rotacionActual && nombre === rotacionActual.soporte1) return;
-      const persona = parejas.equipos[nombre];
-      if (estaNoDispPorTel(persona.tel)) return; // excluir licencia/permiso activo
-      grid.appendChild(crearTarjeta(nombre, persona.tel, persona.rol, 'Disponible', false, persona.cod));
-    });
-
-  } else {
-    // Tarde (16-22) y Noche (22-7): soporte1 (en turno) + soporte2 (respaldo) segun rotacion
-    if (rotacionActual) {
-      const s1 = rotacionActual.soporte1;
-      const s2 = rotacionActual.soporte2;
-      if (s1 && parejas.equipos[s1] && !estaNoDispPorTel(parejas.equipos[s1].tel)) {
-        grid.appendChild(crearTarjeta(s1, parejas.equipos[s1].tel, parejas.equipos[s1].rol, 'Disponible', false, parejas.equipos[s1].cod));
-      }
-      if (s2 && parejas.equipos[s2] && !estaNoDispPorTel(parejas.equipos[s2].tel)) {
-        grid.appendChild(crearTarjeta(s2, parejas.equipos[s2].tel, parejas.equipos[s2].rol, 'Respaldo', true, parejas.equipos[s2].cod));
-      }
+if (sessionStorage.getItem("panelAuth") === "ok") { showApp(); }
+else {
+  pinInput.addEventListener("input", e => {
+    pinError.textContent = "";
+    pinInput.classList.remove("error");
+    if (e.target.value.length === 4) {
+      if (e.target.value === PIN) { sessionStorage.setItem("panelAuth","ok"); showApp(); }
+      else { pinError.textContent = "PIN incorrecto"; pinInput.classList.add("error"); setTimeout(()=>{pinInput.value="";pinInput.classList.remove("error")},400); }
     }
-  }
+  });
+}
 
-  if (grid.children.length === 0) {
-    grid.innerHTML = '<div class="status-msg">No hay contactos disponibles en este momento.</div>';
-  }
+function showApp() { pinGate.classList.add("hidden"); appEl.classList.remove("hidden"); initApp(); }
 
-  // Bitácora
-  const bitacora = document.getElementById('bitacora');
-  if (turnos && turnos.actualizado) {
-    const fecha = new Date(turnos.actualizado);
-    bitacora.textContent = '\u00dalt. sincronizado: ' +
-      fecha.toLocaleDateString('es-CO', { day: 'numeric', month: 'short' }) + ' ' +
-      fecha.toLocaleTimeString('es-CO', { hour: '2-digit', minute: '2-digit', hour12: true });
+// === INIT ===
+async function initApp() {
+  renderHeader();
+  await loadEstados();
+  renderAll();
+  if (refreshTimer) clearInterval(refreshTimer);
+  refreshTimer = setInterval(async () => { await loadEstados(); renderAll(); }, REFRESH_MS);
+  document.addEventListener("visibilitychange", () => { if (!document.hidden) { loadEstados().then(renderAll); } });
+}
+
+document.getElementById("btnRefresh").addEventListener("click", async () => {
+  const btn = document.getElementById("btnRefresh");
+  btn.innerHTML = '<span class="spinning" style="display:inline-block">&#x21bb;</span>';
+  await loadEstados();
+  renderAll();
+  setTimeout(() => { btn.innerHTML = '&#x21bb; Actualizar'; }, 600);
+});
+
+// === LOAD ===
+async function loadEstados() {
+  const badge = document.getElementById("syncBadge");
+  try {
+    const r = await fetch(ESTADO_URL + "?t=" + Date.now(), { cache: "no-store" });
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    const d = await r.json();
+    if (d && Array.isArray(d.estados)) {
+      tareas = d.estados.filter(e => e.id && e.title && e.tecnico);
+      lastUpdate = d.actualizado || null;
+      badge.textContent = "En vivo desde Planner";
+      badge.className = "sync-badge ok";
+    } else {
+      throw new Error("formato");
+    }
+  } catch (e) {
+    badge.textContent = "Sin conexion a estado.json";
+    badge.className = "sync-badge error";
   }
 }
 
-// ============================================================
-// RELOJ
-// ============================================================
-function actualizarReloj() {
-  const ahora = new Date();
-  document.getElementById('clock').textContent = ahora.toLocaleTimeString('es-CO', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
-  document.getElementById('date').textContent  = ahora.toLocaleDateString('es-CO', { weekday: 'long', day: 'numeric', month: 'long' });
+// === RENDER ===
+function renderHeader() {
+  const now = new Date();
+  document.getElementById("todayDate").textContent =
+    DIAS[now.getDay()] + " " + now.getDate() + " " + MESES[now.getMonth()] + " " + now.getFullYear();
+  const mon = mondayOf(now), fri = new Date(mon); fri.setDate(mon.getDate()+4);
+  document.getElementById("weekLine").textContent =
+    "Semana " + isoWeek(now) + " \u00b7 " + mon.getDate() + " " + MESES[mon.getMonth()] + " \u2013 " + fri.getDate() + " " + MESES[fri.getMonth()];
 }
 
-// ============================================================
-// INIT
-// ============================================================
-renderContactos();
-actualizarReloj();
-setInterval(actualizarReloj, 1000);
-setInterval(renderContactos, 5 * 60 * 1000);
+function renderAll() {
+  renderSrc();
+  renderStats();
+  renderFilterTec();
+  renderFilterEst();
+  renderTasks();
+}
+
+function renderSrc() {
+  const el = document.getElementById("dataSrc");
+  if (lastUpdate) {
+    const d = new Date(lastUpdate);
+    el.innerHTML = "Planner <b>" + d.toLocaleTimeString("es-CO",{hour:"2-digit",minute:"2-digit"}) + "</b> \u00b7 " + tareas.length + " tareas";
+  } else {
+    el.textContent = "Sin datos";
+  }
+}
+
+function renderStats() {
+  const c = { "Completado":0, "En Curso":0, "En Espera":0, "Pendiente":0 };
+  filtered().forEach(t => c[t.estado] = (c[t.estado]||0) + 1);
+  document.getElementById("stats").innerHTML =
+    '<div class="stat curso"><div class="n">' + (c["En Curso"]||0) + '</div><div class="l">En curso</div></div>' +
+    '<div class="stat pend"><div class="n">' + (c["Pendiente"]||0) + '</div><div class="l">Pendiente</div></div>' +
+    '<div class="stat espera"><div class="n">' + (c["En Espera"]||0) + '</div><div class="l">En espera</div></div>' +
+    '<div class="stat ok"><div class="n">' + (c["Completado"]||0) + '</div><div class="l">Hechas</div></div>';
+}
+
+function renderFilterTec() {
+  const cont = document.getElementById("filterTecnico");
+  const techs = ["Todos", ...TECH_ORDER];
+  cont.innerHTML = techs.map(t => {
+    const active = (t === "Todos" && !filterTec) || (t === filterTec);
+    return '<button class="filter-btn' + (active?" active":"") + '" data-tec="' + t + '">' + t + '</button>';
+  }).join("");
+  cont.querySelectorAll(".filter-btn").forEach(b => b.addEventListener("click", () => {
+    filterTec = b.dataset.tec === "Todos" ? null : b.dataset.tec;
+    renderAll();
+  }));
+}
+
+function renderFilterEst() {
+  const cont = document.getElementById("filterEstado");
+  const estados = ["Todos","En Curso","Pendiente","En Espera","Completado"];
+  cont.innerHTML = estados.map(e => {
+    const active = (e === "Todos" && !filterEst) || (e === filterEst);
+    return '<button class="filter-btn' + (active?" active":"") + '" data-est="' + e + '">' + e + '</button>';
+  }).join("");
+  cont.querySelectorAll(".filter-btn").forEach(b => b.addEventListener("click", () => {
+    filterEst = b.dataset.est === "Todos" ? null : b.dataset.est;
+    renderAll();
+  }));
+}
+
+function renderTasks() {
+  const list = document.getElementById("taskList");
+  const f = filtered();
+  if (f.length === 0) { list.innerHTML = '<div class="empty">Sin tareas</div>'; return; }
+
+  // Agrupar por tecnico
+  const groups = {};
+  TECH_ORDER.forEach(t => groups[t] = []);
+  f.forEach(t => {
+    if (!groups[t.tecnico]) groups[t.tecnico] = [];
+    groups[t.tecnico].push(t);
+  });
+
+  let html = "";
+  for (const tec of TECH_ORDER) {
+    const tasks = groups[tec];
+    if (!tasks || tasks.length === 0) continue;
+    // Ordenar: En Curso primero, luego Pendiente, En Espera, Completado
+    tasks.sort((a,b) => ESTADO_ORDER.indexOf(a.estado) - ESTADO_ORDER.indexOf(b.estado));
+    html += '<div class="section-title">' + tec + ' <span class="count">' + tasks.length + '</span></div>';
+    tasks.forEach(t => {
+      const ec = t.estado.replace(/ /g, "");
+      const done = t.estado === "Completado";
+      const titulo = t.title.replace(/^[^-]+ - /, "");
+      html += '<div class="task' + (done?" done":"") + '">' +
+        '<div class="sdot sdot-' + ec + '"></div>' +
+        '<div class="task-main"><div class="task-title">' + esc(titulo) + '</div></div>' +
+        '<span class="badge badge-' + ec + '">' + t.estado + '</span></div>';
+    });
+  }
+  list.innerHTML = html;
+}
+
+function filtered() {
+  let f = tareas;
+  if (filterTec) f = f.filter(t => t.tecnico === filterTec);
+  if (filterEst) f = f.filter(t => t.estado === filterEst);
+  return f;
+}
+
+function esc(s) { return String(s||"").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c])); }
+function mondayOf(d) { const r=new Date(d); r.setDate(d.getDate()-((d.getDay()+6)%7)); r.setHours(0,0,0,0); return r; }
+function isoWeek(d) { const t=new Date(d.valueOf()); t.setDate(t.getDate()-((d.getDay()+6)%7)+3); const f=t.valueOf(); t.setMonth(0,1); if(t.getDay()!==4) t.setMonth(0,1+((4-t.getDay())+7)%7); return 1+Math.ceil((f-t)/604800000); }
 </script>
 </body>
 </html>
