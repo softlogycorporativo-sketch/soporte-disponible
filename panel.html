@@ -292,12 +292,15 @@ document.getElementById("btnSync").addEventListener("click", async()=>{
   badge.textContent="Sincronizando Planner..."; badge.className="sync-badge saving";
   try{
     const r=await fetch(SYNC_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:"{}"});
-    if(!r.ok&&r.status!==202) throw new Error("HTTP "+r.status);
-    badge.textContent="Planner sincronizado"; badge.className="sync-badge ok";
-    // Esperar unos segundos para que el flujo termine y actualice estado.json
+    const status=r.status;
+    let respText=""; try{ respText=await r.text(); }catch(x){}
+    if(!r.ok&&status!==202) throw new Error("HTTP "+status+" — "+respText.substring(0,200));
+    badge.textContent="Planner sincronizado ("+status+")"; badge.className="sync-badge ok";
     setTimeout(async()=>{ await loadEstados(); renderAll(); },8000);
   } catch(e){
-    console.error(e); badge.textContent="Error al sincronizar"; badge.className="sync-badge error";
+    console.error("SYNC ERROR:",e);
+    badge.textContent="Error: "+e.message.substring(0,80); badge.className="sync-badge error";
+    alert("Error sync: "+e.message);
   }
   btn.disabled=false; btn.innerHTML='&#x2B06; Planner';
 });
@@ -340,7 +343,7 @@ async function loadEstados(){
         badge.textContent="Solo lectura"; badge.className="sync-badge ok";
       } else throw new Error("formato");
     }
-  } catch(e){ console.error(e); badge.textContent="Sin conexion"; badge.className="sync-badge error"; }
+  } catch(e){ console.error("LOAD ERROR:",e); badge.textContent="Error: "+e.message.substring(0,60); badge.className="sync-badge error"; }
 }
 
 function loadRevLocal(){
