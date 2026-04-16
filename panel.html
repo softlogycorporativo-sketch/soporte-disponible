@@ -30,14 +30,6 @@
   @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
   .pin-error { font-size:12px; color:#ef4444; height:14px; }
 
-  /* TOKEN */
-  .token-gate { position:fixed; inset:0; background:#020617; display:flex; align-items:center; justify-content:center; z-index:9998; padding:24px; }
-  .token-box { display:flex; flex-direction:column; align-items:center; gap:16px; max-width:340px; width:100%; }
-  .token-box h2 { font-size:16px; color:#f1f5f9; }
-  .token-box p { font-size:12px; color:#64748b; text-align:center; line-height:1.5; }
-  .token-input { font-size:13px; padding:12px; width:100%; background:#1e293b; border:1px solid #334155; border-radius:10px; color:#f1f5f9; outline:none; font-family:inherit; }
-  .token-btn { padding:10px 20px; background:#334155; border:1px solid #475569; color:#f1f5f9; border-radius:10px; font-size:13px; cursor:pointer; font-family:inherit; font-weight:600; }
-  .token-skip { font-size:11px; color:#64748b; cursor:pointer; border:0; background:0; font-family:inherit; text-decoration:underline; }
 
   /* APP */
   .app { max-width:640px; margin:0 auto; padding:16px 14px 80px; }
@@ -138,15 +130,6 @@
   </div>
 </div>
 
-<div id="tokenGate" class="token-gate hidden">
-  <div class="token-box">
-    <h2>Token GitHub</h2>
-    <p>Para guardar tus revisiones. Se almacena solo en esta sesion.</p>
-    <input type="password" id="tokenInput" class="token-input" placeholder="ghp_xxxxx o github_pat_xxxxx" autocomplete="off">
-    <button class="token-btn" id="tokenBtn">Activar</button>
-    <button class="token-skip" id="tokenSkip">Solo lectura</button>
-  </div>
-</div>
 
 <div id="app" class="app hidden">
   <header class="app-header">
@@ -176,52 +159,44 @@
 
 <script>
 const PIN = "1105";
-const REPO = "softlogycorporativo-sketch/soporte-disponible";
 const ESTADO_URL = "./estado.json";
-const REV_URL = "./revisiones.json";
 const REFRESH_MS = 60000;
 const TECH_ORDER = ["Anyely","Samuel","Jose","Evelio","Jackson"];
 const ESTADO_ORDER = ["En Curso","Pendiente","En Espera","Completado"];
 const LINDA_ESTADOS = ["OK","En Curso","Pendiente","En Espera"];
 const MESES = ["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
+const REV_KEY = "panel_revisiones";
+const GH_TOKEN = ""; // ← Pega aquí tu token de GitHub (repo scope)
+const GH_API = "https://api.github.com/repos/softlogycorporativo-sketch/soporte-disponible/contents/estado.json";
 
 let tareas = [], revisiones = {}, lastUpdate = null;
+let currentSha = null;
 let filterTec = null, filterEst = null, filterLinda = null;
-let refreshTimer = null, ghToken = null, selectedId = null;
+let refreshTimer = null, selectedId = null;
 
 // ── PIN ──
-const pinGate=document.getElementById("pinGate"), tokenGate=document.getElementById("tokenGate");
+const pinGate=document.getElementById("pinGate");
 const appEl=document.getElementById("app");
 
-if(sessionStorage.getItem("panelAuth")==="ok") afterPin();
+if(sessionStorage.getItem("panelAuth")==="ok") showApp();
 else {
   document.getElementById("pinInput").addEventListener("input", e => {
     document.getElementById("pinError").textContent="";
     e.target.classList.remove("error");
     if(e.target.value.length===4){
-      if(e.target.value===PIN){ sessionStorage.setItem("panelAuth","ok"); afterPin(); }
+      if(e.target.value===PIN){ sessionStorage.setItem("panelAuth","ok"); showApp(); }
       else { document.getElementById("pinError").textContent="PIN incorrecto"; e.target.classList.add("error"); setTimeout(()=>{e.target.value="";e.target.classList.remove("error")},400); }
     }
   });
 }
-
-function afterPin(){
-  pinGate.classList.add("hidden");
-  const saved=sessionStorage.getItem("ghToken");
-  if(saved){ ghToken=saved; showApp(); } else tokenGate.classList.remove("hidden");
-}
-document.getElementById("tokenBtn").addEventListener("click",()=>{
-  const v=document.getElementById("tokenInput").value.trim();
-  if(v){ ghToken=v; sessionStorage.setItem("ghToken",v); }
-  tokenGate.classList.add("hidden"); showApp();
-});
-document.getElementById("tokenSkip").addEventListener("click",()=>{ tokenGate.classList.add("hidden"); showApp(); });
-function showApp(){ appEl.classList.remove("hidden"); initApp(); }
+function showApp(){ pinGate.classList.add("hidden"); appEl.classList.remove("hidden"); initApp(); }
 
 // ── INIT ──
 async function initApp(){
   renderHeader();
-  await Promise.all([loadEstados(), loadRevisiones()]);
+  // Cargar revisiones locales primero como base
+  revisiones=loadRevLocal();
+  await loadEstados();
   renderAll();
   if(refreshTimer) clearInterval(refreshTimer);
   refreshTimer=setInterval(async()=>{ await loadEstados(); renderAll(); }, REFRESH_MS);
@@ -231,7 +206,7 @@ async function initApp(){
 document.getElementById("btnRefresh").addEventListener("click", async()=>{
   const btn=document.getElementById("btnRefresh");
   btn.innerHTML='<span class="spinning">&#x21bb;</span>';
-  await Promise.all([loadEstados(), loadRevisiones()]);
+  await loadEstados();
   renderAll();
   setTimeout(()=>{ btn.innerHTML='&#x21bb; Actualizar'; },600);
 });
@@ -240,44 +215,71 @@ document.getElementById("btnRefresh").addEventListener("click", async()=>{
 async function loadEstados(){
   const badge=document.getElementById("syncBadge");
   try{
-    const r=await fetch(ESTADO_URL+"?t="+Date.now(),{cache:"no-store"});
-    if(!r.ok) throw new Error(r.status);
-    const d=await r.json();
-    if(d&&Array.isArray(d.estados)){
-      tareas=d.estados.filter(e=>e.id&&e.title&&e.tecnico);
-      lastUpdate=d.actualizado||null;
-      badge.textContent="En vivo desde Planner"; badge.className="sync-badge ok";
-    } else throw new Error("formato");
-  } catch(e){ badge.textContent="Sin conexion"; badge.className="sync-badge error"; }
+    // Intentar via GitHub API (da sha para escritura)
+    if(GH_TOKEN){
+      const r=await fetch(GH_API,{headers:{"Authorization":"token "+GH_TOKEN,"Accept":"application/vnd.github.v3+json"}});
+      if(!r.ok) throw new Error(r.status);
+      const meta=await r.json();
+      currentSha=meta.sha;
+      const d=JSON.parse(decodeURIComponent(escape(atob(meta.content.replace(/\n/g,"")))));
+      if(d&&Array.isArray(d.estados)){
+        tareas=d.estados.filter(e=>e.id&&e.title&&e.tecnico);
+        lastUpdate=d.actualizado||null;
+        // Cargar revisiones desde el JSON (fuente principal)
+        if(d.revisiones&&typeof d.revisiones==="object"){
+          const local=loadRevLocal();
+          // Merge: para cada tarea, usar la más reciente entre JSON y localStorage
+          const merged={...d.revisiones};
+          for(const k in local){
+            if(!merged[k]||new Date(local[k].fecha)>new Date(merged[k].fecha||0)) merged[k]=local[k];
+          }
+          revisiones=merged;
+        }
+        badge.textContent="En vivo desde Planner"; badge.className="sync-badge ok";
+      } else throw new Error("formato");
+    } else {
+      // Sin token: solo lectura via URL directa
+      const r=await fetch(ESTADO_URL+"?t="+Date.now(),{cache:"no-store"});
+      if(!r.ok) throw new Error(r.status);
+      const d=await r.json();
+      if(d&&Array.isArray(d.estados)){
+        tareas=d.estados.filter(e=>e.id&&e.title&&e.tecnico);
+        lastUpdate=d.actualizado||null;
+        if(d.revisiones) revisiones={...revisiones,...d.revisiones};
+        badge.textContent="Solo lectura"; badge.className="sync-badge ok";
+      } else throw new Error("formato");
+    }
+  } catch(e){ console.error(e); badge.textContent="Sin conexion"; badge.className="sync-badge error"; }
 }
 
-async function loadRevisiones(){
-  try{
-    const r=await fetch(REV_URL+"?t="+Date.now(),{cache:"no-store"});
-    if(!r.ok) throw 0;
-    const d=await r.json();
-    if(d&&typeof d==="object") revisiones=d;
-  } catch(e){}
+function loadRevLocal(){
+  try{ const s=localStorage.getItem(REV_KEY); if(s) return JSON.parse(s); } catch(e){}
+  return {};
 }
 
 async function saveRevisiones(){
-  if(!ghToken) return;
+  // Siempre guardar en localStorage como respaldo
+  try{ localStorage.setItem(REV_KEY, JSON.stringify(revisiones)); } catch(e){}
+  // Si hay token, guardar en estado.json via GitHub API
+  if(!GH_TOKEN) return;
   const badge=document.getElementById("syncBadge");
   badge.textContent="Guardando..."; badge.className="sync-badge saving";
   try{
-    const getR=await fetch("https://api.github.com/repos/"+REPO+"/contents/revisiones.json",{
-      headers:{"Authorization":"Bearer "+ghToken,"Accept":"application/vnd.github+json","User-Agent":"panel-linda"}});
-    let sha="";
-    if(getR.ok){ sha=(await getR.json()).sha||""; }
-    const body={message:"rev: "+new Date().toISOString(), content:btoa(unescape(encodeURIComponent(JSON.stringify(revisiones,null,2))))};
-    if(sha) body.sha=sha;
-    const putR=await fetch("https://api.github.com/repos/"+REPO+"/contents/revisiones.json",{
-      method:"PUT", headers:{"Authorization":"Bearer "+ghToken,"Accept":"application/vnd.github+json","User-Agent":"panel-linda","Content-Type":"application/json"},
-      body:JSON.stringify(body)});
-    if(!putR.ok) throw new Error(putR.status);
+    const r=await fetch(GH_API,{headers:{"Authorization":"token "+GH_TOKEN,"Accept":"application/vnd.github.v3+json"}});
+    if(!r.ok) throw new Error("GET "+r.status);
+    const meta=await r.json();
+    const content=JSON.parse(decodeURIComponent(escape(atob(meta.content.replace(/\n/g,"")))));
+    content.revisiones=revisiones;
+    const body=JSON.stringify(content,null,2);
+    const encoded=btoa(unescape(encodeURIComponent(body)));
+    const w=await fetch(GH_API,{
+      method:"PUT",
+      headers:{"Authorization":"token "+GH_TOKEN,"Content-Type":"application/json"},
+      body:JSON.stringify({message:"rev "+new Date().toLocaleTimeString("es-CO"),content:encoded,sha:meta.sha})
+    });
+    if(!w.ok) throw new Error("PUT "+w.status);
     badge.textContent="Guardado"; badge.className="sync-badge ok";
-    setTimeout(()=>{ badge.textContent="En vivo desde Planner"; },2000);
-  } catch(e){ badge.textContent="Error: "+e.message; badge.className="sync-badge error"; }
+  } catch(e){ console.error(e); badge.textContent="Error al guardar"; badge.className="sync-badge error"; }
 }
 
 // ── RENDER ──
@@ -295,7 +297,7 @@ function renderSrc(){
   const el=document.getElementById("dataSrc");
   if(lastUpdate){
     const d=new Date(lastUpdate);
-    el.innerHTML="Planner <b>"+d.toLocaleTimeString("es-CO",{hour:"2-digit",minute:"2-digit"})+"</b> \u00b7 "+tareas.length+" tareas"+(ghToken?"":" \u00b7 <span style='color:#f59e0b'>solo lectura</span>");
+    el.innerHTML="Planner <b>"+d.toLocaleTimeString("es-CO",{hour:"2-digit",minute:"2-digit"})+"</b> \u00b7 "+tareas.length+" tareas"+(GH_TOKEN?"":" \u00b7 <span style='color:#f59e0b'>solo lectura</span>");
   } else el.textContent="Sin datos";
 }
 
