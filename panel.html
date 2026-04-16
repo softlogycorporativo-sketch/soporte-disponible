@@ -233,11 +233,8 @@ const ESTADO_ORDER = ["En Curso","Pendiente","En Espera","Completado"];
 const LINDA_ESTADOS = ["OK","En Curso","Pendiente","En Espera"];
 const MESES = ["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
 const REV_KEY = "panel_revisiones";
-const GH_TOKEN = "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";
-const GH_API = "https://api.github.com/repos/softlogycorporativo-sketch/soporte-disponible/contents/estado.json";
 
 let tareas = [], revisiones = {}, lastUpdate = null;
-let currentSha = null;
 let filterTec = null, filterEst = null, filterLinda = null, filterDay = null;
 let weekDays = []; // [{date:Date, label:"Lun", num:14}, ...] lun-sab
 let refreshTimer = null, selectedId = null;
@@ -306,43 +303,27 @@ document.getElementById("btnSync").addEventListener("click", async()=>{
 async function loadEstados(){
   const badge=document.getElementById("syncBadge");
   try{
-    // Intentar via GitHub API (da sha para escritura)
-    if(GH_TOKEN){
-      const r=await fetch(GH_API,{headers:{"Authorization":"Bearer "+GH_TOKEN,"Accept":"application/vnd.github.v3+json"}});
-      if(!r.ok) throw new Error(r.status);
-      const meta=await r.json();
-      currentSha=meta.sha;
-      const d=JSON.parse(decodeURIComponent(escape(atob(meta.content.replace(/\n/g,"")))));
-      // Soportar ambos formatos: array plano [...] u objeto {estados:[...]}
-      const arr=Array.isArray(d)?d:(d&&Array.isArray(d.estados)?d.estados:null);
-      if(arr){
-        tareas=arr.filter(e=>e.id&&e.title&&e.tecnico);
-        lastUpdate=(d&&d.actualizado)||new Date().toISOString();
-        // Cargar revisiones si el JSON las tiene
-        const revObj=d&&!Array.isArray(d)&&d.revisiones?d.revisiones:null;
-        if(revObj&&typeof revObj==="object"){
-          const local=loadRevLocal();
-          const merged={...revObj};
-          for(const k in local){
-            if(!merged[k]||new Date(local[k].fecha)>new Date(merged[k].fecha||0)) merged[k]=local[k];
-          }
-          revisiones=merged;
+    const r=await fetch("/api/estado?t="+Date.now());
+    if(!r.ok) throw new Error("API "+r.status);
+    const json=await r.json();
+    const d=json.data;
+    // Soportar ambos formatos: array plano [...] u objeto {estados:[...]}
+    const arr=Array.isArray(d)?d:(d&&Array.isArray(d.estados)?d.estados:null);
+    if(arr){
+      tareas=arr.filter(e=>e.id&&e.title&&e.tecnico);
+      lastUpdate=(d&&d.actualizado)||new Date().toISOString();
+      // Cargar revisiones si el JSON las tiene
+      const revObj=d&&!Array.isArray(d)&&d.revisiones?d.revisiones:null;
+      if(revObj&&typeof revObj==="object"){
+        const local=loadRevLocal();
+        const merged={...revObj};
+        for(const k in local){
+          if(!merged[k]||new Date(local[k].fecha)>new Date(merged[k].fecha||0)) merged[k]=local[k];
         }
-        badge.textContent="En vivo desde Planner"; badge.className="sync-badge ok";
-      } else throw new Error("formato no reconocido");
-    } else {
-      // Sin token: solo lectura via URL directa
-      const r=await fetch(ESTADO_URL+"?t="+Date.now(),{cache:"no-store"});
-      if(!r.ok) throw new Error(r.status);
-      const d=await r.json();
-      const arr2=Array.isArray(d)?d:(d&&Array.isArray(d.estados)?d.estados:null);
-      if(arr2){
-        tareas=arr2.filter(e=>e.id&&e.title&&e.tecnico);
-        lastUpdate=(d&&d.actualizado)||new Date().toISOString();
-        if(d&&!Array.isArray(d)&&d.revisiones) revisiones={...revisiones,...d.revisiones};
-        badge.textContent="Solo lectura"; badge.className="sync-badge ok";
-      } else throw new Error("formato no reconocido");
-    }
+        revisiones=merged;
+      }
+      badge.textContent="En vivo desde Planner · "+tareas.length+" tareas"; badge.className="sync-badge ok";
+    } else throw new Error("formato no reconocido");
   } catch(e){ console.error("LOAD ERROR:",e); badge.textContent="Error: "+e.message.substring(0,60); badge.className="sync-badge error"; }
 }
 
@@ -354,24 +335,15 @@ function loadRevLocal(){
 async function saveRevisiones(){
   // Siempre guardar en localStorage como respaldo
   try{ localStorage.setItem(REV_KEY, JSON.stringify(revisiones)); } catch(e){}
-  // Si hay token, guardar en estado.json via GitHub API
-  if(!GH_TOKEN) return;
   const badge=document.getElementById("syncBadge");
   badge.textContent="Guardando..."; badge.className="sync-badge saving";
   try{
-    const r=await fetch(GH_API,{headers:{"Authorization":"Bearer "+GH_TOKEN,"Accept":"application/vnd.github.v3+json"}});
-    if(!r.ok) throw new Error("GET "+r.status);
-    const meta=await r.json();
-    const content=JSON.parse(decodeURIComponent(escape(atob(meta.content.replace(/\n/g,"")))));
-    content.revisiones=revisiones;
-    const body=JSON.stringify(content,null,2);
-    const encoded=btoa(unescape(encodeURIComponent(body)));
-    const w=await fetch(GH_API,{
-      method:"PUT",
-      headers:{"Authorization":"Bearer "+GH_TOKEN,"Content-Type":"application/json"},
-      body:JSON.stringify({message:"rev "+new Date().toLocaleTimeString("es-CO"),content:encoded,sha:meta.sha})
+    const r=await fetch("/api/revisiones",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify(revisiones)
     });
-    if(!w.ok) throw new Error("PUT "+w.status);
+    if(!r.ok) throw new Error("API "+r.status);
     badge.textContent="Guardado"; badge.className="sync-badge ok";
   } catch(e){ console.error(e); badge.textContent="Error al guardar"; badge.className="sync-badge error"; }
 }
@@ -426,7 +398,7 @@ function renderSrc(){
   const el=document.getElementById("dataSrc");
   if(lastUpdate){
     const d=new Date(lastUpdate);
-    el.innerHTML="Planner <b>"+d.toLocaleTimeString("es-CO",{hour:"2-digit",minute:"2-digit"})+"</b> \u00b7 "+tareas.length+" tareas"+(GH_TOKEN?"":" \u00b7 <span style='color:#f59e0b'>solo lectura</span>");
+    el.innerHTML="Planner <b>"+d.toLocaleTimeString("es-CO",{hour:"2-digit",minute:"2-digit"})+"</b> \u00b7 "+tareas.length+" tareas";
   } else el.textContent="Sin datos";
 }
 
