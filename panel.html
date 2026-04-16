@@ -19,16 +19,25 @@
   }
   .hidden { display: none !important; }
 
-  /* PIN GATE */
+  /* PIN */
   .pin-gate { position:fixed; inset:0; background:#020617; display:flex; align-items:center; justify-content:center; z-index:9999; padding:24px; }
-  .pin-box { display:flex; flex-direction:column; align-items:center; gap:20px; max-width:280px; width:100%; }
+  .pin-box { display:flex; flex-direction:column; align-items:center; gap:20px; max-width:320px; width:100%; }
   .pin-icon { font-size:42px; opacity:0.4; }
-  .pin-label { font-size:13px; color:#64748b; text-align:center; letter-spacing:0.5px; }
-  .pin-input { font-size:28px; letter-spacing:12px; text-align:center; padding:14px 12px 14px 24px; width:100%; background:#1e293b; border:1px solid #334155; border-radius:12px; color:#f1f5f9; outline:none; font-family:inherit; transition:border-color .15s; }
+  .pin-label { font-size:13px; color:#64748b; text-align:center; }
+  .pin-input { font-size:28px; letter-spacing:12px; text-align:center; padding:14px 12px 14px 24px; width:100%; background:#1e293b; border:1px solid #334155; border-radius:12px; color:#f1f5f9; outline:none; font-family:inherit; }
   .pin-input:focus { border-color:#475569; }
   .pin-input.error { border-color:#b91c1c; animation:shake .25s ease; }
   @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
   .pin-error { font-size:12px; color:#ef4444; height:14px; }
+
+  /* TOKEN */
+  .token-gate { position:fixed; inset:0; background:#020617; display:flex; align-items:center; justify-content:center; z-index:9998; padding:24px; }
+  .token-box { display:flex; flex-direction:column; align-items:center; gap:16px; max-width:340px; width:100%; }
+  .token-box h2 { font-size:16px; color:#f1f5f9; }
+  .token-box p { font-size:12px; color:#64748b; text-align:center; line-height:1.5; }
+  .token-input { font-size:13px; padding:12px; width:100%; background:#1e293b; border:1px solid #334155; border-radius:10px; color:#f1f5f9; outline:none; font-family:inherit; }
+  .token-btn { padding:10px 20px; background:#334155; border:1px solid #475569; color:#f1f5f9; border-radius:10px; font-size:13px; cursor:pointer; font-family:inherit; font-weight:600; }
+  .token-skip { font-size:11px; color:#64748b; cursor:pointer; border:0; background:0; font-family:inherit; text-decoration:underline; }
 
   /* APP */
   .app { max-width:640px; margin:0 auto; padding:16px 14px 80px; }
@@ -41,19 +50,23 @@
   .refresh-row .src { font-size:11px; color:#64748b; }
   .refresh-row .src b { color:#94a3b8; }
   .btn-refresh { background:#1e293b; border:1px solid #334155; color:#94a3b8; padding:6px 14px; border-radius:999px; font-size:12px; cursor:pointer; font-family:inherit; }
-  .btn-refresh:active { background:#334155; }
-  .spinning { animation:spin 1s linear infinite; }
+  .spinning { animation:spin 1s linear infinite; display:inline-block; }
   @keyframes spin { to{transform:rotate(360deg)} }
+
+  /* PROGRESS BAR */
+  .rev-stats { display:flex; gap:8px; margin-bottom:14px; padding:10px 14px; background:#1e293b; border-radius:12px; align-items:center; }
+  .rev-stats .rev-label { font-size:11px; color:#64748b; flex:1; }
+  .rev-stats .rev-label b { color:#10b981; font-size:14px; }
+  .rev-bar { flex:2; height:6px; background:#334155; border-radius:3px; overflow:hidden; }
+  .rev-bar-fill { height:100%; background:#10b981; transition:width .4s; }
 
   /* STATS */
   .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:6px; margin-bottom:14px; }
-  .stat { background:#1e293b; border:1px solid #1e293b; border-radius:12px; padding:12px 8px; text-align:center; }
+  .stat { background:#1e293b; border-radius:12px; padding:12px 8px; text-align:center; }
   .stat .n { font-size:22px; font-weight:700; line-height:1; }
   .stat .l { font-size:10px; color:#64748b; margin-top:4px; text-transform:uppercase; letter-spacing:.5px; }
-  .stat.ok .n { color:#10b981; }
-  .stat.curso .n { color:#f59e0b; }
-  .stat.espera .n { color:#a78bfa; }
-  .stat.pend .n { color:#64748b; }
+  .stat.ok .n { color:#10b981; } .stat.curso .n { color:#f59e0b; }
+  .stat.espera .n { color:#a78bfa; } .stat.pend .n { color:#64748b; }
 
   /* FILTERS */
   .filter-row { display:flex; gap:6px; overflow-x:auto; margin-bottom:10px; padding:2px 0; scrollbar-width:none; }
@@ -66,32 +79,52 @@
   .section-title .count { background:#334155; color:#94a3b8; font-size:10px; padding:2px 8px; border-radius:999px; }
 
   /* TASK */
-  .task { display:flex; align-items:flex-start; gap:10px; background:#1e293b; border:1px solid #1e293b; border-radius:10px; padding:10px 12px; margin-bottom:6px; }
-  .task.done { opacity:.5; }
-  .task.done .task-title { text-decoration:line-through; }
+  .task { display:flex; align-items:flex-start; gap:10px; background:#1e293b; border:1px solid #1e293b; border-radius:10px; padding:10px 12px; margin-bottom:6px; cursor:pointer; transition:background .15s; }
+  .task:active { background:#283548; }
   .task-main { flex:1; min-width:0; }
   .task-title { font-size:14px; color:#e2e8f0; line-height:1.3; font-weight:500; word-wrap:break-word; }
-  .task-sub { font-size:11px; color:#64748b; margin-top:3px; }
-  .badge { flex-shrink:0; font-size:10px; font-weight:600; padding:4px 8px; border-radius:999px; text-transform:uppercase; letter-spacing:.3px; }
+  .task-linda { font-size:10px; margin-top:4px; color:#64748b; }
+
+  /* BADGES */
+  .badges { display:flex; flex-direction:column; gap:3px; flex-shrink:0; align-items:flex-end; }
+  .badge { font-size:9px; font-weight:600; padding:3px 7px; border-radius:999px; text-transform:uppercase; letter-spacing:.3px; white-space:nowrap; }
   .badge-Completado { background:rgba(16,185,129,.15); color:#6ee7b7; }
   .badge-EnCurso { background:rgba(245,158,11,.15); color:#fcd34d; }
   .badge-EnEspera { background:rgba(167,139,250,.18); color:#c4b5fd; }
   .badge-Pendiente { background:rgba(100,116,139,.18); color:#94a3b8; }
+  .badge-linda { border:1px solid; font-size:9px; }
+  .badge-linda-OK { background:rgba(16,185,129,.2); color:#6ee7b7; border-color:#065f46; }
+  .badge-linda-EnCurso { background:rgba(245,158,11,.2); color:#fcd34d; border-color:#78350f; }
+  .badge-linda-Pendiente { background:rgba(100,116,139,.2); color:#94a3b8; border-color:#475569; }
+  .badge-linda-EnEspera { background:rgba(167,139,250,.2); color:#c4b5fd; border-color:#5b21b6; }
+  .badge-linda-none { background:transparent; color:#475569; border-color:#334155; }
 
-  /* STATUS DOT */
+  /* DOT */
   .sdot { width:8px; height:8px; border-radius:50%; flex-shrink:0; margin-top:5px; }
-  .sdot-Completado { background:#10b981; }
-  .sdot-EnCurso { background:#f59e0b; box-shadow:0 0 0 3px rgba(245,158,11,.2); }
-  .sdot-EnEspera { background:#a78bfa; }
-  .sdot-Pendiente { background:#475569; }
+  .sdot-Completado { background:#10b981; } .sdot-EnCurso { background:#f59e0b; }
+  .sdot-EnEspera { background:#a78bfa; } .sdot-Pendiente { background:#475569; }
 
-  /* EMPTY */
+  /* ACTION BAR */
+  .action-bar { display:none; position:fixed; bottom:0; left:0; right:0; background:#1e293b; border-top:1px solid #334155; padding:14px 16px calc(14px + env(safe-area-inset-bottom)); z-index:50; }
+  .action-bar.show { display:block; }
+  .act-header { font-size:13px; color:#94a3b8; margin-bottom:10px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .act-header b { color:#f1f5f9; }
+  .act-label { font-size:10px; color:#64748b; text-transform:uppercase; letter-spacing:.8px; margin-bottom:6px; }
+  .estado-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:6px; margin-bottom:8px; }
+  .estado-btn { padding:10px 4px; border-radius:8px; font-size:12px; font-weight:600; cursor:pointer; border:1px solid #334155; font-family:inherit; text-align:center; background:#0f172a; color:#94a3b8; transition:all .15s; }
+  .estado-btn:active { transform:scale(.96); }
+  .estado-btn.sel { border-width:2px; }
+  .estado-btn[data-e="OK"] { color:#6ee7b7; } .estado-btn[data-e="OK"].sel { background:#064e3b; border-color:#10b981; }
+  .estado-btn[data-e="En Curso"] { color:#fcd34d; } .estado-btn[data-e="En Curso"].sel { background:#422006; border-color:#f59e0b; }
+  .estado-btn[data-e="Pendiente"] { color:#94a3b8; } .estado-btn[data-e="Pendiente"].sel { background:#1e293b; border-color:#64748b; }
+  .estado-btn[data-e="En Espera"] { color:#c4b5fd; } .estado-btn[data-e="En Espera"].sel { background:#2e1065; border-color:#a78bfa; }
+  .act-close { width:100%; padding:10px; border-radius:8px; background:#1e293b; border:1px solid #334155; color:#64748b; font-size:12px; cursor:pointer; font-family:inherit; margin-top:4px; }
+
   .empty { background:#1e293b; border-radius:12px; padding:28px 16px; text-align:center; color:#64748b; font-size:13px; }
-
-  /* SYNC BADGE */
   .sync-badge { position:fixed; bottom:10px; right:10px; background:rgba(15,23,42,.92); backdrop-filter:blur(8px); border:1px solid #1e293b; font-size:10px; color:#64748b; padding:6px 10px; border-radius:999px; z-index:100; }
   .sync-badge.ok { color:#10b981; border-color:#064e3b; }
   .sync-badge.error { color:#ef4444; border-color:#7f1d1d; }
+  .sync-badge.saving { color:#f59e0b; border-color:#78350f; }
 </style>
 </head>
 <body>
@@ -105,6 +138,16 @@
   </div>
 </div>
 
+<div id="tokenGate" class="token-gate hidden">
+  <div class="token-box">
+    <h2>Token GitHub</h2>
+    <p>Para guardar tus revisiones. Se almacena solo en esta sesion.</p>
+    <input type="password" id="tokenInput" class="token-input" placeholder="ghp_xxxxx o github_pat_xxxxx" autocomplete="off">
+    <button class="token-btn" id="tokenBtn">Activar</button>
+    <button class="token-skip" id="tokenSkip">Solo lectura</button>
+  </div>
+</div>
+
 <div id="app" class="app hidden">
   <header class="app-header">
     <div class="date-line" id="todayDate">—</div>
@@ -114,198 +157,253 @@
       <button class="btn-refresh" id="btnRefresh">&#x21bb; Actualizar</button>
     </div>
   </header>
-
+  <div class="rev-stats" id="revStats"></div>
   <div class="stats" id="stats"></div>
-
   <div class="filter-row" id="filterTecnico"></div>
   <div class="filter-row" id="filterEstado"></div>
-
+  <div class="filter-row" id="filterLinda"></div>
   <main id="taskList"></main>
+</div>
+
+<div class="action-bar" id="actionBar">
+  <div class="act-header" id="actHeader">—</div>
+  <div class="act-label">Tu estado (Linda)</div>
+  <div class="estado-grid" id="estadoGrid"></div>
+  <button class="act-close" id="actClose">Cerrar</button>
 </div>
 
 <div id="syncBadge" class="sync-badge">—</div>
 
 <script>
 const PIN = "1105";
+const REPO = "softlogycorporativo-sketch/soporte-disponible";
 const ESTADO_URL = "./estado.json";
-const REFRESH_MS = 60 * 1000;
+const REV_URL = "./revisiones.json";
+const REFRESH_MS = 60000;
 const TECH_ORDER = ["Anyely","Samuel","Jose","Evelio","Jackson"];
 const ESTADO_ORDER = ["En Curso","Pendiente","En Espera","Completado"];
+const LINDA_ESTADOS = ["OK","En Curso","Pendiente","En Espera"];
 const MESES = ["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
-const DIAS = ["domingo","lunes","martes","miércoles","jueves","viernes","sábado"];
 
-let tareas = [];
-let lastUpdate = null;
-let filterTec = null;
-let filterEst = null;
-let refreshTimer = null;
+let tareas = [], revisiones = {}, lastUpdate = null;
+let filterTec = null, filterEst = null, filterLinda = null;
+let refreshTimer = null, ghToken = null, selectedId = null;
 
-// === PIN ===
-const pinGate = document.getElementById("pinGate");
-const pinInput = document.getElementById("pinInput");
-const pinError = document.getElementById("pinError");
-const appEl = document.getElementById("app");
+// ── PIN ──
+const pinGate=document.getElementById("pinGate"), tokenGate=document.getElementById("tokenGate");
+const appEl=document.getElementById("app");
 
-if (sessionStorage.getItem("panelAuth") === "ok") { showApp(); }
+if(sessionStorage.getItem("panelAuth")==="ok") afterPin();
 else {
-  pinInput.addEventListener("input", e => {
-    pinError.textContent = "";
-    pinInput.classList.remove("error");
-    if (e.target.value.length === 4) {
-      if (e.target.value === PIN) { sessionStorage.setItem("panelAuth","ok"); showApp(); }
-      else { pinError.textContent = "PIN incorrecto"; pinInput.classList.add("error"); setTimeout(()=>{pinInput.value="";pinInput.classList.remove("error")},400); }
+  document.getElementById("pinInput").addEventListener("input", e => {
+    document.getElementById("pinError").textContent="";
+    e.target.classList.remove("error");
+    if(e.target.value.length===4){
+      if(e.target.value===PIN){ sessionStorage.setItem("panelAuth","ok"); afterPin(); }
+      else { document.getElementById("pinError").textContent="PIN incorrecto"; e.target.classList.add("error"); setTimeout(()=>{e.target.value="";e.target.classList.remove("error")},400); }
     }
   });
 }
 
-function showApp() { pinGate.classList.add("hidden"); appEl.classList.remove("hidden"); initApp(); }
+function afterPin(){
+  pinGate.classList.add("hidden");
+  const saved=sessionStorage.getItem("ghToken");
+  if(saved){ ghToken=saved; showApp(); } else tokenGate.classList.remove("hidden");
+}
+document.getElementById("tokenBtn").addEventListener("click",()=>{
+  const v=document.getElementById("tokenInput").value.trim();
+  if(v){ ghToken=v; sessionStorage.setItem("ghToken",v); }
+  tokenGate.classList.add("hidden"); showApp();
+});
+document.getElementById("tokenSkip").addEventListener("click",()=>{ tokenGate.classList.add("hidden"); showApp(); });
+function showApp(){ appEl.classList.remove("hidden"); initApp(); }
 
-// === INIT ===
-async function initApp() {
+// ── INIT ──
+async function initApp(){
   renderHeader();
-  await loadEstados();
+  await Promise.all([loadEstados(), loadRevisiones()]);
   renderAll();
-  if (refreshTimer) clearInterval(refreshTimer);
-  refreshTimer = setInterval(async () => { await loadEstados(); renderAll(); }, REFRESH_MS);
-  document.addEventListener("visibilitychange", () => { if (!document.hidden) { loadEstados().then(renderAll); } });
+  if(refreshTimer) clearInterval(refreshTimer);
+  refreshTimer=setInterval(async()=>{ await loadEstados(); renderAll(); }, REFRESH_MS);
+  document.addEventListener("visibilitychange",()=>{ if(!document.hidden){ loadEstados().then(renderAll); }});
 }
 
-document.getElementById("btnRefresh").addEventListener("click", async () => {
-  const btn = document.getElementById("btnRefresh");
-  btn.innerHTML = '<span class="spinning" style="display:inline-block">&#x21bb;</span>';
-  await loadEstados();
+document.getElementById("btnRefresh").addEventListener("click", async()=>{
+  const btn=document.getElementById("btnRefresh");
+  btn.innerHTML='<span class="spinning">&#x21bb;</span>';
+  await Promise.all([loadEstados(), loadRevisiones()]);
   renderAll();
-  setTimeout(() => { btn.innerHTML = '&#x21bb; Actualizar'; }, 600);
+  setTimeout(()=>{ btn.innerHTML='&#x21bb; Actualizar'; },600);
 });
 
-// === LOAD ===
-async function loadEstados() {
-  const badge = document.getElementById("syncBadge");
-  try {
-    const r = await fetch(ESTADO_URL + "?t=" + Date.now(), { cache: "no-store" });
-    if (!r.ok) throw new Error("HTTP " + r.status);
-    const d = await r.json();
-    if (d && Array.isArray(d.estados)) {
-      tareas = d.estados.filter(e => e.id && e.title && e.tecnico);
-      lastUpdate = d.actualizado || null;
-      badge.textContent = "En vivo desde Planner";
-      badge.className = "sync-badge ok";
-    } else {
-      throw new Error("formato");
-    }
-  } catch (e) {
-    badge.textContent = "Sin conexion a estado.json";
-    badge.className = "sync-badge error";
-  }
+// ── LOAD ──
+async function loadEstados(){
+  const badge=document.getElementById("syncBadge");
+  try{
+    const r=await fetch(ESTADO_URL+"?t="+Date.now(),{cache:"no-store"});
+    if(!r.ok) throw new Error(r.status);
+    const d=await r.json();
+    if(d&&Array.isArray(d.estados)){
+      tareas=d.estados.filter(e=>e.id&&e.title&&e.tecnico);
+      lastUpdate=d.actualizado||null;
+      badge.textContent="En vivo desde Planner"; badge.className="sync-badge ok";
+    } else throw new Error("formato");
+  } catch(e){ badge.textContent="Sin conexion"; badge.className="sync-badge error"; }
 }
 
-// === RENDER ===
-function renderHeader() {
-  const now = new Date();
-  document.getElementById("todayDate").textContent =
-    DIAS[now.getDay()] + " " + now.getDate() + " " + MESES[now.getMonth()] + " " + now.getFullYear();
-  const mon = mondayOf(now), fri = new Date(mon); fri.setDate(mon.getDate()+4);
-  document.getElementById("weekLine").textContent =
-    "Semana " + isoWeek(now) + " \u00b7 " + mon.getDate() + " " + MESES[mon.getMonth()] + " \u2013 " + fri.getDate() + " " + MESES[fri.getMonth()];
+async function loadRevisiones(){
+  try{
+    const r=await fetch(REV_URL+"?t="+Date.now(),{cache:"no-store"});
+    if(!r.ok) throw 0;
+    const d=await r.json();
+    if(d&&typeof d==="object") revisiones=d;
+  } catch(e){}
 }
 
-function renderAll() {
-  renderSrc();
-  renderStats();
-  renderFilterTec();
-  renderFilterEst();
-  renderTasks();
+async function saveRevisiones(){
+  if(!ghToken) return;
+  const badge=document.getElementById("syncBadge");
+  badge.textContent="Guardando..."; badge.className="sync-badge saving";
+  try{
+    const getR=await fetch("https://api.github.com/repos/"+REPO+"/contents/revisiones.json",{
+      headers:{"Authorization":"Bearer "+ghToken,"Accept":"application/vnd.github+json","User-Agent":"panel-linda"}});
+    let sha="";
+    if(getR.ok){ sha=(await getR.json()).sha||""; }
+    const body={message:"rev: "+new Date().toISOString(), content:btoa(unescape(encodeURIComponent(JSON.stringify(revisiones,null,2))))};
+    if(sha) body.sha=sha;
+    const putR=await fetch("https://api.github.com/repos/"+REPO+"/contents/revisiones.json",{
+      method:"PUT", headers:{"Authorization":"Bearer "+ghToken,"Accept":"application/vnd.github+json","User-Agent":"panel-linda","Content-Type":"application/json"},
+      body:JSON.stringify(body)});
+    if(!putR.ok) throw new Error(putR.status);
+    badge.textContent="Guardado"; badge.className="sync-badge ok";
+    setTimeout(()=>{ badge.textContent="En vivo desde Planner"; },2000);
+  } catch(e){ badge.textContent="Error: "+e.message; badge.className="sync-badge error"; }
 }
 
-function renderSrc() {
-  const el = document.getElementById("dataSrc");
-  if (lastUpdate) {
-    const d = new Date(lastUpdate);
-    el.innerHTML = "Planner <b>" + d.toLocaleTimeString("es-CO",{hour:"2-digit",minute:"2-digit"}) + "</b> \u00b7 " + tareas.length + " tareas";
-  } else {
-    el.textContent = "Sin datos";
-  }
+// ── RENDER ──
+function renderHeader(){
+  const now=new Date();
+  const dias=["domingo","lunes","martes","mi\u00e9rcoles","jueves","viernes","s\u00e1bado"];
+  document.getElementById("todayDate").textContent=dias[now.getDay()]+" "+now.getDate()+" "+MESES[now.getMonth()]+" "+now.getFullYear();
+  const mon=mondayOf(now),fri=new Date(mon); fri.setDate(mon.getDate()+4);
+  document.getElementById("weekLine").textContent="Semana "+isoWeek(now)+" \u00b7 "+mon.getDate()+" "+MESES[mon.getMonth()]+" \u2013 "+fri.getDate()+" "+MESES[fri.getMonth()];
 }
 
-function renderStats() {
-  const c = { "Completado":0, "En Curso":0, "En Espera":0, "Pendiente":0 };
-  filtered().forEach(t => c[t.estado] = (c[t.estado]||0) + 1);
-  document.getElementById("stats").innerHTML =
-    '<div class="stat curso"><div class="n">' + (c["En Curso"]||0) + '</div><div class="l">En curso</div></div>' +
-    '<div class="stat pend"><div class="n">' + (c["Pendiente"]||0) + '</div><div class="l">Pendiente</div></div>' +
-    '<div class="stat espera"><div class="n">' + (c["En Espera"]||0) + '</div><div class="l">En espera</div></div>' +
-    '<div class="stat ok"><div class="n">' + (c["Completado"]||0) + '</div><div class="l">Hechas</div></div>';
+function renderAll(){ renderSrc(); renderRevStats(); renderStats(); renderFilterTec(); renderFilterEst(); renderFilterLinda(); renderTasks(); }
+
+function renderSrc(){
+  const el=document.getElementById("dataSrc");
+  if(lastUpdate){
+    const d=new Date(lastUpdate);
+    el.innerHTML="Planner <b>"+d.toLocaleTimeString("es-CO",{hour:"2-digit",minute:"2-digit"})+"</b> \u00b7 "+tareas.length+" tareas"+(ghToken?"":" \u00b7 <span style='color:#f59e0b'>solo lectura</span>");
+  } else el.textContent="Sin datos";
 }
 
-function renderFilterTec() {
-  const cont = document.getElementById("filterTecnico");
-  const techs = ["Todos", ...TECH_ORDER];
-  cont.innerHTML = techs.map(t => {
-    const active = (t === "Todos" && !filterTec) || (t === filterTec);
-    return '<button class="filter-btn' + (active?" active":"") + '" data-tec="' + t + '">' + t + '</button>';
-  }).join("");
-  cont.querySelectorAll(".filter-btn").forEach(b => b.addEventListener("click", () => {
-    filterTec = b.dataset.tec === "Todos" ? null : b.dataset.tec;
-    renderAll();
-  }));
+function renderRevStats(){
+  const total=tareas.length;
+  const ok=tareas.filter(t=>getLinda(t.id)==="OK").length;
+  const pct=total?Math.round(ok/total*100):0;
+  document.getElementById("revStats").innerHTML=
+    '<div class="rev-label">Revisadas por Linda <b>'+ok+'</b> / '+total+'</div>'+
+    '<div class="rev-bar"><div class="rev-bar-fill" style="width:'+pct+'%"></div></div>'+
+    '<div style="font-size:12px;font-weight:700;color:#10b981;min-width:36px;text-align:right">'+pct+'%</div>';
 }
 
-function renderFilterEst() {
-  const cont = document.getElementById("filterEstado");
-  const estados = ["Todos","En Curso","Pendiente","En Espera","Completado"];
-  cont.innerHTML = estados.map(e => {
-    const active = (e === "Todos" && !filterEst) || (e === filterEst);
-    return '<button class="filter-btn' + (active?" active":"") + '" data-est="' + e + '">' + e + '</button>';
-  }).join("");
-  cont.querySelectorAll(".filter-btn").forEach(b => b.addEventListener("click", () => {
-    filterEst = b.dataset.est === "Todos" ? null : b.dataset.est;
-    renderAll();
-  }));
+function renderStats(){
+  const c={"Completado":0,"En Curso":0,"En Espera":0,"Pendiente":0};
+  filtered().forEach(t=>c[t.estado]=(c[t.estado]||0)+1);
+  document.getElementById("stats").innerHTML=
+    '<div class="stat curso"><div class="n">'+(c["En Curso"]||0)+'</div><div class="l">En curso</div></div>'+
+    '<div class="stat pend"><div class="n">'+(c["Pendiente"]||0)+'</div><div class="l">Pendiente</div></div>'+
+    '<div class="stat espera"><div class="n">'+(c["En Espera"]||0)+'</div><div class="l">En espera</div></div>'+
+    '<div class="stat ok"><div class="n">'+(c["Completado"]||0)+'</div><div class="l">Hechas</div></div>';
 }
 
-function renderTasks() {
-  const list = document.getElementById("taskList");
-  const f = filtered();
-  if (f.length === 0) { list.innerHTML = '<div class="empty">Sin tareas</div>'; return; }
+function renderFilterTec(){
+  const cont=document.getElementById("filterTecnico");
+  cont.innerHTML=["Todos",...TECH_ORDER].map(t=>'<button class="filter-btn'+(((t==="Todos"&&!filterTec)||(t===filterTec))?" active":"")+'" data-v="'+t+'">'+t+'</button>').join("");
+  cont.querySelectorAll(".filter-btn").forEach(b=>b.addEventListener("click",()=>{ filterTec=b.dataset.v==="Todos"?null:b.dataset.v; renderAll(); }));
+}
+function renderFilterEst(){
+  const cont=document.getElementById("filterEstado");
+  const opts=["Todos","En Curso","Pendiente","En Espera","Completado"];
+  cont.innerHTML=opts.map(e=>'<button class="filter-btn'+(((e==="Todos"&&!filterEst)||(e===filterEst))?" active":"")+'" data-v="'+e+'">'+e+'</button>').join("");
+  cont.querySelectorAll(".filter-btn").forEach(b=>b.addEventListener("click",()=>{ filterEst=b.dataset.v==="Todos"?null:b.dataset.v; renderAll(); }));
+}
+function renderFilterLinda(){
+  const cont=document.getElementById("filterLinda");
+  const opts=[{k:null,l:"Linda: Todos"},{k:"OK",l:"OK"},{k:"En Curso",l:"En Curso"},{k:"Pendiente",l:"Pendiente"},{k:"En Espera",l:"En Espera"},{k:"sin",l:"Sin estado"}];
+  cont.innerHTML=opts.map(o=>'<button class="filter-btn'+((filterLinda===o.k)?" active":"")+'" data-v="'+(o.k||"")+'">'+o.l+'</button>').join("");
+  cont.querySelectorAll(".filter-btn").forEach(b=>b.addEventListener("click",()=>{ filterLinda=b.dataset.v||null; renderAll(); }));
+}
 
-  // Agrupar por tecnico
-  const groups = {};
-  TECH_ORDER.forEach(t => groups[t] = []);
-  f.forEach(t => {
-    if (!groups[t.tecnico]) groups[t.tecnico] = [];
-    groups[t.tecnico].push(t);
-  });
-
-  let html = "";
-  for (const tec of TECH_ORDER) {
-    const tasks = groups[tec];
-    if (!tasks || tasks.length === 0) continue;
-    // Ordenar: En Curso primero, luego Pendiente, En Espera, Completado
-    tasks.sort((a,b) => ESTADO_ORDER.indexOf(a.estado) - ESTADO_ORDER.indexOf(b.estado));
-    html += '<div class="section-title">' + tec + ' <span class="count">' + tasks.length + '</span></div>';
-    tasks.forEach(t => {
-      const ec = t.estado.replace(/ /g, "");
-      const done = t.estado === "Completado";
-      const titulo = t.title.replace(/^[^-]+ - /, "");
-      html += '<div class="task' + (done?" done":"") + '">' +
-        '<div class="sdot sdot-' + ec + '"></div>' +
-        '<div class="task-main"><div class="task-title">' + esc(titulo) + '</div></div>' +
-        '<span class="badge badge-' + ec + '">' + t.estado + '</span></div>';
+function renderTasks(){
+  const list=document.getElementById("taskList");
+  const f=filtered();
+  if(!f.length){ list.innerHTML='<div class="empty">Sin tareas</div>'; return; }
+  const groups={}; TECH_ORDER.forEach(t=>groups[t]=[]);
+  f.forEach(t=>{ if(!groups[t.tecnico]) groups[t.tecnico]=[]; groups[t.tecnico].push(t); });
+  let html="";
+  for(const tec of TECH_ORDER){
+    const tasks=groups[tec]; if(!tasks||!tasks.length) continue;
+    tasks.sort((a,b)=>ESTADO_ORDER.indexOf(a.estado)-ESTADO_ORDER.indexOf(b.estado));
+    html+='<div class="section-title">'+tec+' <span class="count">'+tasks.length+'</span></div>';
+    tasks.forEach(t=>{
+      const ec=t.estado.replace(/ /g,"");
+      const le=getLinda(t.id);
+      const lec=le?le.replace(/ /g,""):"none";
+      const titulo=t.title.replace(/^[^-]+ - /,"");
+      html+='<div class="task" data-id="'+t.id+'">'+
+        '<div class="sdot sdot-'+ec+'"></div>'+
+        '<div class="task-main"><div class="task-title">'+esc(titulo)+'</div>'+
+        (le?'<div class="task-linda">Linda: '+le+(revisiones[t.id]&&revisiones[t.id].fecha?' \u00b7 '+fmtDate(revisiones[t.id].fecha):'')+'</div>':'')+
+        '</div>'+
+        '<div class="badges">'+
+        '<span class="badge badge-'+ec+'">'+t.estado+'</span>'+
+        '<span class="badge badge-linda badge-linda-'+lec+'">'+(le?'L: '+le:'sin rev')+'</span>'+
+        '</div></div>';
     });
   }
-  list.innerHTML = html;
+  list.innerHTML=html;
+  list.querySelectorAll(".task").forEach(el=>el.addEventListener("click",()=>openBar(el.dataset.id)));
 }
 
-function filtered() {
-  let f = tareas;
-  if (filterTec) f = f.filter(t => t.tecnico === filterTec);
-  if (filterEst) f = f.filter(t => t.estado === filterEst);
+function filtered(){
+  let f=tareas;
+  if(filterTec) f=f.filter(t=>t.tecnico===filterTec);
+  if(filterEst) f=f.filter(t=>t.estado===filterEst);
+  if(filterLinda==="sin") f=f.filter(t=>!getLinda(t.id));
+  else if(filterLinda) f=f.filter(t=>getLinda(t.id)===filterLinda);
   return f;
 }
 
-function esc(s) { return String(s||"").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c])); }
-function mondayOf(d) { const r=new Date(d); r.setDate(d.getDate()-((d.getDay()+6)%7)); r.setHours(0,0,0,0); return r; }
-function isoWeek(d) { const t=new Date(d.valueOf()); t.setDate(t.getDate()-((d.getDay()+6)%7)+3); const f=t.valueOf(); t.setMonth(0,1); if(t.getDay()!==4) t.setMonth(0,1+((4-t.getDay())+7)%7); return 1+Math.ceil((f-t)/604800000); }
+function getLinda(id){ return revisiones[id]&&revisiones[id].estado?revisiones[id].estado:null; }
+
+// ── ACTION BAR ──
+function openBar(id){
+  selectedId=id;
+  const t=tareas.find(x=>x.id===id); if(!t) return;
+  const titulo=t.title.replace(/^[^-]+ - /,"");
+  document.getElementById("actHeader").innerHTML='<b>'+esc(t.tecnico)+'</b> \u2014 '+esc(titulo);
+  const cur=getLinda(id);
+  const grid=document.getElementById("estadoGrid");
+  grid.innerHTML=LINDA_ESTADOS.map(e=>'<button class="estado-btn'+(cur===e?' sel':'')+'" data-e="'+e+'">'+e+'</button>').join("");
+  grid.querySelectorAll(".estado-btn").forEach(b=>b.addEventListener("click",async()=>{
+    const e=b.dataset.e;
+    revisiones[id]={estado:e, fecha:new Date().toISOString()};
+    await saveRevisiones();
+    closeBar(); renderAll();
+  }));
+  document.getElementById("actionBar").classList.add("show");
+}
+document.getElementById("actClose").addEventListener("click",closeBar);
+function closeBar(){ document.getElementById("actionBar").classList.remove("show"); selectedId=null; }
+
+// ── HELPERS ──
+function fmtDate(iso){ if(!iso) return ""; const d=new Date(iso); return d.getDate()+" "+MESES[d.getMonth()]+" "+d.toLocaleTimeString("es-CO",{hour:"2-digit",minute:"2-digit"}); }
+function esc(s){ return String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c])); }
+function mondayOf(d){ const r=new Date(d); r.setDate(d.getDate()-((d.getDay()+6)%7)); r.setHours(0,0,0,0); return r; }
+function isoWeek(d){ const t=new Date(d.valueOf()); t.setDate(t.getDate()-((d.getDay()+6)%7)+3); const f=t.valueOf(); t.setMonth(0,1); if(t.getDay()!==4) t.setMonth(0,1+((4-t.getDay())+7)%7); return 1+Math.ceil((f-t)/604800000); }
 </script>
 </body>
 </html>
