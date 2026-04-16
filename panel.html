@@ -7,455 +7,95 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Panel">
 <meta name="theme-color" content="#0f172a">
-<title>Panel</title>
+<title>Panel Soporte</title>
 <style>
-  /* ============================================================
-     PANEL SEMANAL SOPORTE - Mobile-first PWA
-     Ubicacion: soporte-disponible/panel.html
-     PIN: editable en la linea 1 del JS
-     ============================================================ */
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { height: 100%; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    background: #0f172a;
-    color: #e2e8f0;
-    min-height: 100vh;
-    -webkit-font-smoothing: antialiased;
-    -webkit-tap-highlight-color: transparent;
-    padding-bottom: env(safe-area-inset-bottom);
-    padding-top: env(safe-area-inset-top);
+    background: #0f172a; color: #e2e8f0; min-height: 100vh;
+    -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent;
+    padding-bottom: env(safe-area-inset-bottom); padding-top: env(safe-area-inset-top);
   }
   .hidden { display: none !important; }
 
-  /* ---------- PIN GATE ---------- */
-  .pin-gate {
-    position: fixed;
-    inset: 0;
-    background: #020617;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    padding: 24px;
-  }
-  .pin-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    max-width: 280px;
-    width: 100%;
-  }
-  .pin-icon {
-    font-size: 42px;
-    opacity: 0.4;
-  }
-  .pin-label {
-    font-size: 13px;
-    color: #64748b;
-    text-align: center;
-    letter-spacing: 0.5px;
-  }
-  .pin-input {
-    font-size: 28px;
-    letter-spacing: 12px;
-    text-align: center;
-    padding: 14px 12px 14px 24px;
-    width: 100%;
-    background: #1e293b;
-    border: 1px solid #334155;
-    border-radius: 12px;
-    color: #f1f5f9;
-    outline: none;
-    font-family: inherit;
-    transition: border-color 0.15s ease;
-  }
-  .pin-input:focus {
-    border-color: #475569;
-  }
-  .pin-input.error {
-    border-color: #b91c1c;
-    animation: shake 0.25s ease;
-  }
-  @keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-6px); }
-    75% { transform: translateX(6px); }
-  }
-  .pin-error {
-    font-size: 12px;
-    color: #ef4444;
-    height: 14px;
-  }
+  /* PIN GATE */
+  .pin-gate { position:fixed; inset:0; background:#020617; display:flex; align-items:center; justify-content:center; z-index:9999; padding:24px; }
+  .pin-box { display:flex; flex-direction:column; align-items:center; gap:20px; max-width:280px; width:100%; }
+  .pin-icon { font-size:42px; opacity:0.4; }
+  .pin-label { font-size:13px; color:#64748b; text-align:center; letter-spacing:0.5px; }
+  .pin-input { font-size:28px; letter-spacing:12px; text-align:center; padding:14px 12px 14px 24px; width:100%; background:#1e293b; border:1px solid #334155; border-radius:12px; color:#f1f5f9; outline:none; font-family:inherit; transition:border-color .15s; }
+  .pin-input:focus { border-color:#475569; }
+  .pin-input.error { border-color:#b91c1c; animation:shake .25s ease; }
+  @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
+  .pin-error { font-size:12px; color:#ef4444; height:14px; }
 
-  /* ---------- APP SHELL ---------- */
-  .app {
-    max-width: 640px;
-    margin: 0 auto;
-    padding: 16px 14px 80px;
-  }
+  /* APP */
+  .app { max-width:640px; margin:0 auto; padding:16px 14px 80px; }
 
-  /* ---------- HEADER ---------- */
-  .app-header {
-    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-    border: 1px solid #1e293b;
-    border-radius: 16px;
-    padding: 16px 16px 14px;
-    margin-bottom: 16px;
-  }
-  .date-line {
-    font-size: 20px;
-    font-weight: 600;
-    color: #f1f5f9;
-    text-transform: capitalize;
-  }
-  .week-line {
-    font-size: 12px;
-    color: #64748b;
-    margin-top: 2px;
-  }
-  .shift-block {
-    margin-top: 12px;
-    padding-top: 12px;
-    border-top: 1px solid #1e293b;
-  }
-  .shift-label {
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-    color: #64748b;
-    margin-bottom: 6px;
-  }
-  .shift-contacts {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-  .contact-chip {
-    background: #1e293b;
-    border: 1px solid #334155;
-    padding: 4px 10px;
-    border-radius: 999px;
-    font-size: 12px;
-    color: #cbd5e1;
-  }
-  .contact-chip.soporte2 {
-    background: #422006;
-    border-color: #92400e;
-    color: #fde68a;
-  }
+  /* HEADER */
+  .app-header { background:linear-gradient(135deg,#1e293b,#0f172a); border:1px solid #1e293b; border-radius:16px; padding:16px; margin-bottom:16px; }
+  .date-line { font-size:20px; font-weight:600; color:#f1f5f9; text-transform:capitalize; }
+  .week-line { font-size:12px; color:#64748b; margin-top:2px; }
+  .refresh-row { margin-top:12px; padding-top:12px; border-top:1px solid #1e293b; display:flex; align-items:center; justify-content:space-between; }
+  .refresh-row .src { font-size:11px; color:#64748b; }
+  .refresh-row .src b { color:#94a3b8; }
+  .btn-refresh { background:#1e293b; border:1px solid #334155; color:#94a3b8; padding:6px 14px; border-radius:999px; font-size:12px; cursor:pointer; font-family:inherit; }
+  .btn-refresh:active { background:#334155; }
+  .spinning { animation:spin 1s linear infinite; }
+  @keyframes spin { to{transform:rotate(360deg)} }
 
-  /* ---------- DAY SELECTOR ---------- */
-  .day-selector {
-    display: flex;
-    gap: 6px;
-    overflow-x: auto;
-    padding: 4px 0 8px;
-    margin-bottom: 14px;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-  }
-  .day-selector::-webkit-scrollbar { display: none; }
-  .day-chip {
-    flex: 1;
-    min-width: 52px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 8px 4px 10px;
-    border: 1px solid #1e293b;
-    background: #1e293b;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: all 0.15s ease;
-    color: #94a3b8;
-    font-family: inherit;
-  }
-  .day-chip:active { transform: scale(0.96); }
-  .day-chip .day-label {
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-  }
-  .day-chip .day-num {
-    font-size: 18px;
-    font-weight: 600;
-    margin-top: 2px;
-    color: #e2e8f0;
-  }
-  .day-chip.today {
-    border-color: #334155;
-    background: #0f172a;
-  }
-  .day-chip.today .day-num { color: #f59e0b; }
-  .day-chip.active {
-    background: #f59e0b;
-    border-color: #f59e0b;
-    color: #0f172a;
-  }
-  .day-chip.active .day-num,
-  .day-chip.active .day-label {
-    color: #0f172a;
-  }
+  /* STATS */
+  .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:6px; margin-bottom:14px; }
+  .stat { background:#1e293b; border:1px solid #1e293b; border-radius:12px; padding:12px 8px; text-align:center; }
+  .stat .n { font-size:22px; font-weight:700; line-height:1; }
+  .stat .l { font-size:10px; color:#64748b; margin-top:4px; text-transform:uppercase; letter-spacing:.5px; }
+  .stat.ok .n { color:#10b981; }
+  .stat.curso .n { color:#f59e0b; }
+  .stat.espera .n { color:#a78bfa; }
+  .stat.pend .n { color:#64748b; }
 
-  /* ---------- DAY CONTENT ---------- */
-  .day-title {
-    font-size: 14px;
-    font-weight: 600;
-    color: #94a3b8;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 10px;
-    padding: 0 4px;
-  }
-  .empty {
-    background: #1e293b;
-    border-radius: 12px;
-    padding: 28px 16px;
-    text-align: center;
-    color: #64748b;
-    font-size: 13px;
-  }
+  /* FILTERS */
+  .filter-row { display:flex; gap:6px; overflow-x:auto; margin-bottom:10px; padding:2px 0; scrollbar-width:none; }
+  .filter-row::-webkit-scrollbar { display:none; }
+  .filter-btn { padding:6px 12px; border-radius:999px; background:#1e293b; border:1px solid #334155; color:#94a3b8; font-size:12px; cursor:pointer; white-space:nowrap; font-family:inherit; transition:all .15s; }
+  .filter-btn.active { background:#334155; color:#f1f5f9; border-color:#475569; }
 
-  /* ---------- TIMELINE / ACTIVITY ROWS ---------- */
-  .timeline {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-  .activity {
-    display: flex;
-    background: #1e293b;
-    border: 1px solid #1e293b;
-    border-left: 4px solid #475569;
-    border-radius: 10px;
-    padding: 10px 12px;
-    cursor: pointer;
-    transition: background 0.15s ease;
-  }
-  .activity:active { background: #283548; }
-  .activity.done { opacity: 0.55; }
-  .activity.done .act-title { text-decoration: line-through; }
-  .activity.lunch {
-    background: #0f172a;
-    border-left-color: #334155;
-    border-style: dashed;
-    border-top-style: solid;
-    border-right-style: solid;
-    border-bottom-style: solid;
-    opacity: 0.7;
-  }
-  .act-time {
-    min-width: 76px;
-    font-size: 11px;
-    color: #94a3b8;
-    font-variant-numeric: tabular-nums;
-    font-weight: 500;
-    padding-top: 2px;
-  }
-  .act-main {
-    flex: 1;
-    min-width: 0;
-  }
-  .act-title {
-    font-size: 14px;
-    color: #e2e8f0;
-    line-height: 1.3;
-    font-weight: 500;
-  }
-  .act-meta {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 4px;
-    flex-wrap: wrap;
-  }
-  .act-stage {
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-weight: 600;
-  }
-  .act-techs {
-    font-size: 11px;
-    color: #64748b;
-  }
-  .act-status {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    border: 2px solid #475569;
-    flex-shrink: 0;
-    margin-left: 8px;
-    margin-top: 2px;
-    position: relative;
-  }
-  .act-status.done {
-    background: #10b981;
-    border-color: #10b981;
-  }
-  .act-status.done::after {
-    content: "";
-    position: absolute;
-    left: 4px;
-    top: 1px;
-    width: 5px;
-    height: 9px;
-    border: solid white;
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
-  }
-  .act-status.in-progress {
-    background: #f59e0b;
-    border-color: #f59e0b;
-  }
-  .act-status.in-progress::after {
-    content: "";
-    position: absolute;
-    inset: 3px;
-    border-radius: 50%;
-    background: white;
-    animation: pulse 1.4s infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { transform: scale(0.6); opacity: 0.6; }
-    50%      { transform: scale(1);   opacity: 1;   }
-  }
+  /* SECTION */
+  .section-title { font-size:12px; font-weight:600; color:#64748b; text-transform:uppercase; letter-spacing:1px; margin:16px 0 8px 4px; display:flex; align-items:center; gap:8px; }
+  .section-title .count { background:#334155; color:#94a3b8; font-size:10px; padding:2px 8px; border-radius:999px; }
 
-  .activity .act-details {
-    display: none;
-    grid-column: 1 / -1;
-    flex-basis: 100%;
-    margin-top: 8px;
-    padding-top: 8px;
-    border-top: 1px dashed #334155;
-    font-size: 12px;
-    color: #94a3b8;
-    line-height: 1.45;
-  }
-  .activity.expanded { flex-wrap: wrap; }
-  .activity.expanded .act-details { display: block; }
-  .act-details .act-description {
-    margin-bottom: 6px;
-  }
-  .act-details .act-notes {
-    font-size: 11px;
-    color: #64748b;
-    font-style: italic;
-  }
+  /* TASK */
+  .task { display:flex; align-items:flex-start; gap:10px; background:#1e293b; border:1px solid #1e293b; border-radius:10px; padding:10px 12px; margin-bottom:6px; }
+  .task.done { opacity:.5; }
+  .task.done .task-title { text-decoration:line-through; }
+  .task-main { flex:1; min-width:0; }
+  .task-title { font-size:14px; color:#e2e8f0; line-height:1.3; font-weight:500; word-wrap:break-word; }
+  .task-sub { font-size:11px; color:#64748b; margin-top:3px; }
+  .badge { flex-shrink:0; font-size:10px; font-weight:600; padding:4px 8px; border-radius:999px; text-transform:uppercase; letter-spacing:.3px; }
+  .badge-Completado { background:rgba(16,185,129,.15); color:#6ee7b7; }
+  .badge-EnCurso { background:rgba(245,158,11,.15); color:#fcd34d; }
+  .badge-EnEspera { background:rgba(167,139,250,.18); color:#c4b5fd; }
+  .badge-Pendiente { background:rgba(100,116,139,.18); color:#94a3b8; }
 
-  /* ---------- STAGE COLORS ---------- */
-  .etapa-preventivo  { border-left-color: #166534; }
-  .etapa-rutina      { border-left-color: #64748b; }
-  .etapa-implementacion { border-left-color: #1e3a8a; }
-  .etapa-actualizacion  { border-left-color: #6b21a8; }
-  .etapa-despliegue  { border-left-color: #78350f; }
-  .etapa-conciliacion{ border-left-color: #1e40af; }
-  .etapa-pruebas     { border-left-color: #991b1b; }
-  .etapa-reunion     { border-left-color: #1e293b; background: #1a2332; }
-  .etapa-documentacion { border-left-color: #581c87; }
-  .etapa-seguimiento { border-left-color: #0d9488; }
-  .etapa-auditoria   { border-left-color: #57534e; }
-  .etapa-coordinacion{ border-left-color: #92400e; }
+  /* STATUS DOT */
+  .sdot { width:8px; height:8px; border-radius:50%; flex-shrink:0; margin-top:5px; }
+  .sdot-Completado { background:#10b981; }
+  .sdot-EnCurso { background:#f59e0b; box-shadow:0 0 0 3px rgba(245,158,11,.2); }
+  .sdot-EnEspera { background:#a78bfa; }
+  .sdot-Pendiente { background:#475569; }
 
-  .act-stage.stage-preventivo   { background: #14532d; color: #bbf7d0; }
-  .act-stage.stage-rutina       { background: #334155; color: #cbd5e1; }
-  .act-stage.stage-implementacion{ background: #1e3a8a; color: #bfdbfe; }
-  .act-stage.stage-actualizacion{ background: #581c87; color: #e9d5ff; }
-  .act-stage.stage-despliegue   { background: #78350f; color: #fed7aa; }
-  .act-stage.stage-conciliacion { background: #1e40af; color: #bfdbfe; }
-  .act-stage.stage-pruebas      { background: #991b1b; color: #fecaca; }
-  .act-stage.stage-reunion      { background: #1e293b; color: #cbd5e1; }
-  .act-stage.stage-documentacion{ background: #581c87; color: #e9d5ff; }
-  .act-stage.stage-seguimiento  { background: #0d9488; color: #ccfbf1; }
-  .act-stage.stage-auditoria    { background: #57534e; color: #e7e5e4; }
-  .act-stage.stage-coordinacion { background: #92400e; color: #fed7aa; }
+  /* EMPTY */
+  .empty { background:#1e293b; border-radius:12px; padding:28px 16px; text-align:center; color:#64748b; font-size:13px; }
 
-  /* ---------- TECH FILTER ---------- */
-  .filter-row {
-    display: flex;
-    gap: 6px;
-    overflow-x: auto;
-    margin-bottom: 12px;
-    padding: 2px 0;
-    scrollbar-width: none;
-  }
-  .filter-row::-webkit-scrollbar { display: none; }
-  .tech-filter {
-    padding: 6px 12px;
-    border-radius: 999px;
-    background: #1e293b;
-    border: 1px solid #334155;
-    color: #94a3b8;
-    font-size: 12px;
-    cursor: pointer;
-    white-space: nowrap;
-    font-family: inherit;
-    transition: all 0.15s ease;
-  }
-  .tech-filter.active {
-    background: #334155;
-    color: #f1f5f9;
-    border-color: #475569;
-  }
-
-  /* ---------- FOOTER ---------- */
-  .sync-badge {
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-    background: rgba(15, 23, 42, 0.92);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid #1e293b;
-    font-size: 10px;
-    color: #64748b;
-    padding: 6px 10px;
-    border-radius: 999px;
-    z-index: 100;
-  }
-  .sync-badge.error { color: #ef4444; border-color: #7f1d1d; }
-
-  /* ---------- SUMMARY PILL ---------- */
-  .summary-pill {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #1e293b;
-    border: 1px solid #334155;
-    padding: 10px 14px;
-    border-radius: 10px;
-    margin-bottom: 12px;
-    font-size: 12px;
-    color: #cbd5e1;
-  }
-  .summary-pill .progress {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .progress-bar {
-    width: 80px;
-    height: 6px;
-    background: #334155;
-    border-radius: 3px;
-    overflow: hidden;
-  }
-  .progress-bar-fill {
-    height: 100%;
-    background: #10b981;
-    transition: width 0.4s ease;
-  }
+  /* SYNC BADGE */
+  .sync-badge { position:fixed; bottom:10px; right:10px; background:rgba(15,23,42,.92); backdrop-filter:blur(8px); border:1px solid #1e293b; font-size:10px; color:#64748b; padding:6px 10px; border-radius:999px; z-index:100; }
+  .sync-badge.ok { color:#10b981; border-color:#064e3b; }
+  .sync-badge.error { color:#ef4444; border-color:#7f1d1d; }
 </style>
 </head>
 <body>
 
-<!-- ============ PIN GATE ============ -->
 <div id="pinGate" class="pin-gate">
   <div class="pin-box">
     <div class="pin-icon">🔒</div>
@@ -465,452 +105,207 @@
   </div>
 </div>
 
-<!-- ============ APP ============ -->
 <div id="app" class="app hidden">
   <header class="app-header">
     <div class="date-line" id="todayDate">—</div>
     <div class="week-line" id="weekLine">—</div>
-
-    <div class="shift-block">
-      <div class="shift-label">En turno ahora</div>
-      <div class="shift-contacts" id="activeShift">
-        <span class="contact-chip">cargando…</span>
-      </div>
-    </div>
-
-    <div class="shift-block">
-      <div class="shift-label">Notas de la semana</div>
-      <div id="weekNotes" style="font-size:12px;color:#cbd5e1;line-height:1.4">—</div>
+    <div class="refresh-row">
+      <div class="src" id="dataSrc">Cargando...</div>
+      <button class="btn-refresh" id="btnRefresh">&#x21bb; Actualizar</button>
     </div>
   </header>
 
-  <nav class="day-selector" id="daySelector"></nav>
+  <div class="stats" id="stats"></div>
 
-  <div class="filter-row" id="techFilters"></div>
+  <div class="filter-row" id="filterTecnico"></div>
+  <div class="filter-row" id="filterEstado"></div>
 
-  <div class="summary-pill" id="summaryPill">
-    <span id="summaryText">—</span>
-    <div class="progress">
-      <div class="progress-bar"><div class="progress-bar-fill" id="progressFill" style="width:0%"></div></div>
-      <span id="progressPct">0%</span>
-    </div>
-  </div>
-
-  <div class="day-title" id="dayTitle">—</div>
-  <main class="timeline" id="timeline"></main>
+  <main id="taskList"></main>
 </div>
 
 <div id="syncBadge" class="sync-badge">—</div>
 
 <script>
-// ========================================================================
-// PIN — editar aqui para cambiar la clave de acceso
-// ========================================================================
 const PIN = "1105";
+const ESTADO_URL = "./estado.json";
+const REFRESH_MS = 60 * 1000;
+const TECH_ORDER = ["Anyely","Samuel","Jose","Evelio","Jackson"];
+const ESTADO_ORDER = ["En Curso","Pendiente","En Espera","Completado"];
+const MESES = ["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
+const DIAS = ["domingo","lunes","martes","miércoles","jueves","viernes","sábado"];
 
-// ========================================================================
-// MAPA TELEFONO -> NOMBRE (respaldo si parejas.json no esta disponible)
-// ========================================================================
-const TEAM_FALLBACK = {
-  "3175742822": "Evelio",
-  "3188140721": "Jose",
-  "3180714549": "Samuel",
-  "3115991435": "Jackson",
-  "3175014031": "Anyely"
-};
+let tareas = [];
+let lastUpdate = null;
+let filterTec = null;
+let filterEst = null;
+let refreshTimer = null;
 
-const TECH_ORDER = ["Samuel", "Jose", "Jackson", "Evelio", "Anyely"];
-
-// ========================================================================
-// DATOS DE EJEMPLO — semana del 13 al 17 abril 2026
-// Reemplazar despues con datos generados del Excel semanal
-// ========================================================================
-const WEEK_NOTES = "Soporte 2 rotativo · Linda lidera dailys L-M-V · Samuel lidera dailys Ma-J · Implementación Coctel del Mar en curso";
-
-const SCHEDULE = {
-  "2026-04-13": [
-    { hora: "07:30-07:45", etapa: "Reunion", titulo: "Daily inicio", tecnicos: ["Samuel","Jose","Jackson","Evelio","Anyely"], descripcion: "Linda lidera · revision de pendientes del fin de semana", estado: "done" },
-    { hora: "07:45-08:00", etapa: "Rutina", titulo: "Revision errores FE", tecnicos: ["Evelio"], descripcion: "Reporte obligatorio al grupo Soporte FE antes de 08:00", estado: "done" },
-    { hora: "07:45-08:00", etapa: "Rutina", titulo: "Revision base de datos", tecnicos: ["Jose"], descripcion: "Reporte obligatorio al grupo Soporte FE antes de 08:00", estado: "done" },
-    { hora: "07:45-08:00", etapa: "Rutina", titulo: "Revision soporte/pendientes", tecnicos: ["Jackson","Anyely"], descripcion: "Reporte al grupo Soporte FE", estado: "done" },
-    { hora: "08:00-09:00", etapa: "Conciliacion", titulo: "Coctel del Mar — Cajica, Usaquen, Cll 100", tecnicos: ["Anyely"], descripcion: "Conciliacion 3 PDVs asignados", estado: "done" },
-    { hora: "08:00-09:00", etapa: "Conciliacion", titulo: "Coctel del Mar — Calle 123 y Calle 69", tecnicos: ["Evelio"], descripcion: "Conciliacion 2 PDVs asignados", estado: "done" },
-    { hora: "09:00-10:00", etapa: "Implementacion", titulo: "Tanuki Food — despliegue agente POS", tecnicos: ["Samuel","Jose"], descripcion: "Instalacion en 3 cajas nuevas", estado: "done" },
-    { hora: "10:00-11:00", etapa: "Seguimiento", titulo: "Subir facturas en cola clientes prioritarios", tecnicos: ["Jackson"], descripcion: "Cargar facturas pendientes · max 1h", estado: "done" },
-    { hora: "11:00-12:00", etapa: "Documentacion", titulo: "Actualizar bitacora soporte semanal", tecnicos: ["Jose"], descripcion: "Registro de incidentes de la semana pasada", estado: "done" },
-    { hora: "12:00-13:30", etapa: "Lunch", titulo: "Almuerzo franja 1", tecnicos: ["Samuel","Evelio"], descripcion: "", estado: "done" },
-    { hora: "13:30-15:00", etapa: "Lunch", titulo: "Almuerzo franja 2", tecnicos: ["Jose","Jackson","Anyely"], descripcion: "", estado: "done" },
-    { hora: "13:30-14:30", etapa: "Preventivo", titulo: "Revision agentes FE clientes principales", tecnicos: ["Samuel","Evelio"], descripcion: "Chequeo preventivo antes del cierre", estado: "done" },
-    { hora: "14:30-15:15", etapa: "Pruebas", titulo: "Pruebas DIAN — actualizacion CUFE", tecnicos: ["Jackson","Anyely"], descripcion: "Validar respuesta DIAN en cert", estado: "done" },
-    { hora: "15:15-15:30", etapa: "Reunion", titulo: "Daily cierre", tecnicos: ["Samuel","Jose","Jackson","Evelio","Anyely"], descripcion: "Linda lidera · cierre del dia", estado: "done" }
-  ],
-  "2026-04-14": [
-    { hora: "07:30-07:45", etapa: "Reunion", titulo: "Daily inicio", tecnicos: ["Samuel","Jose","Jackson","Evelio","Anyely"], descripcion: "Samuel lidera", estado: "done" },
-    { hora: "07:45-08:00", etapa: "Rutina", titulo: "Revision errores FE", tecnicos: ["Jackson"], descripcion: "Reporte obligatorio al grupo Soporte FE", estado: "done" },
-    { hora: "07:45-08:00", etapa: "Rutina", titulo: "Revision base de datos", tecnicos: ["Anyely"], descripcion: "Reporte al grupo Soporte FE", estado: "done" },
-    { hora: "07:45-08:00", etapa: "Rutina", titulo: "Preventiva libre", tecnicos: ["Evelio","Jose"], descripcion: "Reporte al grupo Soporte FE", estado: "done" },
-    { hora: "08:00-09:00", etapa: "Coordinacion", titulo: "Comparacion CUFEs", tecnicos: ["Jackson","Anyely"], descripcion: "Samuel coordina · ejecutan Jackson y Anyely", estado: "done" },
-    { hora: "09:00-10:00", etapa: "Implementacion", titulo: "Tanuki Food — pruebas agente POS", tecnicos: ["Samuel","Jose"], descripcion: "Validacion de facturacion en PDV nuevo", estado: "done" },
-    { hora: "10:00-11:00", etapa: "Conciliacion", titulo: "Coctel del Mar — Paseo del Rio, Cll 184, Nuestro Bgta", tecnicos: ["Jackson"], descripcion: "Conciliacion 3 PDVs asignados", estado: "done" },
-    { hora: "11:00-12:00", etapa: "Seguimiento", titulo: "Subir facturas en cola", tecnicos: ["Evelio"], descripcion: "Clientes prioritarios · max 1h", estado: "done" },
-    { hora: "12:00-13:30", etapa: "Lunch", titulo: "Almuerzo franja 1", tecnicos: ["Jose","Jackson"], descripcion: "", estado: "done" },
-    { hora: "13:30-15:00", etapa: "Lunch", titulo: "Almuerzo franja 2", tecnicos: ["Samuel","Evelio","Anyely"], descripcion: "", estado: "done" },
-    { hora: "13:30-14:30", etapa: "Actualizacion", titulo: "Despliegue version agente FE v3.8", tecnicos: ["Samuel","Jose"], descripcion: "Rollout a clientes de piloto", estado: "done" },
-    { hora: "14:30-15:15", etapa: "Documentacion", titulo: "Manual actualizado CUFE", tecnicos: ["Anyely"], descripcion: "Actualizar documento de referencia", estado: "done" },
-    { hora: "15:15-15:30", etapa: "Reunion", titulo: "Daily cierre", tecnicos: ["Samuel","Jose","Jackson","Evelio","Anyely"], descripcion: "Samuel lidera", estado: "done" }
-  ],
-  "2026-04-15": [
-    { hora: "07:30-07:45", etapa: "Reunion", titulo: "Daily inicio", tecnicos: ["Samuel","Jose","Jackson","Evelio","Anyely"], descripcion: "Linda lidera · miercoles", estado: "done" },
-    { hora: "07:45-08:00", etapa: "Rutina", titulo: "Revision errores FE", tecnicos: ["Anyely"], descripcion: "Reporte obligatorio al grupo Soporte FE antes de 08:00", estado: "done" },
-    { hora: "07:45-08:00", etapa: "Rutina", titulo: "Revision base de datos", tecnicos: ["Jackson"], descripcion: "Reporte al grupo Soporte FE", estado: "done" },
-    { hora: "07:45-08:00", etapa: "Rutina", titulo: "Revision soporte/pendientes", tecnicos: ["Evelio","Jose"], descripcion: "Reporte al grupo Soporte FE", estado: "done" },
-    { hora: "08:00-09:00", etapa: "Implementacion", titulo: "Tanuki Food — capacitacion usuarios POS", tecnicos: ["Samuel"], descripcion: "Capacitacion de cajeros en PDV nuevo", estado: "done" },
-    { hora: "08:00-09:00", etapa: "Conciliacion", titulo: "Coctel del Mar — cierre conciliacion semanal", tecnicos: ["Anyely","Jackson","Evelio"], descripcion: "Consolidado de los 8 PDVs", estado: "in-progress" },
-    { hora: "09:00-10:00", etapa: "Preventivo", titulo: "Chequeo DB clientes DIAN republica dominicana", tecnicos: ["Jose"], descripcion: "Revision preventiva DB DR", estado: "pendiente" },
-    { hora: "09:00-10:00", etapa: "Seguimiento", titulo: "Subir facturas en cola", tecnicos: ["Samuel"], descripcion: "Clientes prioritarios", estado: "pendiente" },
-    { hora: "10:00-11:00", etapa: "Pruebas", titulo: "Pruebas integracion agente FE v3.9", tecnicos: ["Jackson","Anyely"], descripcion: "Validacion cambios DIAN", estado: "pendiente" },
-    { hora: "11:00-12:00", etapa: "Documentacion", titulo: "Actualizar playbook soporte N1", tecnicos: ["Evelio"], descripcion: "Actualizacion del playbook", estado: "pendiente" },
-    { hora: "12:00-13:30", etapa: "Lunch", titulo: "Almuerzo franja 1", tecnicos: ["Samuel","Anyely"], descripcion: "", estado: "pendiente" },
-    { hora: "13:30-15:00", etapa: "Lunch", titulo: "Almuerzo franja 2", tecnicos: ["Jose","Evelio","Jackson"], descripcion: "", estado: "pendiente" },
-    { hora: "13:30-14:30", etapa: "Coordinacion", titulo: "Reunion cliente Tanuki Food", tecnicos: ["Samuel","Jose"], descripcion: "Seguimiento implementacion · virtual", estado: "pendiente" },
-    { hora: "14:30-15:15", etapa: "Preventivo", titulo: "Revision preventiva agentes POS", tecnicos: ["Jackson","Evelio","Anyely"], descripcion: "Chequeo fin del dia", estado: "pendiente" },
-    { hora: "15:15-15:30", etapa: "Reunion", titulo: "Daily cierre", tecnicos: ["Samuel","Jose","Jackson","Evelio","Anyely"], descripcion: "Linda lidera", estado: "pendiente" }
-  ],
-  "2026-04-16": [
-    { hora: "07:30-07:45", etapa: "Reunion", titulo: "Daily inicio", tecnicos: ["Samuel","Jose","Jackson","Evelio","Anyely"], descripcion: "Samuel lidera", estado: "pendiente" },
-    { hora: "07:45-08:00", etapa: "Rutina", titulo: "Revision errores FE", tecnicos: ["Jose"], descripcion: "Reporte al grupo Soporte FE antes de 08:00", estado: "pendiente" },
-    { hora: "07:45-08:00", etapa: "Rutina", titulo: "Revision base de datos", tecnicos: ["Samuel"], descripcion: "Reporte al grupo Soporte FE", estado: "pendiente" },
-    { hora: "07:45-08:00", etapa: "Rutina", titulo: "Revision soporte/pendientes", tecnicos: ["Evelio","Anyely","Jackson"], descripcion: "Reporte al grupo Soporte FE", estado: "pendiente" },
-    { hora: "08:00-09:00", etapa: "Implementacion", titulo: "Cliente DR — despliegue FE v3.9", tecnicos: ["Jose","Samuel"], descripcion: "Rollout en cliente piloto DR", estado: "pendiente" },
-    { hora: "09:00-10:00", etapa: "Pruebas", titulo: "Pruebas post-despliegue DR", tecnicos: ["Jose","Samuel"], descripcion: "Validacion despliegue", estado: "pendiente" },
-    { hora: "10:00-11:00", etapa: "Seguimiento", titulo: "Subir facturas en cola", tecnicos: ["Anyely"], descripcion: "Clientes prioritarios", estado: "pendiente" },
-    { hora: "11:00-12:00", etapa: "Auditoria", titulo: "Auditoria CUFEs semana pasada", tecnicos: ["Jackson","Evelio"], descripcion: "Muestreo de 50 CUFEs", estado: "pendiente" },
-    { hora: "12:00-13:30", etapa: "Lunch", titulo: "Almuerzo franja 1", tecnicos: ["Jose","Evelio"], descripcion: "", estado: "pendiente" },
-    { hora: "13:30-15:00", etapa: "Lunch", titulo: "Almuerzo franja 2", tecnicos: ["Samuel","Jackson","Anyely"], descripcion: "", estado: "pendiente" },
-    { hora: "13:30-14:30", etapa: "Documentacion", titulo: "Informe auditoria CUFEs", tecnicos: ["Jackson","Evelio"], descripcion: "Consolidacion hallazgos", estado: "pendiente" },
-    { hora: "14:30-15:15", etapa: "Preventivo", titulo: "Revision preventiva FE", tecnicos: ["Samuel","Anyely"], descripcion: "Chequeo fin del dia", estado: "pendiente" },
-    { hora: "15:15-15:30", etapa: "Reunion", titulo: "Daily cierre", tecnicos: ["Samuel","Jose","Jackson","Evelio","Anyely"], descripcion: "Samuel lidera", estado: "pendiente" }
-  ],
-  "2026-04-17": [
-    { hora: "07:30-07:45", etapa: "Reunion", titulo: "Daily inicio", tecnicos: ["Samuel","Jose","Jackson","Evelio","Anyely"], descripcion: "Linda lidera · viernes", estado: "pendiente" },
-    { hora: "07:45-08:00", etapa: "Rutina", titulo: "Revision errores FE", tecnicos: ["Samuel"], descripcion: "Reporte al grupo Soporte FE antes de 08:00", estado: "pendiente" },
-    { hora: "07:45-08:00", etapa: "Rutina", titulo: "Revision base de datos", tecnicos: ["Evelio"], descripcion: "Reporte al grupo Soporte FE", estado: "pendiente" },
-    { hora: "07:45-08:00", etapa: "Rutina", titulo: "Revision preventiva libre", tecnicos: ["Jose","Anyely","Jackson"], descripcion: "Reporte al grupo Soporte FE", estado: "pendiente" },
-    { hora: "08:00-09:00", etapa: "Seguimiento", titulo: "Cierre conciliaciones semana", tecnicos: ["Anyely","Jackson","Evelio"], descripcion: "Consolidado final", estado: "pendiente" },
-    { hora: "09:00-10:00", etapa: "Documentacion", titulo: "Reporte semanal a direccion", tecnicos: ["Samuel"], descripcion: "Informe de gestion", estado: "pendiente" },
-    { hora: "10:00-11:00", etapa: "Coordinacion", titulo: "Reunion de equipo — retrospectiva", tecnicos: ["Samuel","Jose","Jackson","Evelio","Anyely"], descripcion: "Revision de la semana · mejoras", estado: "pendiente" },
-    { hora: "11:00-12:00", etapa: "Preventivo", titulo: "Preventivo general fin de semana", tecnicos: ["Samuel","Jose","Jackson","Evelio","Anyely"], descripcion: "Chequeo ante cierre de semana", estado: "pendiente" },
-    { hora: "12:00-13:30", etapa: "Lunch", titulo: "Almuerzo franja 1", tecnicos: ["Samuel","Jackson"], descripcion: "", estado: "pendiente" },
-    { hora: "13:30-15:00", etapa: "Lunch", titulo: "Almuerzo franja 2", tecnicos: ["Jose","Evelio","Anyely"], descripcion: "", estado: "pendiente" },
-    { hora: "13:30-14:30", etapa: "Documentacion", titulo: "Cierre bitacora semanal", tecnicos: ["Jose","Anyely"], descripcion: "Registro de incidentes y soluciones", estado: "pendiente" },
-    { hora: "14:30-15:15", etapa: "Seguimiento", titulo: "Revision pendientes a proxima semana", tecnicos: ["Jackson","Evelio"], descripcion: "Lista de pendientes", estado: "pendiente" },
-    { hora: "15:15-15:30", etapa: "Reunion", titulo: "Daily cierre", tecnicos: ["Samuel","Jose","Jackson","Evelio","Anyely"], descripcion: "Linda lidera", estado: "pendiente" }
-  ]
-};
-
-// ========================================================================
-// PIN GATE
-// ========================================================================
-const pinGate  = document.getElementById("pinGate");
+// === PIN ===
+const pinGate = document.getElementById("pinGate");
 const pinInput = document.getElementById("pinInput");
 const pinError = document.getElementById("pinError");
-const appEl    = document.getElementById("app");
+const appEl = document.getElementById("app");
 
-if (sessionStorage.getItem("panelAuth") === "ok") {
-  showApp();
-} else {
-  pinInput.addEventListener("input", (e) => {
+if (sessionStorage.getItem("panelAuth") === "ok") { showApp(); }
+else {
+  pinInput.addEventListener("input", e => {
     pinError.textContent = "";
     pinInput.classList.remove("error");
     if (e.target.value.length === 4) {
-      if (e.target.value === PIN) {
-        sessionStorage.setItem("panelAuth", "ok");
-        showApp();
-      } else {
-        pinError.textContent = "PIN incorrecto";
-        pinInput.classList.add("error");
-        setTimeout(() => { pinInput.value = ""; pinInput.classList.remove("error"); }, 400);
-      }
+      if (e.target.value === PIN) { sessionStorage.setItem("panelAuth","ok"); showApp(); }
+      else { pinError.textContent = "PIN incorrecto"; pinInput.classList.add("error"); setTimeout(()=>{pinInput.value="";pinInput.classList.remove("error")},400); }
     }
   });
 }
 
-function showApp() {
-  pinGate.classList.add("hidden");
-  appEl.classList.remove("hidden");
-  initApp();
-}
+function showApp() { pinGate.classList.add("hidden"); appEl.classList.remove("hidden"); initApp(); }
 
-// ========================================================================
-// APP STATE
-// ========================================================================
-const TEAM = {};        // tel-normalizado -> nombre
-let activeShiftNames = [];
-let selectedDay = null;
-let selectedTech = null;
-
-// ========================================================================
-// INIT
-// ========================================================================
+// === INIT ===
 async function initApp() {
   renderHeader();
-  await loadTurnosYParejas();
-  renderActiveShift();
-  renderDaySelector();
-  renderTechFilters();
-
-  const todayK = todayKey();
-  selectedDay = SCHEDULE[todayK] ? todayK : firstWeekdayKey();
-  renderDay();
+  await loadEstados();
+  renderAll();
+  if (refreshTimer) clearInterval(refreshTimer);
+  refreshTimer = setInterval(async () => { await loadEstados(); renderAll(); }, REFRESH_MS);
+  document.addEventListener("visibilitychange", () => { if (!document.hidden) { loadEstados().then(renderAll); } });
 }
 
-// ========================================================================
-// HELPERS
-// ========================================================================
-function normalizeTel(t) { return String(t || "").replace(/\D/g, ""); }
+document.getElementById("btnRefresh").addEventListener("click", async () => {
+  const btn = document.getElementById("btnRefresh");
+  btn.innerHTML = '<span class="spinning" style="display:inline-block">&#x21bb;</span>';
+  await loadEstados();
+  renderAll();
+  setTimeout(() => { btn.innerHTML = '&#x21bb; Actualizar'; }, 600);
+});
 
-function todayKey() {
-  const d = new Date();
-  return toISODate(d);
-}
-function toISODate(d) {
-  const y = d.getFullYear();
-  const m = String(d.getMonth() + 1).padStart(2, "0");
-  const day = String(d.getDate()).padStart(2, "0");
-  return `${y}-${m}-${day}`;
-}
-function firstWeekdayKey() {
-  const keys = Object.keys(SCHEDULE).sort();
-  return keys[0];
-}
-
-function mondayOfWeek(d) {
-  const day = d.getDay();
-  const monday = new Date(d);
-  monday.setDate(d.getDate() - ((day + 6) % 7));
-  monday.setHours(0,0,0,0);
-  return monday;
-}
-
-function getIsoWeek(d) {
-  const target = new Date(d.valueOf());
-  const dayNr = (d.getDay() + 6) % 7;
-  target.setDate(target.getDate() - dayNr + 3);
-  const firstThursday = target.valueOf();
-  target.setMonth(0, 1);
-  if (target.getDay() !== 4) {
-    target.setMonth(0, 1 + ((4 - target.getDay()) + 7) % 7);
-  }
-  return 1 + Math.ceil((firstThursday - target) / 604800000);
-}
-
-const MESES = ["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
-const DIAS  = ["domingo","lunes","martes","miércoles","jueves","viernes","sábado"];
-
-// ========================================================================
-// CARGA DE turnos.json y parejas.json
-// ========================================================================
-async function loadTurnosYParejas() {
-  // parejas.json
+// === LOAD ===
+async function loadEstados() {
+  const badge = document.getElementById("syncBadge");
   try {
-    const r = await fetch("./parejas.json", { cache: "no-store" });
-    if (r.ok) {
-      const parejas = await r.json();
-      if (parejas.equipos) {
-        for (const [name, info] of Object.entries(parejas.equipos)) {
-          TEAM[normalizeTel(info.tel)] = capitalize(name);
-        }
-      }
-    }
-  } catch (e) { /* silencioso, usamos fallback */ }
-
-  // Respaldo si parejas.json no trajo nada
-  if (Object.keys(TEAM).length === 0) {
-    for (const [tel, name] of Object.entries(TEAM_FALLBACK)) {
-      TEAM[tel] = name;
-    }
-  }
-
-  // turnos.json
-  const syncBadge = document.getElementById("syncBadge");
-  try {
-    const r = await fetch("./turnos.json", { cache: "no-store" });
-    if (!r.ok) throw new Error("no turnos");
-    const turnos = await r.json();
-
-    activeShiftNames = (turnos.contactos || [])
-      .map(c => TEAM[normalizeTel(c.tel)] || c.tel);
-
-    if (turnos.actualizado) {
-      const d = new Date(turnos.actualizado);
-      const fmt = d.toLocaleString("es-CO", {
-        day: "numeric", month: "short",
-        hour: "numeric", minute: "2-digit", hour12: true
-      });
-      syncBadge.textContent = "⚡ Últ. sincronizado: " + fmt;
-      syncBadge.classList.remove("error");
+    const r = await fetch(ESTADO_URL + "?t=" + Date.now(), { cache: "no-store" });
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    const d = await r.json();
+    if (d && Array.isArray(d.estados)) {
+      tareas = d.estados.filter(e => e.id && e.title && e.tecnico);
+      lastUpdate = d.actualizado || null;
+      badge.textContent = "En vivo desde Planner";
+      badge.className = "sync-badge ok";
+    } else {
+      throw new Error("formato");
     }
   } catch (e) {
-    syncBadge.textContent = "⚠ turnos.json no disponible";
-    syncBadge.classList.add("error");
-    activeShiftNames = [];
+    badge.textContent = "Sin conexion a estado.json";
+    badge.className = "sync-badge error";
   }
 }
 
-// ========================================================================
-// RENDER
-// ========================================================================
+// === RENDER ===
 function renderHeader() {
   const now = new Date();
-  const fecha = `${DIAS[now.getDay()]} ${now.getDate()} ${MESES[now.getMonth()]} ${now.getFullYear()}`;
-  document.getElementById("todayDate").textContent = fecha;
-
-  const monday = mondayOfWeek(now);
-  const friday = new Date(monday); friday.setDate(monday.getDate() + 4);
-  const weekN = getIsoWeek(now);
+  document.getElementById("todayDate").textContent =
+    DIAS[now.getDay()] + " " + now.getDate() + " " + MESES[now.getMonth()] + " " + now.getFullYear();
+  const mon = mondayOf(now), fri = new Date(mon); fri.setDate(mon.getDate()+4);
   document.getElementById("weekLine").textContent =
-    `Semana ${weekN} · ${monday.getDate()} ${MESES[monday.getMonth()]} – ${friday.getDate()} ${MESES[friday.getMonth()]}`;
-
-  document.getElementById("weekNotes").textContent = WEEK_NOTES;
+    "Semana " + isoWeek(now) + " \u00b7 " + mon.getDate() + " " + MESES[mon.getMonth()] + " \u2013 " + fri.getDate() + " " + MESES[fri.getMonth()];
 }
 
-function renderActiveShift() {
-  const cont = document.getElementById("activeShift");
-  if (!activeShiftNames || activeShiftNames.length === 0) {
-    cont.innerHTML = '<span class="contact-chip">sin datos</span>';
-    return;
+function renderAll() {
+  renderSrc();
+  renderStats();
+  renderFilterTec();
+  renderFilterEst();
+  renderTasks();
+}
+
+function renderSrc() {
+  const el = document.getElementById("dataSrc");
+  if (lastUpdate) {
+    const d = new Date(lastUpdate);
+    el.innerHTML = "Planner <b>" + d.toLocaleTimeString("es-CO",{hour:"2-digit",minute:"2-digit"}) + "</b> \u00b7 " + tareas.length + " tareas";
+  } else {
+    el.textContent = "Sin datos";
   }
-  cont.innerHTML = activeShiftNames
-    .map(n => `<span class="contact-chip">${n}</span>`)
-    .join("");
 }
 
-function renderDaySelector() {
-  const cont = document.getElementById("daySelector");
-  cont.innerHTML = "";
-
-  const keys = Object.keys(SCHEDULE).sort();
-  const todayK = todayKey();
-  const labels = { 1:"Lun", 2:"Mar", 3:"Mié", 4:"Jue", 5:"Vie" };
-
-  keys.forEach(key => {
-    const d = new Date(key + "T00:00:00");
-    const btn = document.createElement("button");
-    btn.className = "day-chip";
-    btn.dataset.dayKey = key;
-    if (key === todayK) btn.classList.add("today");
-    btn.innerHTML = `<span class="day-label">${labels[d.getDay()] || ""}</span><span class="day-num">${d.getDate()}</span>`;
-    btn.addEventListener("click", () => {
-      selectedDay = key;
-      document.querySelectorAll(".day-chip").forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      renderDay();
-    });
-    cont.appendChild(btn);
-  });
-
-  // Seleccionar hoy por defecto
-  const initial = cont.querySelector(`[data-day-key="${todayK}"]`) || cont.firstElementChild;
-  if (initial) initial.classList.add("active");
+function renderStats() {
+  const c = { "Completado":0, "En Curso":0, "En Espera":0, "Pendiente":0 };
+  filtered().forEach(t => c[t.estado] = (c[t.estado]||0) + 1);
+  document.getElementById("stats").innerHTML =
+    '<div class="stat curso"><div class="n">' + (c["En Curso"]||0) + '</div><div class="l">En curso</div></div>' +
+    '<div class="stat pend"><div class="n">' + (c["Pendiente"]||0) + '</div><div class="l">Pendiente</div></div>' +
+    '<div class="stat espera"><div class="n">' + (c["En Espera"]||0) + '</div><div class="l">En espera</div></div>' +
+    '<div class="stat ok"><div class="n">' + (c["Completado"]||0) + '</div><div class="l">Hechas</div></div>';
 }
 
-function renderTechFilters() {
-  const cont = document.getElementById("techFilters");
-  cont.innerHTML = "";
-
+function renderFilterTec() {
+  const cont = document.getElementById("filterTecnico");
   const techs = ["Todos", ...TECH_ORDER];
-  techs.forEach(t => {
-    const b = document.createElement("button");
-    b.className = "tech-filter";
-    if (t === "Todos") b.classList.add("active");
-    b.textContent = t;
-    b.addEventListener("click", () => {
-      selectedTech = (t === "Todos") ? null : t;
-      document.querySelectorAll(".tech-filter").forEach(x => x.classList.remove("active"));
-      b.classList.add("active");
-      renderDay();
-    });
-    cont.appendChild(b);
-  });
+  cont.innerHTML = techs.map(t => {
+    const active = (t === "Todos" && !filterTec) || (t === filterTec);
+    return '<button class="filter-btn' + (active?" active":"") + '" data-tec="' + t + '">' + t + '</button>';
+  }).join("");
+  cont.querySelectorAll(".filter-btn").forEach(b => b.addEventListener("click", () => {
+    filterTec = b.dataset.tec === "Todos" ? null : b.dataset.tec;
+    renderAll();
+  }));
 }
 
-function renderDay() {
-  const acts = SCHEDULE[selectedDay] || [];
-  const d = new Date(selectedDay + "T00:00:00");
-  document.getElementById("dayTitle").textContent =
-    `${DIAS[d.getDay()]} ${d.getDate()} de ${MESES[d.getMonth()]}`.toUpperCase();
+function renderFilterEst() {
+  const cont = document.getElementById("filterEstado");
+  const estados = ["Todos","En Curso","Pendiente","En Espera","Completado"];
+  cont.innerHTML = estados.map(e => {
+    const active = (e === "Todos" && !filterEst) || (e === filterEst);
+    return '<button class="filter-btn' + (active?" active":"") + '" data-est="' + e + '">' + e + '</button>';
+  }).join("");
+  cont.querySelectorAll(".filter-btn").forEach(b => b.addEventListener("click", () => {
+    filterEst = b.dataset.est === "Todos" ? null : b.dataset.est;
+    renderAll();
+  }));
+}
 
-  // Filtrar por técnico si hay
-  let filtered = acts;
-  if (selectedTech) {
-    filtered = acts.filter(a => (a.tecnicos || []).includes(selectedTech));
-  }
+function renderTasks() {
+  const list = document.getElementById("taskList");
+  const f = filtered();
+  if (f.length === 0) { list.innerHTML = '<div class="empty">Sin tareas</div>'; return; }
 
-  const timeline = document.getElementById("timeline");
-  if (filtered.length === 0) {
-    timeline.innerHTML = '<div class="empty">Sin actividades para este día</div>';
-    updateSummary(0, 0);
-    return;
-  }
-
-  timeline.innerHTML = "";
-  let done = 0;
-  let total = 0;
-
-  filtered.forEach((a, idx) => {
-    const etapaKey = a.etapa.toLowerCase();
-    const isLunch = etapaKey === "lunch";
-
-    if (!isLunch) { total++; if (a.estado === "done") done++; }
-
-    const row = document.createElement("div");
-    row.className = `activity etapa-${etapaKey} ${a.estado === "done" ? "done" : ""} ${isLunch ? "lunch" : ""}`;
-
-    const techsDisplay = (a.tecnicos || []).join(" · ");
-    const statusClass = a.estado === "done" ? "done" : (a.estado === "in-progress" ? "in-progress" : "");
-
-    row.innerHTML = `
-      <div class="act-time">${a.hora}</div>
-      <div class="act-main">
-        <div class="act-title">${isLunch ? "🍽 " : ""}${a.titulo}</div>
-        <div class="act-meta">
-          ${!isLunch ? `<span class="act-stage stage-${etapaKey}">${a.etapa}</span>` : ""}
-          <span class="act-techs">${techsDisplay}</span>
-        </div>
-        <div class="act-details">
-          ${a.descripcion ? `<div class="act-description">${a.descripcion}</div>` : ""}
-          <div class="act-notes">Tap para ver/cerrar · evidencias y notas se jalan de Planner (pendiente)</div>
-        </div>
-      </div>
-      ${!isLunch ? `<div class="act-status ${statusClass}"></div>` : ""}
-    `;
-
-    row.addEventListener("click", () => {
-      row.classList.toggle("expanded");
-    });
-
-    timeline.appendChild(row);
+  // Agrupar por tecnico
+  const groups = {};
+  TECH_ORDER.forEach(t => groups[t] = []);
+  f.forEach(t => {
+    if (!groups[t.tecnico]) groups[t.tecnico] = [];
+    groups[t.tecnico].push(t);
   });
 
-  updateSummary(done, total);
+  let html = "";
+  for (const tec of TECH_ORDER) {
+    const tasks = groups[tec];
+    if (!tasks || tasks.length === 0) continue;
+    // Ordenar: En Curso primero, luego Pendiente, En Espera, Completado
+    tasks.sort((a,b) => ESTADO_ORDER.indexOf(a.estado) - ESTADO_ORDER.indexOf(b.estado));
+    html += '<div class="section-title">' + tec + ' <span class="count">' + tasks.length + '</span></div>';
+    tasks.forEach(t => {
+      const ec = t.estado.replace(/ /g, "");
+      const done = t.estado === "Completado";
+      const titulo = t.title.replace(/^[^-]+ - /, "");
+      html += '<div class="task' + (done?" done":"") + '">' +
+        '<div class="sdot sdot-' + ec + '"></div>' +
+        '<div class="task-main"><div class="task-title">' + esc(titulo) + '</div></div>' +
+        '<span class="badge badge-' + ec + '">' + t.estado + '</span></div>';
+    });
+  }
+  list.innerHTML = html;
 }
 
-function updateSummary(done, total) {
-  const pct = total === 0 ? 0 : Math.round((done / total) * 100);
-  document.getElementById("summaryText").textContent = `${done} de ${total} completadas`;
-  document.getElementById("progressFill").style.width = pct + "%";
-  document.getElementById("progressPct").textContent = pct + "%";
+function filtered() {
+  let f = tareas;
+  if (filterTec) f = f.filter(t => t.tecnico === filterTec);
+  if (filterEst) f = f.filter(t => t.estado === filterEst);
+  return f;
 }
 
-function capitalize(s) {
-  if (!s) return s;
-  return s.charAt(0).toUpperCase() + s.slice(1).toLowerCase();
-}
-
-// Refrescar turnos.json cada 2 min
-setInterval(() => {
-  loadTurnosYParejas().then(renderActiveShift);
-}, 120000);
+function esc(s) { return String(s||"").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c])); }
+function mondayOf(d) { const r=new Date(d); r.setDate(d.getDate()-((d.getDay()+6)%7)); r.setHours(0,0,0,0); return r; }
+function isoWeek(d) { const t=new Date(d.valueOf()); t.setDate(t.getDate()-((d.getDay()+6)%7)+3); const f=t.valueOf(); t.setMonth(0,1); if(t.getDay()!==4) t.setMonth(0,1+((4-t.getDay())+7)%7); return 1+Math.ceil((f-t)/604800000); }
 </script>
 </body>
 </html>
