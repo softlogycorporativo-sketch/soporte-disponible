@@ -291,11 +291,9 @@ document.getElementById("btnSync").addEventListener("click", async()=>{
   btn.disabled=true; btn.innerHTML='<span class="spinning">&#x2B06;</span> Sync...';
   badge.textContent="Sincronizando Planner..."; badge.className="sync-badge saving";
   try{
-    const r=await fetch(SYNC_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:"{}"});
-    const status=r.status;
-    let respText=""; try{ respText=await r.text(); }catch(x){}
-    if(!r.ok&&status!==202) throw new Error("HTTP "+status+" — "+respText.substring(0,200));
-    badge.textContent="Planner sincronizado ("+status+")"; badge.className="sync-badge ok";
+    const r=await fetch(SYNC_URL,{method:"POST",mode:"no-cors"});
+    // mode:no-cors → status siempre es 0 (opaque), no podemos leerlo
+    badge.textContent="Sincronización enviada, esperando..."; badge.className="sync-badge saving";
     setTimeout(async()=>{ await loadEstados(); renderAll(); },8000);
   } catch(e){
     console.error("SYNC ERROR:",e);
@@ -549,7 +547,7 @@ document.getElementById("actClose").addEventListener("click",closeBar);
 function closeBar(){ document.getElementById("actionBar").classList.remove("show"); selectedId=null; }
 
 // ── CREAR TAREA ──
-const SYNC_URL = "https://defaulta40856b5235f4600a3d45cce33adbf.ef.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/7caed77cad8f4edca19b433c60f31948/triggers/manual/paths/invoke?api-version=1";
+const SYNC_URL = "https://defaulta40856b5235f4600a3d45cce33adbf.ef.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/7caed77cad8f4edca19b433c60f31948/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=Y2TGmXUBknhe-zTGM5_U-A6nXUJGhPB7R1ojzNF23Us";
 const FLOW_URL = ""; // ← URL del flujo "Crear tarea" (HTTP trigger)
 const PLAN_MAP = {
   "Anyely":  {plan:"-e74DpLy3UCev4PsTqE9dWUAAlJt", bucket:"fRCB6pEVKESR78COvEnmgGUAEVXB", user:"a652c964-a766-48f5-bad0-4dd3274d6e0d"},
