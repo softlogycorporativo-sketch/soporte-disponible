@@ -1,1 +1,1714 @@
-{"actualizado":"2026-04-17T14:27:10.1719263Z","estados":[{"id":"3eEH35q5Vkuzk_OuIe5902UABdfc","title":"Anyely - Reporte semanal de cierre","tecnico":"Anyely","estado":"Pendiente","fecha":"2026-04-18T12:30:00Z"},{"id":"0MjhHszO10SNBZT_d1WCoWUAO4jv","title":"Anyely - Entregable lista grupos actualizados vs pendientes","tecnico":"Anyely","estado":"Pendiente","fecha":"2026-04-18T11:30:00Z"},{"id":"HfewFn_pzU-H7oWFLfZBbGUAItb7","title":"Anyely - Entregable reporte consolidado implementación LC Dominicana","tecnico":"Anyely","estado":"Pendiente","fecha":"2026-04-18T10:30:00Z"},{"id":"xZ6Nsnl3GEO5JKTwH1Kt22UAF_bq","title":"Anyely - Entregable estado actualización LC Colombia","tecnico":"Anyely","estado":"Pendiente","fecha":"2026-04-17T12:45:00Z"},{"id":"6QvSli-CMUCc29Dyaijlo2UAGZNZ","title":"Anyely - Manual portal autogestión","tecnico":"Anyely","estado":"Pendiente","fecha":"2026-04-17T08:45:00Z"},{"id":"YyZXGuP4wEyGjUjgdbG5TGUAFij7","title":"Anyely - Tamaños BD y novedades facturación – 17/04/2026","tecnico":"Anyely","estado":"Pendiente","fecha":"2026-04-17T07:45:00Z"},{"id":"owIlwYTcQUuxqGDONpWC_GUAEyKE","title":"Anyely - Manual portal autogestión","tecnico":"Anyely","estado":"En Curso","fecha":"2026-04-15T11:45:00Z"},{"id":"BuuaT3wA3UegOx5_VQuo3GUAPUC7","title":"Anyely - Seguimiento diferencias informes DLK","tecnico":"Anyely","estado":"En Curso","fecha":"2026-04-14T09:45:00Z"},{"id":"UCRkEf_Uw0mecmMPdfXE2mUAAI74","title":"Anyely - Revisión casos pendientes Insurgentes","tecnico":"Anyely","estado":"En Curso","fecha":"2026-04-13T12:45:00Z"},{"id":"UpAIaoipW0ONNGq-bAobSWUAIqKI","title":"Anyely - Revisión Correo Novedades Marzo Mera el Dorado","tecnico":"Anyely","estado":"Completado","fecha":"2026-04-17T16:00:00Z"},{"id":"kHm_f3JpNUKES4G_W4hI6mUAALC9","title":"Anyely - Prueba","tecnico":"Anyely","estado":"Pendiente","fecha":"2026-04-16T16:00:00Z"},{"id":"J1CgOmGnqEyGlKwmg3rx5WUAA8Oy","title":"Anyely - Tamaños BD y novedades facturación – 16/04/2026","tecnico":"Anyely","estado":"Pendiente","fecha":"2026-04-16T07:45:00Z"},{"id":"pJCzJbng-0-Ni_jkZiRCIGUAGfRQ","title":"Anyely - Comparación CUFEs todos los clientes","tecnico":"Anyely","estado":"Pendiente","fecha":"2026-03-24T09:45:00Z"},{"id":"btk26zPonEODJAL5XnGQy2UAL1Lz","title":"Anyely - 📄 Propuesta/mejora 1/4 – Anyely","tecnico":"Anyely","estado":"Pendiente","fecha":"2026-03-24T15:30:00Z"},{"id":"NJh-rCsHF0qodPZYsKROUGUAI7Iu","title":"Anyely - Little Caesars – Colinas Mall","tecnico":"Anyely","estado":"Pendiente","fecha":"2026-03-24T08:00:00Z"},{"id":"6VmDSQOPXEOz8ltG2wpk82UAHYGn","title":"Anyely - Tamaños BD y novedades facturación – 15/04/2026","tecnico":"Anyely","estado":"Pendiente","fecha":"2026-04-15T07:45:00Z"},{"id":"9SBT6GT0R0eqOfWuQjK-vmUAD9ta","title":"Anyely - Validación actualización LC Madelena","tecnico":"Anyely","estado":"Pendiente","fecha":"2026-04-14T11:45:00Z"},{"id":"ZWSzTIrNj0CQswqaSH_ORGUAL6o1","title":"Anyely - Implementación Little Caesars Dominicana","tecnico":"Anyely","estado":"Pendiente","fecha":"2026-04-14T08:45:00Z"},{"id":"wv_oh86_Qk-lYpQIdAgFLmUAPu46","title":"Anyely - Tamaños BD y novedades facturación – 14/04/2026","tecnico":"Anyely","estado":"Pendiente","fecha":"2026-04-14T07:45:00Z"},{"id":"qojmgZh0RUqxzZ79TLp97GUANk9v","title":"Anyely - Seguimiento folios faltantes PJ","tecnico":"Anyely","estado":"Pendiente","fecha":"2026-04-13T11:45:00Z"},{"id":"pGQ3sj-2ekio7x55FfJSimUAItPY","title":"Anyely - Listado usuarios portal autogestión","tecnico":"Anyely","estado":"Pendiente","fecha":"2026-04-01T08:00:00Z"},{"id":"mJAa3V0Y70K2R7uR9n51d2UANrkx","title":"Anyely - Comparación CUFEs ⚑ entrega","tecnico":"Anyely","estado":"Pendiente","fecha":"2026-04-04T07:20:00Z"},{"id":"W_4CZBmfykizw3OSN9FdxGUACO8G","title":"Anyely - Revisión BD – 04/04","tecnico":"Anyely","estado":"Pendiente","fecha":"2026-04-04T07:00:00Z"},{"id":"WD50xevfTkKYcpgsdgYBpWUADsxv","title":"Anyely - Antojo Hamburguesería – coord. capacitación + portal","tecnico":"Anyely","estado":"Pendiente","fecha":"2026-04-01T08:00:00Z"},{"id":"QSpmzyt3JUCf9uKlJFq__WUAJq-o","title":"Anyely - Revisión BD – 01/04","tecnico":"Anyely","estado":"Pendiente","fecha":"2026-04-01T07:00:00Z"},{"id":"8Kba4wT3UEieLUArgZmyI2UAEbC8","title":"Anyely - Oliveto Colina – implementar cambios","tecnico":"Anyely","estado":"Pendiente","fecha":"2026-03-31T08:45:00Z"},{"id":"N3-Ps94v8kS6WpWL6Ke_UGUACjSb","title":"Anyely - Little Caesars RD – Colinas Mall","tecnico":"Anyely","estado":"Pendiente","fecha":"2026-03-31T08:00:00Z"},{"id":"XsFKDtRZiE68t8FBkncVh2UALqEr","title":"Anyely - Revisión BD – 30/03","tecnico":"Anyely","estado":"Pendiente","fecha":"2026-03-30T07:00:00Z"},{"id":"Xgu7i4kGakC3tq3-qK8bQ2UABK-u","title":"Anyely - Revisión BD – 31/03","tecnico":"Anyely","estado":"Pendiente","fecha":"2026-03-31T07:00:00Z"},{"id":"hHhs3fk2sUaUgQe2VBFfFGUAN9Ly","title":"Anyely - Reporte semanal","tecnico":"Anyely","estado":"Pendiente","fecha":"2026-03-27T15:30:00Z"},{"id":"CIbFEgWo5USKsPn1KQNHOGUAD3yN","title":"Anyely - Conciliación Coctel del Mar 1-25 marzo","tecnico":"Anyely","estado":"Completado","fecha":"2026-03-26T11:30:00Z"},{"id":"H2qNrIj7DEWvBItuCqCKhWUALARl","title":"Anyely - Revisión BD – 27/03","tecnico":"Anyely","estado":"Completado","fecha":"2026-03-27T07:00:00Z"},{"id":"YHbPnPPGF0-ry7XW8ZdFsmUAEgFh","title":"Anyely - Plan de trabajo Simphony","tecnico":"Anyely","estado":"Pendiente","fecha":"2026-03-24T10:45:00Z"},{"id":"ZOFejSmbi02IRxK1blDsH2UAL1c3","title":"Anyely - Reunión seguimiento – Anyely","tecnico":"Anyely","estado":"Pendiente","fecha":"2026-03-26T11:30:00Z"},{"id":"u_5h8AVzZEqzaavZXU_EAWUANs7D","title":"Anyely - Subir facturas en cola","tecnico":"Anyely","estado":"Pendiente","fecha":"2026-03-24T15:00:00Z"},{"id":"bStzpgCC-0e9AshcntBUN2UAI2Ii","title":"Anyely - Antojo Hamburguesería","tecnico":"Anyely","estado":"Pendiente","fecha":"2026-03-24T08:45:00Z"},{"id":"FTHgYPCXRU2qYEW5vN4xZGUAH1RJ","title":"Anyely - Little Caesars – Bella Vista","tecnico":"Anyely","estado":"Pendiente","fecha":"2026-03-26T08:00:00Z"},{"id":"DbRk7d4XTUetaZA-093uO2UAFqk1","title":"Anyely - Revisión BD – 26/03","tecnico":"Anyely","estado":"Pendiente","fecha":"2026-03-26T07:00:00Z"},{"id":"daO5Yin72kurRxlVfzmsemUAEZUy","title":"Anyely - Revisión BD – 25/03","tecnico":"Anyely","estado":"Pendiente","fecha":"2026-03-25T07:00:00Z"},{"id":"hJjZI2BXNE6-2SM54R1fl2UAD9D1","title":"Anyely - Revisión BD – 24/03","tecnico":"Anyely","estado":"Pendiente","fecha":"2026-03-24T07:00:00Z"},{"id":"Uwc1hU3fi0Ce2KZyL5sXK2UACqfC","title":"Evelio - Entregable reporte errores Alsea","tecnico":"Evelio","estado":"Pendiente","fecha":"2026-04-17T09:45:00Z"},{"id":"1Z3mKo6nQUOv8hPvbiMCgmUANVFv","title":"Evelio - Verificación correcciones errores Alsea","tecnico":"Evelio","estado":"Pendiente","fecha":"2026-04-16T08:45:00Z"},{"id":"EWp-vpwXWEKn6scgjwL8b2UAFOSm","title":"Evelio - Revisión facturas en cola servidores propios – 15/04/2026","tecnico":"Evelio","estado":"Pendiente","fecha":"2026-04-15T07:45:00Z"},{"id":"8A4E9WP0p0O3BnkX-Ku6BGUAL64H","title":"Evelio - Listado usuarios portal autogestión","tecnico":"Evelio","estado":"Pendiente","fecha":"2026-04-01T08:00:00Z"},{"id":"LEXAs_J0yUKNa07q3u5EFGUAHnma","title":"Evelio - Revisión preventiva – 01/04","tecnico":"Evelio","estado":"Pendiente","fecha":"2026-04-01T07:00:00Z"},{"id":"i8AT6CcUqk-9oRnJEVHSP2UAJDzX","title":"Evelio - Comparación CUFEs todos los clientes","tecnico":"Evelio","estado":"Completado","fecha":"2026-03-24T09:45:00Z"},{"id":"JKOXyJbtDkaxTVK3_T5di2UALVBS","title":"Evelio - Aldelo pendientes","tecnico":"Evelio","estado":"Completado","fecha":"2026-03-24T07:10:00Z"},{"id":"Li33LVvYmU-6hRory8Bws2UAFxGE","title":"Evelio - Pruebas Jeremy – nuevo reporte caja","tecnico":"Evelio","estado":"Completado","fecha":"2026-03-24T13:30:00Z"},{"id":"n2ERJinSxkq81H65-mulqWUABKfn","title":"Evelio - Revisión preventiva – 28/03","tecnico":"Evelio","estado":"Completado","fecha":"2026-03-28T07:00:00Z"},{"id":"GvbO0sQWB0uAKjMBHA95E2UADIPI","title":"Evelio - Revisión preventiva – 25/03","tecnico":"Evelio","estado":"Completado","fecha":"2026-03-25T07:00:00Z"},{"id":"paLG8Y-jGUaHWbw0HidP0WUAAt-n","title":"Evelio - Revisión preventiva – 24/03","tecnico":"Evelio","estado":"Completado","fecha":"2026-03-24T07:00:00Z"},{"id":"aJ7CqViMBkGDSN9GgPWHW2UAETQY","title":"Evelio - Spoleto Multiplaza","tecnico":"Evelio","estado":"Completado","fecha":"2026-03-26T08:00:00Z"},{"id":"4SuxtE4QNkeo6JLPMJs5DGUAE_dP","title":"Evelio - Revisión preventiva – 27/03","tecnico":"Evelio","estado":"Completado","fecha":"2026-03-27T07:00:00Z"},{"id":"ZbMCFYFQUEKJ3oO94zoxXGUAOuHM","title":"Evelio - Little Caesars – Padre Castellanos","tecnico":"Evelio","estado":"Completado","fecha":"2026-03-24T08:00:00Z"},{"id":"OmFleTbUKEuVhHFDrOL-wGUAC8GX","title":"Evelio - Cambios en la impresión de las facturas nuevo punto de crepes","tecnico":"Evelio","estado":"Pendiente","fecha":"2026-04-17T16:00:00Z"},{"id":"LA6KC4-cHUaWVpLdukBRRWUAPdSr","title":"Evelio - Revisión informes Crepes + LSDA","tecnico":"Evelio","estado":"Pendiente","fecha":"2026-03-31T09:00:00Z"},{"id":"eOHqM2EvkE2x9XYs5qA3IGUALQd-","title":"Evelio - Oliveto 107 – implementar cambios","tecnico":"Evelio","estado":"Pendiente","fecha":"2026-03-31T08:00:00Z"},{"id":"4SQSH7V87EmSJ8Xsk7F7bWUAOcA9","title":"Evelio - Revisión preventiva – 31/03","tecnico":"Evelio","estado":"Pendiente","fecha":"2026-03-31T07:00:00Z"},{"id":"vx5r1U9Nm0exaGdkFBAyNGUAPUaq","title":"Evelio - Reunión seguimiento – Evelio","tecnico":"Evelio","estado":"Pendiente","fecha":"2026-03-26T11:20:00Z"},{"id":"wr314fE680iR_Ti0i1Fjg2UABL-y","title":"Evelio - Revisión preventiva – 26/03","tecnico":"Evelio","estado":"Pendiente","fecha":"2026-03-26T07:00:00Z"},{"id":"ZZLERp3cBUi73PNE6MFCSWUAMxNj","title":"Evelio - Reporte semanal","tecnico":"Evelio","estado":"Pendiente","fecha":"2026-03-27T15:30:00Z"},{"id":"UxsJ3H4HXk-FgwHtwk2r82UAAxQX","title":"Evelio - Revisión preventiva – 30/03","tecnico":"Evelio","estado":"Pendiente","fecha":"2026-03-30T07:00:00Z"},{"id":"9-65d5ThAkeG6tP_5Qk5IWUAC44e","title":"Evelio - Conciliación Coctel del Mar marzo","tecnico":"Evelio","estado":"Pendiente","fecha":"2026-03-30T08:00:00Z"},{"id":"RRyXTEXKqkCrIzWTbD2vX2UAHY0w","title":"Evelio - Reporte conciliación – enviar a Linda","tecnico":"Evelio","estado":"Pendiente","fecha":"2026-03-28T09:00:00Z"},{"id":"L-fNfOBXCkyrhY9TF_KwgWUAO38i","title":"Evelio - Little Caesars – Pekin","tecnico":"Evelio","estado":"Pendiente","fecha":"2026-03-27T08:00:00Z"},{"id":"8Po7o5JjDEW9RR6aRqXxrGUAMUNS","title":"Evelio - Spoleto Corferias","tecnico":"Evelio","estado":"Pendiente","fecha":"2026-03-25T08:00:00Z"},{"id":"ypsMaUGn9kyTuugvFbbG8GUADuUw","title":"Evelio - 📄 Propuesta/mejora 1/4 – Evelio","tecnico":"Evelio","estado":"Pendiente","fecha":"2026-03-24T15:30:00Z"},{"id":"1d5BQ5Gww0-fFOytoRQoGmUAICQl","title":"Evelio - Prueba servidor respaldo Coctel del Mar","tecnico":"Evelio","estado":"Pendiente","fecha":"2026-03-24T09:10:00Z"},{"id":"O_T_kwayfUmdR-94dDe76WUAMmvu","title":"Evelio - Conciliación Coctel del Mar 1-25 marzo","tecnico":"Evelio","estado":"Pendiente","fecha":"2026-03-26T11:30:00Z"},{"id":"XbVGj2MOKEixH_cF3lWBZ2UANRb2","title":"Evelio - Responder correos Ajisen","tecnico":"Evelio","estado":"Pendiente","fecha":"2026-04-13T14:30:00Z"},{"id":"ANfEdXXoXkSYue4lvSp9I2UACbW2","title":"Evelio - Actualizar descripción de grupos de WhatsApp","tecnico":"Evelio","estado":"Pendiente","fecha":"2026-04-13T15:30:00Z"},{"id":"aAO3McncE0O75fcyCKPZm2UANWBH","title":"Evelio - Revisión facturas en cola servidores propios – 14/04/2026","tecnico":"Evelio","estado":"Pendiente","fecha":"2026-04-14T07:45:00Z"},{"id":"nSm8audGf0G_NsUD8ZqxtWUANrma","title":"Evelio - Escalar incidentes encontrados en conciliación Crepes","tecnico":"Evelio","estado":"Pendiente","fecha":"2026-04-14T08:45:00Z"},{"id":"Emf4ty1rsU-ph-g8FCoytmUAAcjD","title":"Evelio - Revisión errores Alsea","tecnico":"Evelio","estado":"Pendiente","fecha":"2026-04-14T10:45:00Z"},{"id":"2oGqnr4bQkqDUBrd87lZwmUAGe07","title":"Evelio - Seguimiento versión PJ","tecnico":"Evelio","estado":"Pendiente","fecha":"2026-04-14T13:30:00Z"},{"id":"bxtgcMZrrkmcxIzduyWol2UAP6_e","title":"Evelio - Seguimiento casos Domioriente","tecnico":"Evelio","estado":"Pendiente","fecha":"2026-04-14T14:30:00Z"},{"id":"xO9wW280s0eAQBbK4-rN3WUAEBNh","title":"Evelio - Personalización portal Ajisen","tecnico":"Evelio","estado":"Pendiente","fecha":"2026-04-15T13:30:00Z"},{"id":"cqy2SuTSwk2X_xE-_e0EeWUANbP_","title":"Evelio - Revisión facturas en cola servidores propios – 16/04/2026","tecnico":"Evelio","estado":"Pendiente","fecha":"2026-04-16T07:45:00Z"},{"id":"SegkhfSyaUi92Sy7mhDOkWUAPRWh","title":"Evelio - Entregable versión PJ","tecnico":"Evelio","estado":"Pendiente","fecha":"2026-04-16T09:45:00Z"},{"id":"2l4bmDnElkKU18uYgTq7tGUABZne","title":"Evelio - Revisión facturas en cola servidores propios – 17/04/2026","tecnico":"Evelio","estado":"Pendiente","fecha":"2026-04-17T07:45:00Z"},{"id":"pSFqgE7SkUSGa87yCPffaWUAPpvS","title":"Evelio - Conciliación Crepes Bogotá","tecnico":"Evelio","estado":"Pendiente","fecha":"2026-04-13T07:45:00Z"},{"id":"OL5geS26Zkauq3QN_91n82UAKzMy","title":"Evelio - Verificación datos conciliación Crepes Bogotá","tecnico":"Evelio","estado":"Pendiente","fecha":"2026-04-15T09:45:00Z"},{"id":"T8FQVtytskueLOdzQeYqhWUAKQzD","title":"Jackson - Revisión Caso PJ Diferencias Marzo","tecnico":"Jackson","estado":"Pendiente","fecha":"2026-04-17T16:00:00Z"},{"id":"hSqFVxK-YUKdIsTFdMuahWUAFnVH","title":"Jackson - Reporte semanal de cierre","tecnico":"Jackson","estado":"Pendiente","fecha":"2026-04-18T15:00:00Z"},{"id":"5cJLdrxoAkO-NHczstTyKWUALl5E","title":"Jackson - Validación post-implementación LC Dominicana","tecnico":"Jackson","estado":"Pendiente","fecha":"2026-04-17T09:45:00Z"},{"id":"23mTtQGS6UiMHt_WmDfsCGUAGdpt","title":"Jackson - Entregable conciliación Crepes Bogotá","tecnico":"Jackson","estado":"Pendiente","fecha":"2026-04-17T08:45:00Z"},{"id":"QZoZtY5350SqUjcpgzcO4mUAPofi","title":"Jackson - Revisión facturas en cola Facturiza – 17/04/2026","tecnico":"Jackson","estado":"Pendiente","fecha":"2026-04-17T07:45:00Z"},{"id":"2ISRU19eFU2RfTNDH8ZTG2UAL8Tp","title":"Jackson - Conciliación Smile","tecnico":"Jackson","estado":"En Curso","fecha":"2026-04-15T09:45:00Z"},{"id":"AlcMO-1oVU-ngD5kVSGX9GUAOiZD","title":"Jackson - Aldelo: VERANO","tecnico":"Jackson","estado":"En Espera","fecha":"2026-03-31T08:40:00Z"},{"id":"9fVKtaqnokOnDKRBHKrbqmUAH4XI","title":"Jackson - Aldelo: RUMBOS TRAILER (EVENTOS)","tecnico":"Jackson","estado":"En Espera","fecha":"2026-03-31T08:30:00Z"},{"id":"T0QUy2Bu9ECLQ7MIb7eGPmUAAiif","title":"Jackson - Aldelo: TAQUERIA ZONA G","tecnico":"Jackson","estado":"En Espera","fecha":"2026-03-31T08:20:00Z"},{"id":"HbcExRqlAUep9BzyC7K2HWUAFj_S","title":"Jackson - Aldelo: TAQUERIA CALLE 116","tecnico":"Jackson","estado":"En Espera","fecha":"2026-03-31T08:00:00Z"},{"id":"mT_cHXsL2U2xFqu6Z7JN62UAC3bz","title":"Jackson - Revisión facturas en cola Facturiza – 16/04/2026","tecnico":"Jackson","estado":"Completado","fecha":"2026-04-16T07:45:00Z"},{"id":"wY8CQmHsCEWb6weaccFw5WUAGfcg","title":"Jackson - Coordinación barrido validación preventiva vencimiento resol","tecnico":"Jackson","estado":"Completado","fecha":"2026-04-15T13:30:00Z"},{"id":"6PwYtgSrCEuXn68YKTtvuWUABts4","title":"Jackson - Revisión facturas en cola Facturiza – 15/04/2026","tecnico":"Jackson","estado":"Completado","fecha":"2026-04-15T07:45:00Z"},{"id":"pE6y8sgxvU2aIg90YOW8CmUADv9q","title":"Jackson - Verificación certificados digitales, resoluciones vencimient","tecnico":"Jackson","estado":"Completado","fecha":"2026-04-14T09:45:00Z"},{"id":"2PNqSw3fp0CIObk7BUP8AmUAJ2I5","title":"Jackson - Revisión facturas en cola Facturiza – 14/04/2026","tecnico":"Jackson","estado":"Completado","fecha":"2026-04-14T07:45:00Z"},{"id":"-Ka5lvNSPU6YzDWoW9t7NmUALVET","title":"Jackson - Revisión resoluciones pendientes por actualización","tecnico":"Jackson","estado":"Completado","fecha":"2026-04-13T14:30:00Z"},{"id":"iSHhc5iw_UOReaZZw2j-3GUAO0SF","title":"Jackson - Comparación CUFEs ⚑ entrega","tecnico":"Jackson","estado":"Completado","fecha":"2026-04-04T07:20:00Z"},{"id":"1y1zCBDmPEKrmLS_QyGVY2UAFoL5","title":"Jackson - Revisión preventiva – 04/04","tecnico":"Jackson","estado":"Completado","fecha":"2026-04-04T07:00:00Z"},{"id":"oB-IlRVq6kCNoNINc5oTm2UAJJSc","title":"Jackson - Antojo Hamburguesería – auditoría POS GoLive","tecnico":"Jackson","estado":"Completado","fecha":"2026-04-01T08:45:00Z"},{"id":"AUq0WNadiECTHfs8VAlemmUAGU1o","title":"Jackson - Little Caesars RD – Estrella Sadhala","tecnico":"Jackson","estado":"Completado","fecha":"2026-04-01T08:00:00Z"},{"id":"s4Xqk6-jSEeL-pHU7FeGFWUAJftG","title":"Jackson - Revisión preventiva – 01/04","tecnico":"Jackson","estado":"Completado","fecha":"2026-04-01T07:00:00Z"},{"id":"d-RA-BQ8bEeh1LMJJcZYVGUAFFGF","title":"Jackson - Oliveto Usaquén – implementar cambios","tecnico":"Jackson","estado":"Completado","fecha":"2026-03-31T08:50:00Z"},{"id":"N_8gpLkPJECXavanUQy-sGUAPkzb","title":"Jackson - Aldelo: TAQUERIA DOMICILIOS 106","tecnico":"Jackson","estado":"Completado","fecha":"2026-03-31T08:10:00Z"},{"id":"xpd_cAu2XUChQXqd61W_N2UADP71","title":"Jackson - Revisión preventiva – 31/03","tecnico":"Jackson","estado":"Completado","fecha":"2026-03-31T07:00:00Z"},{"id":"7QpTxJ-5VkGiwQX0hXufYmUANl5w","title":"Jackson - Reporte conciliación – enviar a Linda","tecnico":"Jackson","estado":"Completado","fecha":"2026-03-28T09:00:00Z"},{"id":"_F52X5ufbkCBVzdMEj6ifmUAN29s","title":"Jackson - Conciliación Coctel del Mar 1-25 marzo","tecnico":"Jackson","estado":"Completado","fecha":"2026-03-26T11:30:00Z"},{"id":"ssTtpZXE-UC6Kb98dcISDmUABu0O","title":"Jackson - Revisión preventiva – 30/03","tecnico":"Jackson","estado":"Pendiente","fecha":"2026-03-30T07:00:00Z"},{"id":"dcHZLMMz80C7GzTYKrRjsGUAM2qS","title":"Jackson - Reporte semanal","tecnico":"Jackson","estado":"Pendiente","fecha":"2026-03-27T15:30:00Z"},{"id":"EzHpqUcObUG23GCE5jQo4mUAM04k","title":"Jackson - Revisión preventiva – 28/03","tecnico":"Jackson","estado":"Pendiente","fecha":"2026-03-28T07:00:00Z"},{"id":"AtbKqSw23kqVcjQei6_PbWUAF3Dd","title":"Jackson - Revisión preventiva – 27/03","tecnico":"Jackson","estado":"Pendiente","fecha":"2026-03-27T07:00:00Z"},{"id":"y9yy-kroUE2MHgH7cslPYmUAAYhf","title":"Jackson - Reunión seguimiento – Jackson","tecnico":"Jackson","estado":"Pendiente","fecha":"2026-03-26T11:10:00Z"},{"id":"k7pRFc8OJEyNK0HhOIZKmGUAMQpd","title":"Jackson - Spoleto Iserra 100","tecnico":"Jackson","estado":"Pendiente","fecha":"2026-03-26T08:45:00Z"},{"id":"ga-PkuD1lEmcVsk2QvDFdGUAPJWs","title":"Jackson - Revisión preventiva – 26/03","tecnico":"Jackson","estado":"Pendiente","fecha":"2026-03-26T07:00:00Z"},{"id":"wu3IQl3vfUGbdTVS5FPpNmUAAzEw","title":"Jackson - Aldelo pendientes","tecnico":"Jackson","estado":"Pendiente","fecha":"2026-03-25T08:45:00Z"},{"id":"H59FiDkqzkKkhpqxl1ge_WUADX5M","title":"Jackson - Little Caesars – La Malena","tecnico":"Jackson","estado":"Pendiente","fecha":"2026-03-26T08:00:00Z"},{"id":"WzfVYq66IUyJd1H3jrCU52UAHkcm","title":"Jackson - Little Caesars – Estrella Sadhala","tecnico":"Jackson","estado":"Pendiente","fecha":"2026-03-25T08:00:00Z"},{"id":"rvaoJZWpmkGlj64k05D2ymUAP1lD","title":"Jackson - Revisión preventiva – 25/03","tecnico":"Jackson","estado":"Pendiente","fecha":"2026-03-25T07:00:00Z"},{"id":"91ZHfYkZiEKmt2QvHhAQJWUALlYQ","title":"Jose - Finalizar revisión caso bohorquez","tecnico":"Jose","estado":"Pendiente","fecha":"2026-04-17T16:00:00Z"},{"id":"ObsKcYL9tkKEeEWwHKZ3v2UAHbdr","title":"Jose - Reporte semanal de cierre","tecnico":"Jose","estado":"Pendiente","fecha":"2026-04-18T09:00:00Z"},{"id":"N2O-3dR5bE-6En0MQyNIkmUAFF1b","title":"Jose - Barrido y asignación casos pendientes – 18/04/2026","tecnico":"Jose","estado":"Pendiente","fecha":"2026-04-18T07:00:00Z"},{"id":"02pJT_gvwk-P92_qWOl6LGUACmFc","title":"Jose - Entregable lista consolidada resoluciones actualizadas. ENTR","tecnico":"Jose","estado":"Pendiente","fecha":"2026-04-17T11:45:00Z"},{"id":"ORJSDMZI_UeZxZYsNrJDMGUAG0HC","title":"Jose - Entregable propuesta controles carga resoluciones Facturiza","tecnico":"Jose","estado":"Pendiente","fecha":"2026-04-17T10:45:00Z"},{"id":"wI1qVHCDO02lIdoYwQbqymUAN3vT","title":"Jose - Barrido y asignación casos pendientes – 17/04/2026","tecnico":"Jose","estado":"Pendiente","fecha":"2026-04-17T07:45:00Z"},{"id":"7FJBGTG290uM1rYm-muLK2UAACjG","title":"Jose - Cargar resoluciones electrónicas a Facturiza","tecnico":"Jose","estado":"En Curso","fecha":"2026-04-16T08:45:00Z"},{"id":"fSeKc_YroEejNQo3Ict84GUAJ0fs","title":"Jose - Barrido y asignación casos pendientes – 16/04/2026","tecnico":"Jose","estado":"Completado","fecha":"2026-04-16T07:45:00Z"},{"id":"e7wRJk11vk6GhbNCEN7ZxmUABeA2","title":"Jose - Manual herramientas Softlogy clientes Aldelo","tecnico":"Jose","estado":"Completado","fecha":"2026-04-17T09:45:00Z"},{"id":"5ujZWnxJl0ufIXwJ7gIwwGUAGE0u","title":"Jose - Comparación CUFEs todos los clientes","tecnico":"Jose","estado":"Completado","fecha":"2026-03-24T09:45:00Z"},{"id":"Y17x_I4BYU64KToajfnzt2UAOG6P","title":"Jose - Coordinación capacitación portal LSDA para grupo Hanks","tecnico":"Jose","estado":"Pendiente","fecha":"2026-04-15T10:45:00Z"},{"id":"1ZxMr2zKtESatj_R2pnQcWUAPPbe","title":"Jose - Manual herramientas Softlogy para clientes Aldelo","tecnico":"Jose","estado":"Pendiente","fecha":"2026-04-15T09:45:00Z"},{"id":"DqthE6WkPEahrnHYY8qv7GUAKwoJ","title":"Jose - Informe auditoría Metro","tecnico":"Jose","estado":"Pendiente","fecha":"2026-04-15T08:45:00Z"},{"id":"43HSEIl3VE-MEVN8AkvsL2UACOil","title":"Jose - Barrido y asignación casos pendientes – 15/04/2026","tecnico":"Jose","estado":"Pendiente","fecha":"2026-04-15T07:45:00Z"},{"id":"0Vdkq34bOkiEHMVUMhj4VmUAMYuh","title":"Jose - Validación cambios impresión Los Andes","tecnico":"Jose","estado":"Pendiente","fecha":"2026-04-14T11:00:00Z"},{"id":"uakFVHXCGkOc3y6scRz29mUAPF2q","title":"Jose - Auditoría Metro","tecnico":"Jose","estado":"Pendiente","fecha":"2026-04-14T09:00:00Z"},{"id":"Y7VlQta1CEmLIjlmE5h4wWUANtI7","title":"Jose - Barrido y asignación casos pendientes – 14/04/2026","tecnico":"Jose","estado":"Pendiente","fecha":"2026-04-14T07:45:00Z"},{"id":"BECaH7nC6EeAb5wBskFDz2UACfkg","title":"Jose - Reinstalación Ventolini","tecnico":"Jose","estado":"Pendiente","fecha":"2026-04-13T15:30:00Z"},{"id":"SnWDPGbG_0-YMdVGt1oUhmUAC8LU","title":"Jose - Coordinar piloto DLL balanzas con Wilmer","tecnico":"Jose","estado":"Pendiente","fecha":"2026-04-13T13:00:00Z"},{"id":"aPc_VyZh_EuJcBeCO2Y30mUACrem","title":"Jose - Cambios impresión Los Andes","tecnico":"Jose","estado":"Pendiente","fecha":"2026-04-13T12:00:00Z"},{"id":"fo7IUXwPHUS1-4X8o_Ov2GUAJQS6","title":"Jose - Reunión con Los Andes","tecnico":"Jose","estado":"Pendiente","fecha":"2026-04-13T11:00:00Z"},{"id":"5OIchaBpoEuDZrSjKUXJImUABGRg","title":"Jose - Actualización Little Caesars Colombia","tecnico":"Jose","estado":"Pendiente","fecha":"2026-04-13T07:45:00Z"},{"id":"bc9ZLQloYUymX_HRZxC1z2UAI0ns","title":"Jose - Plan de trabajo Simphony","tecnico":"Jose","estado":"Completado","fecha":"2026-03-24T10:45:00Z"},{"id":"ZktMiyy-AEClwpmPOpOHdmUAJvgH","title":"Jose - Comparación CUFEs todos los clientes","tecnico":"Jose","estado":"Completado","fecha":"2026-03-31T10:30:00Z"},{"id":"i9UNrwdiU06x2GAyuspFPGUAFV02","title":"Jose - Organización entregables semana","tecnico":"Jose","estado":"Pendiente","fecha":"2026-04-04T07:20:00Z"},{"id":"CP0q21reeU-8AkrnU2Bmz2UAPtwV","title":"Jose - Little Caesars","tecnico":"Jose","estado":"Pendiente","fecha":"2026-04-13T07:00:00Z"},{"id":"-pwTu8WZ50iU95l1sv74fGUAPX_w","title":"Jose - Pruebas DLL balanzas Coctel del Mar","tecnico":"Jose","estado":"Completado","fecha":"2026-03-31T09:30:00Z"},{"id":"hr_5jLvre0Sgd3oQpkA9qGUADz8V","title":"Jose - Revisión Soporte – 04/04","tecnico":"Jose","estado":"Pendiente","fecha":"2026-04-04T07:00:00Z"},{"id":"CytZ5sZvQUebvrjtHx_XvmUAKKdu","title":"Jose - Reporte semanal","tecnico":"Jose","estado":"Completado","fecha":"2026-03-27T15:30:00Z"},{"id":"2oePB6FuIUukW6dWB1E75WUANUdM","title":"Jose - 📄 Propuesta/mejora 1/4 – Jose","tecnico":"Jose","estado":"Completado","fecha":"2026-03-24T15:30:00Z"},{"id":"xvH9sbd_AkGDCGaCwan8oWUAGtCo","title":"Jose - Revisión Soporte – 01/04","tecnico":"Jose","estado":"Completado","fecha":"2026-04-01T07:00:00Z"},{"id":"p6I0TkLV3EGkTEpeOh0e1GUAOSaz","title":"Jose - Organización entregables semana","tecnico":"Jose","estado":"Completado","fecha":"2026-03-28T07:20:00Z"},{"id":"k2nYUf0OlUq9Jdr9uvYVXGUAEaCc","title":"Jose - Revisión Soporte – 30/03","tecnico":"Jose","estado":"Completado","fecha":"2026-03-30T07:00:00Z"},{"id":"-vkGWk-58E-PM6JsPluiGGUAPBtU","title":"Jose - Oliveto Parkway – implementar cambios","tecnico":"Jose","estado":"Completado","fecha":"2026-03-31T08:30:00Z"},{"id":"Pp4fMYJ_ok6L9wDyX3gY6WUAIezC","title":"Jose - Revisión Soporte – 31/03","tecnico":"Jose","estado":"Completado","fecha":"2026-03-31T07:00:00Z"},{"id":"Lfr_IuoxTkS3kW-S0PMS8GUAA3V_","title":"Jose - SBX instalaciones – coordinar asignación","tecnico":"Jose","estado":"Completado","fecha":"2026-03-30T08:00:00Z"},{"id":"QSXkDutP6kC-UBQs_7M4iWUAGdOp","title":"Jose - Revisión preventiva – 28/03","tecnico":"Jose","estado":"Completado","fecha":"2026-03-28T07:00:00Z"},{"id":"gM4ljwTw2kWNomAnRezj3WUAJaE8","title":"Jose - Little Caesars – Pedro Livio","tecnico":"Jose","estado":"Completado","fecha":"2026-03-24T08:00:00Z"},{"id":"QIqhROk0AE6s_2hQ-2YduWUAKnxw","title":"Jose - Reunión seguimiento – Jose","tecnico":"Jose","estado":"Completado","fecha":"2026-03-26T11:40:00Z"},{"id":"KHh6U31-4kKeFtPndUTxEmUAL1wP","title":"Jose - Revisión Soporte – 25/03","tecnico":"Jose","estado":"Completado","fecha":"2026-03-25T07:00:00Z"},{"id":"XPgckKz2S0-T3gRvC2g1FGUAC3qr","title":"Jose - Subir facturas en cola","tecnico":"Jose","estado":"Completado","fecha":"2026-03-24T15:00:00Z"},{"id":"ac_gHOpUSUOCOpj-t92nrWUAFVLf","title":"Jose - Little Caesars – Leopoldo Navarro","tecnico":"Jose","estado":"Completado","fecha":"2026-03-25T08:00:00Z"},{"id":"epaKAYpGD0KkokOodYsGTWUAEIrs","title":"Jose - Pruebas TCPOs","tecnico":"Jose","estado":"Completado","fecha":"2026-03-25T08:45:00Z"},{"id":"1DgWZbZNXU2B3QVK8J5R8GUAKpTe","title":"Jose - Pruebas DLL balanzas Coctel del Mar","tecnico":"Jose","estado":"Completado","fecha":"2026-03-25T09:45:00Z"},{"id":"8htab66HgkyvMS0x1Q9vhWUANVUh","title":"Jose - Revisión Soporte – 26/03","tecnico":"Jose","estado":"Completado","fecha":"2026-03-26T07:00:00Z"},{"id":"qZpf1nqrhUmbfLuSH4nD4GUALFdv","title":"Jose - Little Caesars – Bameso","tecnico":"Jose","estado":"Completado","fecha":"2026-03-26T08:00:00Z"},{"id":"kOMXqldsUk6aM6kdnq0ueWUAFhBe","title":"Jose - Little Caesars – Zona Colonial","tecnico":"Jose","estado":"Completado","fecha":"2026-03-27T08:00:00Z"},{"id":"25uKKkh1CEu5wfOrL3NVumUACqBv","title":"Jose - Revisión Soporte – 27/03","tecnico":"Jose","estado":"Completado","fecha":"2026-03-27T07:00:00Z"},{"id":"WPhq77P4NE2pHO3IaKPwZWUAMjsY","title":"Jose - Antojo Hamburguesería","tecnico":"Jose","estado":"Completado","fecha":"2026-03-24T08:45:00Z"},{"id":"gxPnqZLboUCijTlnatpJ0mUAM2Wy","title":"Jose - Revisión Soporte – 24/03","tecnico":"Jose","estado":"Completado","fecha":"2026-03-24T07:00:00Z"},{"id":"o86hnFZ5CkafzGDgTM3SXWUAARM0","title":"Samuel - Consolidado semanal – entregables","tecnico":"Anyely","estado":"En Curso","fecha":"2026-04-04T07:20:00Z"},{"id":"wyp_UPdI-UC7gANrwlCARmUAMPrF","title":"Samuel - Revisión Errores – 04/04","tecnico":"Anyely","estado":"En Curso","fecha":"2026-04-04T07:00:00Z"},{"id":"L3-OYdhjRkOT3pl3XInEvmUAAr16","title":"Samuel - LC Colombia – folio post largo","tecnico":"Anyely","estado":"En Curso","fecha":"2026-04-01T08:00:00Z"},{"id":"HQdWFinFdEevxtwPmeReuGUAEaTZ","title":"Samuel - Revisión Errores – 01/04","tecnico":"Anyely","estado":"En Curso","fecha":"2026-04-01T07:20:00Z"},{"id":"P6iCG5ily0SgCw_wAofd1WUAK8hO","title":"Samuel - Subir facturas en cola","tecnico":"Anyely","estado":"En Curso","fecha":"2026-03-31T15:30:00Z"},{"id":"IqUknE-z1EC6iVfXF0uulGUALy9K","title":"Samuel - Comparación CUFEs todos los clientes","tecnico":"Anyely","estado":"En Curso","fecha":"2026-03-31T10:30:00Z"},{"id":"lXNcrfSadUWnYZTb4kGZAGUACRYt","title":"Samuel - Pruebas DLL balanzas Coctel del Mar","tecnico":"Anyely","estado":"En Curso","fecha":"2026-03-31T09:30:00Z"},{"id":"vJ1CiT6okESDjKKl-ZhSI2UAPozK","title":"Samuel - Oliveto Rosales – avance actualización","tecnico":"Anyely","estado":"En Curso","fecha":"2026-03-31T08:30:00Z"},{"id":"jRQYJFiTNUScNDMN_IfNOWUABCLo","title":"Samuel - Aldelo: DOS LUGARES","tecnico":"Anyely","estado":"En Curso","fecha":"2026-03-31T08:20:00Z"},{"id":"piOI3_LU8EGnKrBSRwmEa2UANeKU","title":"Samuel - Aldelo: NEW YORK BISTRO","tecnico":"Anyely","estado":"En Curso","fecha":"2026-03-31T08:10:00Z"},{"id":"1IlsgPMz-06I89HK8KF1Y2UAJU5A","title":"Samuel - Aldelo: BURGER MUSIC 116","tecnico":"Anyely","estado":"En Curso","fecha":"2026-03-31T08:00:00Z"},{"id":"rgq3KrHb1EuiX_2_YDiwSWUAPxM2","title":"Samuel - Revisión Errores – 31/03","tecnico":"Anyely","estado":"En Curso","fecha":"2026-03-31T07:20:00Z"},{"id":"4Sv1vtMkq0S1MyCx98YzN2UAO5HZ","title":"Samuel - Seguimiento Siigo + UniAndes","tecnico":"Anyely","estado":"En Curso","fecha":"2026-03-30T10:00:00Z"},{"id":"EG2MWjbEyEGfGbap3KUx_mUALOf8","title":"Samuel - Seguimiento productos Crepes","tecnico":"Anyely","estado":"En Curso","fecha":"2026-03-30T11:00:00Z"},{"id":"V4axBEOE2E-3jn5VmUuvW2UAEX-m","title":"Samuel - Oliveto Rosales – cambio propina/leyenda","tecnico":"Anyely","estado":"En Curso","fecha":"2026-03-30T10:00:00Z"},{"id":"0JdOr0GdsUSDWV5lvfCZg2UAGTXd","title":"Samuel - Reunión Conector – Ventolini 9:00 AM","tecnico":"Anyely","estado":"En Curso","fecha":"2026-03-30T09:00:00Z"},{"id":"YKKKfJ0AJEu4ZdYPkNEDUWUAB8_R","title":"Samuel - Ajisen – coordinar pruebas correo + portal LS-DA","tecnico":"Anyely","estado":"En Curso","fecha":"2026-03-30T08:00:00Z"},{"id":"5UT7JzxJU0C5hAzvfIzSK2UAGdbL","title":"Samuel - Revisión Errores – 30/03","tecnico":"Anyely","estado":"En Curso","fecha":"2026-03-30T07:20:00Z"},{"id":"T3HaRhnaW0C9eZTD8ADBPGUADOvL","title":"Samuel - Revisión Errores – 28/03","tecnico":"Anyely","estado":"En Curso","fecha":"2026-03-28T07:00:00Z"},{"id":"KB_gR8o4uUGhvXMMsXmY7GUAChKV","title":"Samuel - Reporte semanal","tecnico":"Anyely","estado":"En Curso","fecha":"2026-03-27T15:30:00Z"},{"id":"JPoFoIlym0e6U99pI91Hd2UAJ-vJ","title":"Samuel - Seguimiento integraciones","tecnico":"Anyely","estado":"En Curso","fecha":"2026-03-27T14:30:00Z"},{"id":"jXfj-I2sokeiI08G4sUm6WUAALl0","title":"Samuel - Little Caesars – Haina","tecnico":"Anyely","estado":"En Curso","fecha":"2026-03-27T08:00:00Z"},{"id":"QIS69Lrm9E-p_sD0U4_A7WUAAZut","title":"Samuel - Revisión Errores – 27/03","tecnico":"Anyely","estado":"En Curso","fecha":"2026-03-27T07:20:00Z"},{"id":"KIoFP8bPxkW6dfJCeSvlxGUAIfQD","title":"Samuel - Reunión seguimiento – Samuel","tecnico":"Anyely","estado":"En Curso","fecha":"2026-03-26T11:00:00Z"},{"id":"xSn8vO3pc0WXd4qQLHwsNWUABt49","title":"Samuel - Revisión Errores – 26/03","tecnico":"Anyely","estado":"En Curso","fecha":"2026-03-26T07:20:00Z"},{"id":"Aym8MGzZ9E-xMMCm8e5SoGUAG8Gw","title":"Samuel - Little Caesars – Higuey","tecnico":"Anyely","estado":"En Curso","fecha":"2026-03-25T08:00:00Z"},{"id":"UbiuOZZdfEi3YVT17AoVQGUAJ581","title":"Samuel - 📄 Propuesta/mejora 1/4 – Samuel","tecnico":"Anyely","estado":"En Curso","fecha":"2026-03-24T15:00:00Z"},{"id":"MlYMFTUAWkexR04_KEsYNGUADgBb","title":"Samuel - Consolidado Siigo+Insurgentes+UniAndes","tecnico":"Anyely","estado":"En Curso","fecha":"2026-03-24T14:00:00Z"},{"id":"UzEBRyydlEe7pINkaUO6iWUAGlMm","title":"Samuel - Plan de capacitación equipo","tecnico":"Anyely","estado":"En Curso","fecha":"2026-03-24T10:10:00Z"},{"id":"Bo0_foMMW0WTvIgKpqX8UWUALJcr","title":"Samuel - Prueba servidor respaldo Coctel del Mar","tecnico":"Anyely","estado":"En Curso","fecha":"2026-03-24T09:10:00Z"},{"id":"SfcHMbz5vkil80q-ybzgoWUAI3I0","title":"Samuel - Revisión plantilla Crepes Lab Simphony","tecnico":"Anyely","estado":"En Curso","fecha":"2026-03-24T08:10:00Z"},{"id":"rQS5QejoLkq6Cl4K5aHAd2UAJmaq","title":"Samuel - Spoleto Andino","tecnico":"Anyely","estado":"En Curso","fecha":"2026-03-25T08:45:00Z"},{"id":"t5QsUlUxCkKMdVor5NO6S2UAIE2a","title":"Samuel - Revisión Errores – 25/03","tecnico":"Anyely","estado":"En Curso","fecha":"2026-03-25T07:20:00Z"},{"id":"3x6IYVgPAEaH1RMQn9Rv02UABf2v","title":"Samuel - Aldelo pendientes","tecnico":"Anyely","estado":"En Curso","fecha":"2026-03-24T07:40:00Z"},{"id":"8IvY3m51mEuwAzQnTXIW8GUALMLq","title":"Samuel - Revisión Errores – 24/03","tecnico":"Anyely","estado":"En Curso","fecha":"2026-03-24T07:20:00Z"},{"id":"DmcqmKjdK0-L1xxXYKC8HmUAJEgb","title":"Samuel - Organización entregables semana","tecnico":"Anyely","estado":"En Curso","fecha":"2026-03-28T07:20:00Z"}]}
+{
+  "actualizado": "2026-04-17T14:27:10.1719263Z",
+  "estados": [
+    {
+      "id": "3eEH35q5Vkuzk_OuIe5902UABdfc",
+      "title": "Anyely - Reporte semanal de cierre",
+      "tecnico": "Anyely",
+      "estado": "Pendiente",
+      "fecha": "2026-04-18T12:30:00Z"
+    },
+    {
+      "id": "0MjhHszO10SNBZT_d1WCoWUAO4jv",
+      "title": "Anyely - Entregable lista grupos actualizados vs pendientes",
+      "tecnico": "Anyely",
+      "estado": "Pendiente",
+      "fecha": "2026-04-18T11:30:00Z"
+    },
+    {
+      "id": "HfewFn_pzU-H7oWFLfZBbGUAItb7",
+      "title": "Anyely - Entregable reporte consolidado implementación LC Dominicana",
+      "tecnico": "Anyely",
+      "estado": "Pendiente",
+      "fecha": "2026-04-18T10:30:00Z"
+    },
+    {
+      "id": "xZ6Nsnl3GEO5JKTwH1Kt22UAF_bq",
+      "title": "Anyely - Entregable estado actualización LC Colombia",
+      "tecnico": "Anyely",
+      "estado": "Pendiente",
+      "fecha": "2026-04-17T12:45:00Z"
+    },
+    {
+      "id": "6QvSli-CMUCc29Dyaijlo2UAGZNZ",
+      "title": "Anyely - Manual portal autogestión",
+      "tecnico": "Anyely",
+      "estado": "Pendiente",
+      "fecha": "2026-04-17T08:45:00Z"
+    },
+    {
+      "id": "YyZXGuP4wEyGjUjgdbG5TGUAFij7",
+      "title": "Anyely - Tamaños BD y novedades facturación – 17/04/2026",
+      "tecnico": "Anyely",
+      "estado": "Pendiente",
+      "fecha": "2026-04-17T07:45:00Z"
+    },
+    {
+      "id": "owIlwYTcQUuxqGDONpWC_GUAEyKE",
+      "title": "Anyely - Manual portal autogestión",
+      "tecnico": "Anyely",
+      "estado": "En Curso",
+      "fecha": "2026-04-15T11:45:00Z"
+    },
+    {
+      "id": "BuuaT3wA3UegOx5_VQuo3GUAPUC7",
+      "title": "Anyely - Seguimiento diferencias informes DLK",
+      "tecnico": "Anyely",
+      "estado": "En Curso",
+      "fecha": "2026-04-14T09:45:00Z"
+    },
+    {
+      "id": "UCRkEf_Uw0mecmMPdfXE2mUAAI74",
+      "title": "Anyely - Revisión casos pendientes Insurgentes",
+      "tecnico": "Anyely",
+      "estado": "En Curso",
+      "fecha": "2026-04-13T12:45:00Z"
+    },
+    {
+      "id": "UpAIaoipW0ONNGq-bAobSWUAIqKI",
+      "title": "Anyely - Revisión Correo Novedades Marzo Mera el Dorado",
+      "tecnico": "Anyely",
+      "estado": "Completado",
+      "fecha": "2026-04-17T16:00:00Z"
+    },
+    {
+      "id": "kHm_f3JpNUKES4G_W4hI6mUAALC9",
+      "title": "Anyely - Prueba",
+      "tecnico": "Anyely",
+      "estado": "Pendiente",
+      "fecha": "2026-04-16T16:00:00Z"
+    },
+    {
+      "id": "J1CgOmGnqEyGlKwmg3rx5WUAA8Oy",
+      "title": "Anyely - Tamaños BD y novedades facturación – 16/04/2026",
+      "tecnico": "Anyely",
+      "estado": "Pendiente",
+      "fecha": "2026-04-16T07:45:00Z"
+    },
+    {
+      "id": "pJCzJbng-0-Ni_jkZiRCIGUAGfRQ",
+      "title": "Anyely - Comparación CUFEs todos los clientes",
+      "tecnico": "Anyely",
+      "estado": "Pendiente",
+      "fecha": "2026-03-24T09:45:00Z"
+    },
+    {
+      "id": "btk26zPonEODJAL5XnGQy2UAL1Lz",
+      "title": "Anyely - 📄 Propuesta/mejora 1/4 – Anyely",
+      "tecnico": "Anyely",
+      "estado": "Pendiente",
+      "fecha": "2026-03-24T15:30:00Z"
+    },
+    {
+      "id": "NJh-rCsHF0qodPZYsKROUGUAI7Iu",
+      "title": "Anyely - Little Caesars – Colinas Mall",
+      "tecnico": "Anyely",
+      "estado": "Pendiente",
+      "fecha": "2026-03-24T08:00:00Z"
+    },
+    {
+      "id": "6VmDSQOPXEOz8ltG2wpk82UAHYGn",
+      "title": "Anyely - Tamaños BD y novedades facturación – 15/04/2026",
+      "tecnico": "Anyely",
+      "estado": "Pendiente",
+      "fecha": "2026-04-15T07:45:00Z"
+    },
+    {
+      "id": "9SBT6GT0R0eqOfWuQjK-vmUAD9ta",
+      "title": "Anyely - Validación actualización LC Madelena",
+      "tecnico": "Anyely",
+      "estado": "Pendiente",
+      "fecha": "2026-04-14T11:45:00Z"
+    },
+    {
+      "id": "ZWSzTIrNj0CQswqaSH_ORGUAL6o1",
+      "title": "Anyely - Implementación Little Caesars Dominicana",
+      "tecnico": "Anyely",
+      "estado": "Pendiente",
+      "fecha": "2026-04-14T08:45:00Z"
+    },
+    {
+      "id": "wv_oh86_Qk-lYpQIdAgFLmUAPu46",
+      "title": "Anyely - Tamaños BD y novedades facturación – 14/04/2026",
+      "tecnico": "Anyely",
+      "estado": "Pendiente",
+      "fecha": "2026-04-14T07:45:00Z"
+    },
+    {
+      "id": "qojmgZh0RUqxzZ79TLp97GUANk9v",
+      "title": "Anyely - Seguimiento folios faltantes PJ",
+      "tecnico": "Anyely",
+      "estado": "Pendiente",
+      "fecha": "2026-04-13T11:45:00Z"
+    },
+    {
+      "id": "pGQ3sj-2ekio7x55FfJSimUAItPY",
+      "title": "Anyely - Listado usuarios portal autogestión",
+      "tecnico": "Anyely",
+      "estado": "Pendiente",
+      "fecha": "2026-04-01T08:00:00Z"
+    },
+    {
+      "id": "mJAa3V0Y70K2R7uR9n51d2UANrkx",
+      "title": "Anyely - Comparación CUFEs ⚑ entrega",
+      "tecnico": "Anyely",
+      "estado": "Pendiente",
+      "fecha": "2026-04-04T07:20:00Z"
+    },
+    {
+      "id": "W_4CZBmfykizw3OSN9FdxGUACO8G",
+      "title": "Anyely - Revisión BD – 04/04",
+      "tecnico": "Anyely",
+      "estado": "Pendiente",
+      "fecha": "2026-04-04T07:00:00Z"
+    },
+    {
+      "id": "WD50xevfTkKYcpgsdgYBpWUADsxv",
+      "title": "Anyely - Antojo Hamburguesería – coord. capacitación + portal",
+      "tecnico": "Anyely",
+      "estado": "Pendiente",
+      "fecha": "2026-04-01T08:00:00Z"
+    },
+    {
+      "id": "QSpmzyt3JUCf9uKlJFq__WUAJq-o",
+      "title": "Anyely - Revisión BD – 01/04",
+      "tecnico": "Anyely",
+      "estado": "Pendiente",
+      "fecha": "2026-04-01T07:00:00Z"
+    },
+    {
+      "id": "8Kba4wT3UEieLUArgZmyI2UAEbC8",
+      "title": "Anyely - Oliveto Colina – implementar cambios",
+      "tecnico": "Anyely",
+      "estado": "Pendiente",
+      "fecha": "2026-03-31T08:45:00Z"
+    },
+    {
+      "id": "N3-Ps94v8kS6WpWL6Ke_UGUACjSb",
+      "title": "Anyely - Little Caesars RD – Colinas Mall",
+      "tecnico": "Anyely",
+      "estado": "Pendiente",
+      "fecha": "2026-03-31T08:00:00Z"
+    },
+    {
+      "id": "XsFKDtRZiE68t8FBkncVh2UALqEr",
+      "title": "Anyely - Revisión BD – 30/03",
+      "tecnico": "Anyely",
+      "estado": "Pendiente",
+      "fecha": "2026-03-30T07:00:00Z"
+    },
+    {
+      "id": "Xgu7i4kGakC3tq3-qK8bQ2UABK-u",
+      "title": "Anyely - Revisión BD – 31/03",
+      "tecnico": "Anyely",
+      "estado": "Pendiente",
+      "fecha": "2026-03-31T07:00:00Z"
+    },
+    {
+      "id": "hHhs3fk2sUaUgQe2VBFfFGUAN9Ly",
+      "title": "Anyely - Reporte semanal",
+      "tecnico": "Anyely",
+      "estado": "Pendiente",
+      "fecha": "2026-03-27T15:30:00Z"
+    },
+    {
+      "id": "CIbFEgWo5USKsPn1KQNHOGUAD3yN",
+      "title": "Anyely - Conciliación Coctel del Mar 1-25 marzo",
+      "tecnico": "Anyely",
+      "estado": "Completado",
+      "fecha": "2026-03-26T11:30:00Z"
+    },
+    {
+      "id": "H2qNrIj7DEWvBItuCqCKhWUALARl",
+      "title": "Anyely - Revisión BD – 27/03",
+      "tecnico": "Anyely",
+      "estado": "Completado",
+      "fecha": "2026-03-27T07:00:00Z"
+    },
+    {
+      "id": "YHbPnPPGF0-ry7XW8ZdFsmUAEgFh",
+      "title": "Anyely - Plan de trabajo Simphony",
+      "tecnico": "Anyely",
+      "estado": "Pendiente",
+      "fecha": "2026-03-24T10:45:00Z"
+    },
+    {
+      "id": "ZOFejSmbi02IRxK1blDsH2UAL1c3",
+      "title": "Anyely - Reunión seguimiento – Anyely",
+      "tecnico": "Anyely",
+      "estado": "Pendiente",
+      "fecha": "2026-03-26T11:30:00Z"
+    },
+    {
+      "id": "u_5h8AVzZEqzaavZXU_EAWUANs7D",
+      "title": "Anyely - Subir facturas en cola",
+      "tecnico": "Anyely",
+      "estado": "Pendiente",
+      "fecha": "2026-03-24T15:00:00Z"
+    },
+    {
+      "id": "bStzpgCC-0e9AshcntBUN2UAI2Ii",
+      "title": "Anyely - Antojo Hamburguesería",
+      "tecnico": "Anyely",
+      "estado": "Pendiente",
+      "fecha": "2026-03-24T08:45:00Z"
+    },
+    {
+      "id": "FTHgYPCXRU2qYEW5vN4xZGUAH1RJ",
+      "title": "Anyely - Little Caesars – Bella Vista",
+      "tecnico": "Anyely",
+      "estado": "Pendiente",
+      "fecha": "2026-03-26T08:00:00Z"
+    },
+    {
+      "id": "DbRk7d4XTUetaZA-093uO2UAFqk1",
+      "title": "Anyely - Revisión BD – 26/03",
+      "tecnico": "Anyely",
+      "estado": "Pendiente",
+      "fecha": "2026-03-26T07:00:00Z"
+    },
+    {
+      "id": "daO5Yin72kurRxlVfzmsemUAEZUy",
+      "title": "Anyely - Revisión BD – 25/03",
+      "tecnico": "Anyely",
+      "estado": "Pendiente",
+      "fecha": "2026-03-25T07:00:00Z"
+    },
+    {
+      "id": "hJjZI2BXNE6-2SM54R1fl2UAD9D1",
+      "title": "Anyely - Revisión BD – 24/03",
+      "tecnico": "Anyely",
+      "estado": "Pendiente",
+      "fecha": "2026-03-24T07:00:00Z"
+    },
+    {
+      "id": "Uwc1hU3fi0Ce2KZyL5sXK2UACqfC",
+      "title": "Evelio - Entregable reporte errores Alsea",
+      "tecnico": "Evelio",
+      "estado": "Pendiente",
+      "fecha": "2026-04-17T09:45:00Z"
+    },
+    {
+      "id": "1Z3mKo6nQUOv8hPvbiMCgmUANVFv",
+      "title": "Evelio - Verificación correcciones errores Alsea",
+      "tecnico": "Evelio",
+      "estado": "Pendiente",
+      "fecha": "2026-04-16T08:45:00Z"
+    },
+    {
+      "id": "EWp-vpwXWEKn6scgjwL8b2UAFOSm",
+      "title": "Evelio - Revisión facturas en cola servidores propios – 15/04/2026",
+      "tecnico": "Evelio",
+      "estado": "Pendiente",
+      "fecha": "2026-04-15T07:45:00Z"
+    },
+    {
+      "id": "8A4E9WP0p0O3BnkX-Ku6BGUAL64H",
+      "title": "Evelio - Listado usuarios portal autogestión",
+      "tecnico": "Evelio",
+      "estado": "Pendiente",
+      "fecha": "2026-04-01T08:00:00Z"
+    },
+    {
+      "id": "LEXAs_J0yUKNa07q3u5EFGUAHnma",
+      "title": "Evelio - Revisión preventiva – 01/04",
+      "tecnico": "Evelio",
+      "estado": "Pendiente",
+      "fecha": "2026-04-01T07:00:00Z"
+    },
+    {
+      "id": "i8AT6CcUqk-9oRnJEVHSP2UAJDzX",
+      "title": "Evelio - Comparación CUFEs todos los clientes",
+      "tecnico": "Evelio",
+      "estado": "Completado",
+      "fecha": "2026-03-24T09:45:00Z"
+    },
+    {
+      "id": "JKOXyJbtDkaxTVK3_T5di2UALVBS",
+      "title": "Evelio - Aldelo pendientes",
+      "tecnico": "Evelio",
+      "estado": "Completado",
+      "fecha": "2026-03-24T07:10:00Z"
+    },
+    {
+      "id": "Li33LVvYmU-6hRory8Bws2UAFxGE",
+      "title": "Evelio - Pruebas Jeremy – nuevo reporte caja",
+      "tecnico": "Evelio",
+      "estado": "Completado",
+      "fecha": "2026-03-24T13:30:00Z"
+    },
+    {
+      "id": "n2ERJinSxkq81H65-mulqWUABKfn",
+      "title": "Evelio - Revisión preventiva – 28/03",
+      "tecnico": "Evelio",
+      "estado": "Completado",
+      "fecha": "2026-03-28T07:00:00Z"
+    },
+    {
+      "id": "GvbO0sQWB0uAKjMBHA95E2UADIPI",
+      "title": "Evelio - Revisión preventiva – 25/03",
+      "tecnico": "Evelio",
+      "estado": "Completado",
+      "fecha": "2026-03-25T07:00:00Z"
+    },
+    {
+      "id": "paLG8Y-jGUaHWbw0HidP0WUAAt-n",
+      "title": "Evelio - Revisión preventiva – 24/03",
+      "tecnico": "Evelio",
+      "estado": "Completado",
+      "fecha": "2026-03-24T07:00:00Z"
+    },
+    {
+      "id": "aJ7CqViMBkGDSN9GgPWHW2UAETQY",
+      "title": "Evelio - Spoleto Multiplaza",
+      "tecnico": "Evelio",
+      "estado": "Completado",
+      "fecha": "2026-03-26T08:00:00Z"
+    },
+    {
+      "id": "4SuxtE4QNkeo6JLPMJs5DGUAE_dP",
+      "title": "Evelio - Revisión preventiva – 27/03",
+      "tecnico": "Evelio",
+      "estado": "Completado",
+      "fecha": "2026-03-27T07:00:00Z"
+    },
+    {
+      "id": "ZbMCFYFQUEKJ3oO94zoxXGUAOuHM",
+      "title": "Evelio - Little Caesars – Padre Castellanos",
+      "tecnico": "Evelio",
+      "estado": "Completado",
+      "fecha": "2026-03-24T08:00:00Z"
+    },
+    {
+      "id": "OmFleTbUKEuVhHFDrOL-wGUAC8GX",
+      "title": "Evelio - Cambios en la impresión de las facturas nuevo punto de crepes",
+      "tecnico": "Evelio",
+      "estado": "Pendiente",
+      "fecha": "2026-04-17T16:00:00Z"
+    },
+    {
+      "id": "LA6KC4-cHUaWVpLdukBRRWUAPdSr",
+      "title": "Evelio - Revisión informes Crepes + LSDA",
+      "tecnico": "Evelio",
+      "estado": "Pendiente",
+      "fecha": "2026-03-31T09:00:00Z"
+    },
+    {
+      "id": "eOHqM2EvkE2x9XYs5qA3IGUALQd-",
+      "title": "Evelio - Oliveto 107 – implementar cambios",
+      "tecnico": "Evelio",
+      "estado": "Pendiente",
+      "fecha": "2026-03-31T08:00:00Z"
+    },
+    {
+      "id": "4SQSH7V87EmSJ8Xsk7F7bWUAOcA9",
+      "title": "Evelio - Revisión preventiva – 31/03",
+      "tecnico": "Evelio",
+      "estado": "Pendiente",
+      "fecha": "2026-03-31T07:00:00Z"
+    },
+    {
+      "id": "vx5r1U9Nm0exaGdkFBAyNGUAPUaq",
+      "title": "Evelio - Reunión seguimiento – Evelio",
+      "tecnico": "Evelio",
+      "estado": "Pendiente",
+      "fecha": "2026-03-26T11:20:00Z"
+    },
+    {
+      "id": "wr314fE680iR_Ti0i1Fjg2UABL-y",
+      "title": "Evelio - Revisión preventiva – 26/03",
+      "tecnico": "Evelio",
+      "estado": "Pendiente",
+      "fecha": "2026-03-26T07:00:00Z"
+    },
+    {
+      "id": "ZZLERp3cBUi73PNE6MFCSWUAMxNj",
+      "title": "Evelio - Reporte semanal",
+      "tecnico": "Evelio",
+      "estado": "Pendiente",
+      "fecha": "2026-03-27T15:30:00Z"
+    },
+    {
+      "id": "UxsJ3H4HXk-FgwHtwk2r82UAAxQX",
+      "title": "Evelio - Revisión preventiva – 30/03",
+      "tecnico": "Evelio",
+      "estado": "Pendiente",
+      "fecha": "2026-03-30T07:00:00Z"
+    },
+    {
+      "id": "9-65d5ThAkeG6tP_5Qk5IWUAC44e",
+      "title": "Evelio - Conciliación Coctel del Mar marzo",
+      "tecnico": "Evelio",
+      "estado": "Pendiente",
+      "fecha": "2026-03-30T08:00:00Z"
+    },
+    {
+      "id": "RRyXTEXKqkCrIzWTbD2vX2UAHY0w",
+      "title": "Evelio - Reporte conciliación – enviar a Linda",
+      "tecnico": "Evelio",
+      "estado": "Pendiente",
+      "fecha": "2026-03-28T09:00:00Z"
+    },
+    {
+      "id": "L-fNfOBXCkyrhY9TF_KwgWUAO38i",
+      "title": "Evelio - Little Caesars – Pekin",
+      "tecnico": "Evelio",
+      "estado": "Pendiente",
+      "fecha": "2026-03-27T08:00:00Z"
+    },
+    {
+      "id": "8Po7o5JjDEW9RR6aRqXxrGUAMUNS",
+      "title": "Evelio - Spoleto Corferias",
+      "tecnico": "Evelio",
+      "estado": "Pendiente",
+      "fecha": "2026-03-25T08:00:00Z"
+    },
+    {
+      "id": "ypsMaUGn9kyTuugvFbbG8GUADuUw",
+      "title": "Evelio - 📄 Propuesta/mejora 1/4 – Evelio",
+      "tecnico": "Evelio",
+      "estado": "Pendiente",
+      "fecha": "2026-03-24T15:30:00Z"
+    },
+    {
+      "id": "1d5BQ5Gww0-fFOytoRQoGmUAICQl",
+      "title": "Evelio - Prueba servidor respaldo Coctel del Mar",
+      "tecnico": "Evelio",
+      "estado": "Pendiente",
+      "fecha": "2026-03-24T09:10:00Z"
+    },
+    {
+      "id": "O_T_kwayfUmdR-94dDe76WUAMmvu",
+      "title": "Evelio - Conciliación Coctel del Mar 1-25 marzo",
+      "tecnico": "Evelio",
+      "estado": "Pendiente",
+      "fecha": "2026-03-26T11:30:00Z"
+    },
+    {
+      "id": "XbVGj2MOKEixH_cF3lWBZ2UANRb2",
+      "title": "Evelio - Responder correos Ajisen",
+      "tecnico": "Evelio",
+      "estado": "Pendiente",
+      "fecha": "2026-04-13T14:30:00Z"
+    },
+    {
+      "id": "ANfEdXXoXkSYue4lvSp9I2UACbW2",
+      "title": "Evelio - Actualizar descripción de grupos de WhatsApp",
+      "tecnico": "Evelio",
+      "estado": "Pendiente",
+      "fecha": "2026-04-13T15:30:00Z"
+    },
+    {
+      "id": "aAO3McncE0O75fcyCKPZm2UANWBH",
+      "title": "Evelio - Revisión facturas en cola servidores propios – 14/04/2026",
+      "tecnico": "Evelio",
+      "estado": "Pendiente",
+      "fecha": "2026-04-14T07:45:00Z"
+    },
+    {
+      "id": "nSm8audGf0G_NsUD8ZqxtWUANrma",
+      "title": "Evelio - Escalar incidentes encontrados en conciliación Crepes",
+      "tecnico": "Evelio",
+      "estado": "Pendiente",
+      "fecha": "2026-04-14T08:45:00Z"
+    },
+    {
+      "id": "Emf4ty1rsU-ph-g8FCoytmUAAcjD",
+      "title": "Evelio - Revisión errores Alsea",
+      "tecnico": "Evelio",
+      "estado": "Pendiente",
+      "fecha": "2026-04-14T10:45:00Z"
+    },
+    {
+      "id": "2oGqnr4bQkqDUBrd87lZwmUAGe07",
+      "title": "Evelio - Seguimiento versión PJ",
+      "tecnico": "Evelio",
+      "estado": "Pendiente",
+      "fecha": "2026-04-14T13:30:00Z"
+    },
+    {
+      "id": "bxtgcMZrrkmcxIzduyWol2UAP6_e",
+      "title": "Evelio - Seguimiento casos Domioriente",
+      "tecnico": "Evelio",
+      "estado": "Pendiente",
+      "fecha": "2026-04-14T14:30:00Z"
+    },
+    {
+      "id": "xO9wW280s0eAQBbK4-rN3WUAEBNh",
+      "title": "Evelio - Personalización portal Ajisen",
+      "tecnico": "Evelio",
+      "estado": "Pendiente",
+      "fecha": "2026-04-15T13:30:00Z"
+    },
+    {
+      "id": "cqy2SuTSwk2X_xE-_e0EeWUANbP_",
+      "title": "Evelio - Revisión facturas en cola servidores propios – 16/04/2026",
+      "tecnico": "Evelio",
+      "estado": "Pendiente",
+      "fecha": "2026-04-16T07:45:00Z"
+    },
+    {
+      "id": "SegkhfSyaUi92Sy7mhDOkWUAPRWh",
+      "title": "Evelio - Entregable versión PJ",
+      "tecnico": "Evelio",
+      "estado": "Pendiente",
+      "fecha": "2026-04-16T09:45:00Z"
+    },
+    {
+      "id": "2l4bmDnElkKU18uYgTq7tGUABZne",
+      "title": "Evelio - Revisión facturas en cola servidores propios – 17/04/2026",
+      "tecnico": "Evelio",
+      "estado": "Pendiente",
+      "fecha": "2026-04-17T07:45:00Z"
+    },
+    {
+      "id": "pSFqgE7SkUSGa87yCPffaWUAPpvS",
+      "title": "Evelio - Conciliación Crepes Bogotá",
+      "tecnico": "Evelio",
+      "estado": "Pendiente",
+      "fecha": "2026-04-13T07:45:00Z"
+    },
+    {
+      "id": "OL5geS26Zkauq3QN_91n82UAKzMy",
+      "title": "Evelio - Verificación datos conciliación Crepes Bogotá",
+      "tecnico": "Evelio",
+      "estado": "Pendiente",
+      "fecha": "2026-04-15T09:45:00Z"
+    },
+    {
+      "id": "T8FQVtytskueLOdzQeYqhWUAKQzD",
+      "title": "Jackson - Revisión Caso PJ Diferencias Marzo",
+      "tecnico": "Jackson",
+      "estado": "Pendiente",
+      "fecha": "2026-04-17T16:00:00Z"
+    },
+    {
+      "id": "hSqFVxK-YUKdIsTFdMuahWUAFnVH",
+      "title": "Jackson - Reporte semanal de cierre",
+      "tecnico": "Jackson",
+      "estado": "Pendiente",
+      "fecha": "2026-04-18T15:00:00Z"
+    },
+    {
+      "id": "5cJLdrxoAkO-NHczstTyKWUALl5E",
+      "title": "Jackson - Validación post-implementación LC Dominicana",
+      "tecnico": "Jackson",
+      "estado": "Pendiente",
+      "fecha": "2026-04-17T09:45:00Z"
+    },
+    {
+      "id": "23mTtQGS6UiMHt_WmDfsCGUAGdpt",
+      "title": "Jackson - Entregable conciliación Crepes Bogotá",
+      "tecnico": "Jackson",
+      "estado": "Pendiente",
+      "fecha": "2026-04-17T08:45:00Z"
+    },
+    {
+      "id": "QZoZtY5350SqUjcpgzcO4mUAPofi",
+      "title": "Jackson - Revisión facturas en cola Facturiza – 17/04/2026",
+      "tecnico": "Jackson",
+      "estado": "Pendiente",
+      "fecha": "2026-04-17T07:45:00Z"
+    },
+    {
+      "id": "2ISRU19eFU2RfTNDH8ZTG2UAL8Tp",
+      "title": "Jackson - Conciliación Smile",
+      "tecnico": "Jackson",
+      "estado": "En Curso",
+      "fecha": "2026-04-15T09:45:00Z"
+    },
+    {
+      "id": "AlcMO-1oVU-ngD5kVSGX9GUAOiZD",
+      "title": "Jackson - Aldelo: VERANO",
+      "tecnico": "Jackson",
+      "estado": "En Espera",
+      "fecha": "2026-03-31T08:40:00Z"
+    },
+    {
+      "id": "9fVKtaqnokOnDKRBHKrbqmUAH4XI",
+      "title": "Jackson - Aldelo: RUMBOS TRAILER (EVENTOS)",
+      "tecnico": "Jackson",
+      "estado": "En Espera",
+      "fecha": "2026-03-31T08:30:00Z"
+    },
+    {
+      "id": "T0QUy2Bu9ECLQ7MIb7eGPmUAAiif",
+      "title": "Jackson - Aldelo: TAQUERIA ZONA G",
+      "tecnico": "Jackson",
+      "estado": "En Espera",
+      "fecha": "2026-03-31T08:20:00Z"
+    },
+    {
+      "id": "HbcExRqlAUep9BzyC7K2HWUAFj_S",
+      "title": "Jackson - Aldelo: TAQUERIA CALLE 116",
+      "tecnico": "Jackson",
+      "estado": "En Espera",
+      "fecha": "2026-03-31T08:00:00Z"
+    },
+    {
+      "id": "mT_cHXsL2U2xFqu6Z7JN62UAC3bz",
+      "title": "Jackson - Revisión facturas en cola Facturiza – 16/04/2026",
+      "tecnico": "Jackson",
+      "estado": "Completado",
+      "fecha": "2026-04-16T07:45:00Z"
+    },
+    {
+      "id": "wY8CQmHsCEWb6weaccFw5WUAGfcg",
+      "title": "Jackson - Coordinación barrido validación preventiva vencimiento resol",
+      "tecnico": "Jackson",
+      "estado": "Completado",
+      "fecha": "2026-04-15T13:30:00Z"
+    },
+    {
+      "id": "6PwYtgSrCEuXn68YKTtvuWUABts4",
+      "title": "Jackson - Revisión facturas en cola Facturiza – 15/04/2026",
+      "tecnico": "Jackson",
+      "estado": "Completado",
+      "fecha": "2026-04-15T07:45:00Z"
+    },
+    {
+      "id": "pE6y8sgxvU2aIg90YOW8CmUADv9q",
+      "title": "Jackson - Verificación certificados digitales, resoluciones vencimient",
+      "tecnico": "Jackson",
+      "estado": "Completado",
+      "fecha": "2026-04-14T09:45:00Z"
+    },
+    {
+      "id": "2PNqSw3fp0CIObk7BUP8AmUAJ2I5",
+      "title": "Jackson - Revisión facturas en cola Facturiza – 14/04/2026",
+      "tecnico": "Jackson",
+      "estado": "Completado",
+      "fecha": "2026-04-14T07:45:00Z"
+    },
+    {
+      "id": "-Ka5lvNSPU6YzDWoW9t7NmUALVET",
+      "title": "Jackson - Revisión resoluciones pendientes por actualización",
+      "tecnico": "Jackson",
+      "estado": "Completado",
+      "fecha": "2026-04-13T14:30:00Z"
+    },
+    {
+      "id": "iSHhc5iw_UOReaZZw2j-3GUAO0SF",
+      "title": "Jackson - Comparación CUFEs ⚑ entrega",
+      "tecnico": "Jackson",
+      "estado": "Completado",
+      "fecha": "2026-04-04T07:20:00Z"
+    },
+    {
+      "id": "1y1zCBDmPEKrmLS_QyGVY2UAFoL5",
+      "title": "Jackson - Revisión preventiva – 04/04",
+      "tecnico": "Jackson",
+      "estado": "Completado",
+      "fecha": "2026-04-04T07:00:00Z"
+    },
+    {
+      "id": "oB-IlRVq6kCNoNINc5oTm2UAJJSc",
+      "title": "Jackson - Antojo Hamburguesería – auditoría POS GoLive",
+      "tecnico": "Jackson",
+      "estado": "Completado",
+      "fecha": "2026-04-01T08:45:00Z"
+    },
+    {
+      "id": "AUq0WNadiECTHfs8VAlemmUAGU1o",
+      "title": "Jackson - Little Caesars RD – Estrella Sadhala",
+      "tecnico": "Jackson",
+      "estado": "Completado",
+      "fecha": "2026-04-01T08:00:00Z"
+    },
+    {
+      "id": "s4Xqk6-jSEeL-pHU7FeGFWUAJftG",
+      "title": "Jackson - Revisión preventiva – 01/04",
+      "tecnico": "Jackson",
+      "estado": "Completado",
+      "fecha": "2026-04-01T07:00:00Z"
+    },
+    {
+      "id": "d-RA-BQ8bEeh1LMJJcZYVGUAFFGF",
+      "title": "Jackson - Oliveto Usaquén – implementar cambios",
+      "tecnico": "Jackson",
+      "estado": "Completado",
+      "fecha": "2026-03-31T08:50:00Z"
+    },
+    {
+      "id": "N_8gpLkPJECXavanUQy-sGUAPkzb",
+      "title": "Jackson - Aldelo: TAQUERIA DOMICILIOS 106",
+      "tecnico": "Jackson",
+      "estado": "Completado",
+      "fecha": "2026-03-31T08:10:00Z"
+    },
+    {
+      "id": "xpd_cAu2XUChQXqd61W_N2UADP71",
+      "title": "Jackson - Revisión preventiva – 31/03",
+      "tecnico": "Jackson",
+      "estado": "Completado",
+      "fecha": "2026-03-31T07:00:00Z"
+    },
+    {
+      "id": "7QpTxJ-5VkGiwQX0hXufYmUANl5w",
+      "title": "Jackson - Reporte conciliación – enviar a Linda",
+      "tecnico": "Jackson",
+      "estado": "Completado",
+      "fecha": "2026-03-28T09:00:00Z"
+    },
+    {
+      "id": "_F52X5ufbkCBVzdMEj6ifmUAN29s",
+      "title": "Jackson - Conciliación Coctel del Mar 1-25 marzo",
+      "tecnico": "Jackson",
+      "estado": "Completado",
+      "fecha": "2026-03-26T11:30:00Z"
+    },
+    {
+      "id": "ssTtpZXE-UC6Kb98dcISDmUABu0O",
+      "title": "Jackson - Revisión preventiva – 30/03",
+      "tecnico": "Jackson",
+      "estado": "Pendiente",
+      "fecha": "2026-03-30T07:00:00Z"
+    },
+    {
+      "id": "dcHZLMMz80C7GzTYKrRjsGUAM2qS",
+      "title": "Jackson - Reporte semanal",
+      "tecnico": "Jackson",
+      "estado": "Pendiente",
+      "fecha": "2026-03-27T15:30:00Z"
+    },
+    {
+      "id": "EzHpqUcObUG23GCE5jQo4mUAM04k",
+      "title": "Jackson - Revisión preventiva – 28/03",
+      "tecnico": "Jackson",
+      "estado": "Pendiente",
+      "fecha": "2026-03-28T07:00:00Z"
+    },
+    {
+      "id": "AtbKqSw23kqVcjQei6_PbWUAF3Dd",
+      "title": "Jackson - Revisión preventiva – 27/03",
+      "tecnico": "Jackson",
+      "estado": "Pendiente",
+      "fecha": "2026-03-27T07:00:00Z"
+    },
+    {
+      "id": "y9yy-kroUE2MHgH7cslPYmUAAYhf",
+      "title": "Jackson - Reunión seguimiento – Jackson",
+      "tecnico": "Jackson",
+      "estado": "Pendiente",
+      "fecha": "2026-03-26T11:10:00Z"
+    },
+    {
+      "id": "k7pRFc8OJEyNK0HhOIZKmGUAMQpd",
+      "title": "Jackson - Spoleto Iserra 100",
+      "tecnico": "Jackson",
+      "estado": "Pendiente",
+      "fecha": "2026-03-26T08:45:00Z"
+    },
+    {
+      "id": "ga-PkuD1lEmcVsk2QvDFdGUAPJWs",
+      "title": "Jackson - Revisión preventiva – 26/03",
+      "tecnico": "Jackson",
+      "estado": "Pendiente",
+      "fecha": "2026-03-26T07:00:00Z"
+    },
+    {
+      "id": "wu3IQl3vfUGbdTVS5FPpNmUAAzEw",
+      "title": "Jackson - Aldelo pendientes",
+      "tecnico": "Jackson",
+      "estado": "Pendiente",
+      "fecha": "2026-03-25T08:45:00Z"
+    },
+    {
+      "id": "H59FiDkqzkKkhpqxl1ge_WUADX5M",
+      "title": "Jackson - Little Caesars – La Malena",
+      "tecnico": "Jackson",
+      "estado": "Pendiente",
+      "fecha": "2026-03-26T08:00:00Z"
+    },
+    {
+      "id": "WzfVYq66IUyJd1H3jrCU52UAHkcm",
+      "title": "Jackson - Little Caesars – Estrella Sadhala",
+      "tecnico": "Jackson",
+      "estado": "Pendiente",
+      "fecha": "2026-03-25T08:00:00Z"
+    },
+    {
+      "id": "rvaoJZWpmkGlj64k05D2ymUAP1lD",
+      "title": "Jackson - Revisión preventiva – 25/03",
+      "tecnico": "Jackson",
+      "estado": "Pendiente",
+      "fecha": "2026-03-25T07:00:00Z"
+    },
+    {
+      "id": "91ZHfYkZiEKmt2QvHhAQJWUALlYQ",
+      "title": "Jose - Finalizar revisión caso bohorquez",
+      "tecnico": "Jose",
+      "estado": "Pendiente",
+      "fecha": "2026-04-17T16:00:00Z"
+    },
+    {
+      "id": "ObsKcYL9tkKEeEWwHKZ3v2UAHbdr",
+      "title": "Jose - Reporte semanal de cierre",
+      "tecnico": "Jose",
+      "estado": "Pendiente",
+      "fecha": "2026-04-18T09:00:00Z"
+    },
+    {
+      "id": "N2O-3dR5bE-6En0MQyNIkmUAFF1b",
+      "title": "Jose - Barrido y asignación casos pendientes – 18/04/2026",
+      "tecnico": "Jose",
+      "estado": "Pendiente",
+      "fecha": "2026-04-18T07:00:00Z"
+    },
+    {
+      "id": "02pJT_gvwk-P92_qWOl6LGUACmFc",
+      "title": "Jose - Entregable lista consolidada resoluciones actualizadas. ENTR",
+      "tecnico": "Jose",
+      "estado": "Pendiente",
+      "fecha": "2026-04-17T11:45:00Z"
+    },
+    {
+      "id": "ORJSDMZI_UeZxZYsNrJDMGUAG0HC",
+      "title": "Jose - Entregable propuesta controles carga resoluciones Facturiza",
+      "tecnico": "Jose",
+      "estado": "Pendiente",
+      "fecha": "2026-04-17T10:45:00Z"
+    },
+    {
+      "id": "wI1qVHCDO02lIdoYwQbqymUAN3vT",
+      "title": "Jose - Barrido y asignación casos pendientes – 17/04/2026",
+      "tecnico": "Jose",
+      "estado": "Pendiente",
+      "fecha": "2026-04-17T07:45:00Z"
+    },
+    {
+      "id": "7FJBGTG290uM1rYm-muLK2UAACjG",
+      "title": "Jose - Cargar resoluciones electrónicas a Facturiza",
+      "tecnico": "Jose",
+      "estado": "En Curso",
+      "fecha": "2026-04-16T08:45:00Z"
+    },
+    {
+      "id": "fSeKc_YroEejNQo3Ict84GUAJ0fs",
+      "title": "Jose - Barrido y asignación casos pendientes – 16/04/2026",
+      "tecnico": "Jose",
+      "estado": "Completado",
+      "fecha": "2026-04-16T07:45:00Z"
+    },
+    {
+      "id": "e7wRJk11vk6GhbNCEN7ZxmUABeA2",
+      "title": "Jose - Manual herramientas Softlogy clientes Aldelo",
+      "tecnico": "Jose",
+      "estado": "Completado",
+      "fecha": "2026-04-17T09:45:00Z"
+    },
+    {
+      "id": "5ujZWnxJl0ufIXwJ7gIwwGUAGE0u",
+      "title": "Jose - Comparación CUFEs todos los clientes",
+      "tecnico": "Jose",
+      "estado": "Completado",
+      "fecha": "2026-03-24T09:45:00Z"
+    },
+    {
+      "id": "Y17x_I4BYU64KToajfnzt2UAOG6P",
+      "title": "Jose - Coordinación capacitación portal LSDA para grupo Hanks",
+      "tecnico": "Jose",
+      "estado": "Pendiente",
+      "fecha": "2026-04-15T10:45:00Z"
+    },
+    {
+      "id": "1ZxMr2zKtESatj_R2pnQcWUAPPbe",
+      "title": "Jose - Manual herramientas Softlogy para clientes Aldelo",
+      "tecnico": "Jose",
+      "estado": "Pendiente",
+      "fecha": "2026-04-15T09:45:00Z"
+    },
+    {
+      "id": "DqthE6WkPEahrnHYY8qv7GUAKwoJ",
+      "title": "Jose - Informe auditoría Metro",
+      "tecnico": "Jose",
+      "estado": "Pendiente",
+      "fecha": "2026-04-15T08:45:00Z"
+    },
+    {
+      "id": "43HSEIl3VE-MEVN8AkvsL2UACOil",
+      "title": "Jose - Barrido y asignación casos pendientes – 15/04/2026",
+      "tecnico": "Jose",
+      "estado": "Pendiente",
+      "fecha": "2026-04-15T07:45:00Z"
+    },
+    {
+      "id": "0Vdkq34bOkiEHMVUMhj4VmUAMYuh",
+      "title": "Jose - Validación cambios impresión Los Andes",
+      "tecnico": "Jose",
+      "estado": "Pendiente",
+      "fecha": "2026-04-14T11:00:00Z"
+    },
+    {
+      "id": "uakFVHXCGkOc3y6scRz29mUAPF2q",
+      "title": "Jose - Auditoría Metro",
+      "tecnico": "Jose",
+      "estado": "Pendiente",
+      "fecha": "2026-04-14T09:00:00Z"
+    },
+    {
+      "id": "Y7VlQta1CEmLIjlmE5h4wWUANtI7",
+      "title": "Jose - Barrido y asignación casos pendientes – 14/04/2026",
+      "tecnico": "Jose",
+      "estado": "Pendiente",
+      "fecha": "2026-04-14T07:45:00Z"
+    },
+    {
+      "id": "BECaH7nC6EeAb5wBskFDz2UACfkg",
+      "title": "Jose - Reinstalación Ventolini",
+      "tecnico": "Jose",
+      "estado": "Pendiente",
+      "fecha": "2026-04-13T15:30:00Z"
+    },
+    {
+      "id": "SnWDPGbG_0-YMdVGt1oUhmUAC8LU",
+      "title": "Jose - Coordinar piloto DLL balanzas con Wilmer",
+      "tecnico": "Jose",
+      "estado": "Pendiente",
+      "fecha": "2026-04-13T13:00:00Z"
+    },
+    {
+      "id": "aPc_VyZh_EuJcBeCO2Y30mUACrem",
+      "title": "Jose - Cambios impresión Los Andes",
+      "tecnico": "Jose",
+      "estado": "Pendiente",
+      "fecha": "2026-04-13T12:00:00Z"
+    },
+    {
+      "id": "fo7IUXwPHUS1-4X8o_Ov2GUAJQS6",
+      "title": "Jose - Reunión con Los Andes",
+      "tecnico": "Jose",
+      "estado": "Pendiente",
+      "fecha": "2026-04-13T11:00:00Z"
+    },
+    {
+      "id": "5OIchaBpoEuDZrSjKUXJImUABGRg",
+      "title": "Jose - Actualización Little Caesars Colombia",
+      "tecnico": "Jose",
+      "estado": "Pendiente",
+      "fecha": "2026-04-13T07:45:00Z"
+    },
+    {
+      "id": "bc9ZLQloYUymX_HRZxC1z2UAI0ns",
+      "title": "Jose - Plan de trabajo Simphony",
+      "tecnico": "Jose",
+      "estado": "Completado",
+      "fecha": "2026-03-24T10:45:00Z"
+    },
+    {
+      "id": "ZktMiyy-AEClwpmPOpOHdmUAJvgH",
+      "title": "Jose - Comparación CUFEs todos los clientes",
+      "tecnico": "Jose",
+      "estado": "Completado",
+      "fecha": "2026-03-31T10:30:00Z"
+    },
+    {
+      "id": "i9UNrwdiU06x2GAyuspFPGUAFV02",
+      "title": "Jose - Organización entregables semana",
+      "tecnico": "Jose",
+      "estado": "Pendiente",
+      "fecha": "2026-04-04T07:20:00Z"
+    },
+    {
+      "id": "CP0q21reeU-8AkrnU2Bmz2UAPtwV",
+      "title": "Jose - Little Caesars",
+      "tecnico": "Jose",
+      "estado": "Pendiente",
+      "fecha": "2026-04-13T07:00:00Z"
+    },
+    {
+      "id": "-pwTu8WZ50iU95l1sv74fGUAPX_w",
+      "title": "Jose - Pruebas DLL balanzas Coctel del Mar",
+      "tecnico": "Jose",
+      "estado": "Completado",
+      "fecha": "2026-03-31T09:30:00Z"
+    },
+    {
+      "id": "hr_5jLvre0Sgd3oQpkA9qGUADz8V",
+      "title": "Jose - Revisión Soporte – 04/04",
+      "tecnico": "Jose",
+      "estado": "Pendiente",
+      "fecha": "2026-04-04T07:00:00Z"
+    },
+    {
+      "id": "CytZ5sZvQUebvrjtHx_XvmUAKKdu",
+      "title": "Jose - Reporte semanal",
+      "tecnico": "Jose",
+      "estado": "Completado",
+      "fecha": "2026-03-27T15:30:00Z"
+    },
+    {
+      "id": "2oePB6FuIUukW6dWB1E75WUANUdM",
+      "title": "Jose - 📄 Propuesta/mejora 1/4 – Jose",
+      "tecnico": "Jose",
+      "estado": "Completado",
+      "fecha": "2026-03-24T15:30:00Z"
+    },
+    {
+      "id": "xvH9sbd_AkGDCGaCwan8oWUAGtCo",
+      "title": "Jose - Revisión Soporte – 01/04",
+      "tecnico": "Jose",
+      "estado": "Completado",
+      "fecha": "2026-04-01T07:00:00Z"
+    },
+    {
+      "id": "p6I0TkLV3EGkTEpeOh0e1GUAOSaz",
+      "title": "Jose - Organización entregables semana",
+      "tecnico": "Jose",
+      "estado": "Completado",
+      "fecha": "2026-03-28T07:20:00Z"
+    },
+    {
+      "id": "k2nYUf0OlUq9Jdr9uvYVXGUAEaCc",
+      "title": "Jose - Revisión Soporte – 30/03",
+      "tecnico": "Jose",
+      "estado": "Completado",
+      "fecha": "2026-03-30T07:00:00Z"
+    },
+    {
+      "id": "-vkGWk-58E-PM6JsPluiGGUAPBtU",
+      "title": "Jose - Oliveto Parkway – implementar cambios",
+      "tecnico": "Jose",
+      "estado": "Completado",
+      "fecha": "2026-03-31T08:30:00Z"
+    },
+    {
+      "id": "Pp4fMYJ_ok6L9wDyX3gY6WUAIezC",
+      "title": "Jose - Revisión Soporte – 31/03",
+      "tecnico": "Jose",
+      "estado": "Completado",
+      "fecha": "2026-03-31T07:00:00Z"
+    },
+    {
+      "id": "Lfr_IuoxTkS3kW-S0PMS8GUAA3V_",
+      "title": "Jose - SBX instalaciones – coordinar asignación",
+      "tecnico": "Jose",
+      "estado": "Completado",
+      "fecha": "2026-03-30T08:00:00Z"
+    },
+    {
+      "id": "QSXkDutP6kC-UBQs_7M4iWUAGdOp",
+      "title": "Jose - Revisión preventiva – 28/03",
+      "tecnico": "Jose",
+      "estado": "Completado",
+      "fecha": "2026-03-28T07:00:00Z"
+    },
+    {
+      "id": "gM4ljwTw2kWNomAnRezj3WUAJaE8",
+      "title": "Jose - Little Caesars – Pedro Livio",
+      "tecnico": "Jose",
+      "estado": "Completado",
+      "fecha": "2026-03-24T08:00:00Z"
+    },
+    {
+      "id": "QIqhROk0AE6s_2hQ-2YduWUAKnxw",
+      "title": "Jose - Reunión seguimiento – Jose",
+      "tecnico": "Jose",
+      "estado": "Completado",
+      "fecha": "2026-03-26T11:40:00Z"
+    },
+    {
+      "id": "KHh6U31-4kKeFtPndUTxEmUAL1wP",
+      "title": "Jose - Revisión Soporte – 25/03",
+      "tecnico": "Jose",
+      "estado": "Completado",
+      "fecha": "2026-03-25T07:00:00Z"
+    },
+    {
+      "id": "XPgckKz2S0-T3gRvC2g1FGUAC3qr",
+      "title": "Jose - Subir facturas en cola",
+      "tecnico": "Jose",
+      "estado": "Completado",
+      "fecha": "2026-03-24T15:00:00Z"
+    },
+    {
+      "id": "ac_gHOpUSUOCOpj-t92nrWUAFVLf",
+      "title": "Jose - Little Caesars – Leopoldo Navarro",
+      "tecnico": "Jose",
+      "estado": "Completado",
+      "fecha": "2026-03-25T08:00:00Z"
+    },
+    {
+      "id": "epaKAYpGD0KkokOodYsGTWUAEIrs",
+      "title": "Jose - Pruebas TCPOs",
+      "tecnico": "Jose",
+      "estado": "Completado",
+      "fecha": "2026-03-25T08:45:00Z"
+    },
+    {
+      "id": "1DgWZbZNXU2B3QVK8J5R8GUAKpTe",
+      "title": "Jose - Pruebas DLL balanzas Coctel del Mar",
+      "tecnico": "Jose",
+      "estado": "Completado",
+      "fecha": "2026-03-25T09:45:00Z"
+    },
+    {
+      "id": "8htab66HgkyvMS0x1Q9vhWUANVUh",
+      "title": "Jose - Revisión Soporte – 26/03",
+      "tecnico": "Jose",
+      "estado": "Completado",
+      "fecha": "2026-03-26T07:00:00Z"
+    },
+    {
+      "id": "qZpf1nqrhUmbfLuSH4nD4GUALFdv",
+      "title": "Jose - Little Caesars – Bameso",
+      "tecnico": "Jose",
+      "estado": "Completado",
+      "fecha": "2026-03-26T08:00:00Z"
+    },
+    {
+      "id": "kOMXqldsUk6aM6kdnq0ueWUAFhBe",
+      "title": "Jose - Little Caesars – Zona Colonial",
+      "tecnico": "Jose",
+      "estado": "Completado",
+      "fecha": "2026-03-27T08:00:00Z"
+    },
+    {
+      "id": "25uKKkh1CEu5wfOrL3NVumUACqBv",
+      "title": "Jose - Revisión Soporte – 27/03",
+      "tecnico": "Jose",
+      "estado": "Completado",
+      "fecha": "2026-03-27T07:00:00Z"
+    },
+    {
+      "id": "WPhq77P4NE2pHO3IaKPwZWUAMjsY",
+      "title": "Jose - Antojo Hamburguesería",
+      "tecnico": "Jose",
+      "estado": "Completado",
+      "fecha": "2026-03-24T08:45:00Z"
+    },
+    {
+      "id": "gxPnqZLboUCijTlnatpJ0mUAM2Wy",
+      "title": "Jose - Revisión Soporte – 24/03",
+      "tecnico": "Jose",
+      "estado": "Completado",
+      "fecha": "2026-03-24T07:00:00Z"
+    },
+    {
+      "id": "o86hnFZ5CkafzGDgTM3SXWUAARM0",
+      "title": "Samuel - Consolidado semanal – entregables",
+      "tecnico": "Anyely",
+      "estado": "En Curso",
+      "fecha": "2026-04-04T07:20:00Z"
+    },
+    {
+      "id": "wyp_UPdI-UC7gANrwlCARmUAMPrF",
+      "title": "Samuel - Revisión Errores – 04/04",
+      "tecnico": "Anyely",
+      "estado": "En Curso",
+      "fecha": "2026-04-04T07:00:00Z"
+    },
+    {
+      "id": "L3-OYdhjRkOT3pl3XInEvmUAAr16",
+      "title": "Samuel - LC Colombia – folio post largo",
+      "tecnico": "Anyely",
+      "estado": "En Curso",
+      "fecha": "2026-04-01T08:00:00Z"
+    },
+    {
+      "id": "HQdWFinFdEevxtwPmeReuGUAEaTZ",
+      "title": "Samuel - Revisión Errores – 01/04",
+      "tecnico": "Anyely",
+      "estado": "En Curso",
+      "fecha": "2026-04-01T07:20:00Z"
+    },
+    {
+      "id": "P6iCG5ily0SgCw_wAofd1WUAK8hO",
+      "title": "Samuel - Subir facturas en cola",
+      "tecnico": "Anyely",
+      "estado": "En Curso",
+      "fecha": "2026-03-31T15:30:00Z"
+    },
+    {
+      "id": "IqUknE-z1EC6iVfXF0uulGUALy9K",
+      "title": "Samuel - Comparación CUFEs todos los clientes",
+      "tecnico": "Anyely",
+      "estado": "En Curso",
+      "fecha": "2026-03-31T10:30:00Z"
+    },
+    {
+      "id": "lXNcrfSadUWnYZTb4kGZAGUACRYt",
+      "title": "Samuel - Pruebas DLL balanzas Coctel del Mar",
+      "tecnico": "Anyely",
+      "estado": "En Curso",
+      "fecha": "2026-03-31T09:30:00Z"
+    },
+    {
+      "id": "vJ1CiT6okESDjKKl-ZhSI2UAPozK",
+      "title": "Samuel - Oliveto Rosales – avance actualización",
+      "tecnico": "Anyely",
+      "estado": "En Curso",
+      "fecha": "2026-03-31T08:30:00Z"
+    },
+    {
+      "id": "jRQYJFiTNUScNDMN_IfNOWUABCLo",
+      "title": "Samuel - Aldelo: DOS LUGARES",
+      "tecnico": "Anyely",
+      "estado": "En Curso",
+      "fecha": "2026-03-31T08:20:00Z"
+    },
+    {
+      "id": "piOI3_LU8EGnKrBSRwmEa2UANeKU",
+      "title": "Samuel - Aldelo: NEW YORK BISTRO",
+      "tecnico": "Anyely",
+      "estado": "En Curso",
+      "fecha": "2026-03-31T08:10:00Z"
+    },
+    {
+      "id": "1IlsgPMz-06I89HK8KF1Y2UAJU5A",
+      "title": "Samuel - Aldelo: BURGER MUSIC 116",
+      "tecnico": "Anyely",
+      "estado": "En Curso",
+      "fecha": "2026-03-31T08:00:00Z"
+    },
+    {
+      "id": "rgq3KrHb1EuiX_2_YDiwSWUAPxM2",
+      "title": "Samuel - Revisión Errores – 31/03",
+      "tecnico": "Anyely",
+      "estado": "En Curso",
+      "fecha": "2026-03-31T07:20:00Z"
+    },
+    {
+      "id": "4Sv1vtMkq0S1MyCx98YzN2UAO5HZ",
+      "title": "Samuel - Seguimiento Siigo + UniAndes",
+      "tecnico": "Anyely",
+      "estado": "En Curso",
+      "fecha": "2026-03-30T10:00:00Z"
+    },
+    {
+      "id": "EG2MWjbEyEGfGbap3KUx_mUALOf8",
+      "title": "Samuel - Seguimiento productos Crepes",
+      "tecnico": "Anyely",
+      "estado": "En Curso",
+      "fecha": "2026-03-30T11:00:00Z"
+    },
+    {
+      "id": "V4axBEOE2E-3jn5VmUuvW2UAEX-m",
+      "title": "Samuel - Oliveto Rosales – cambio propina/leyenda",
+      "tecnico": "Anyely",
+      "estado": "En Curso",
+      "fecha": "2026-03-30T10:00:00Z"
+    },
+    {
+      "id": "0JdOr0GdsUSDWV5lvfCZg2UAGTXd",
+      "title": "Samuel - Reunión Conector – Ventolini 9:00 AM",
+      "tecnico": "Anyely",
+      "estado": "En Curso",
+      "fecha": "2026-03-30T09:00:00Z"
+    },
+    {
+      "id": "YKKKfJ0AJEu4ZdYPkNEDUWUAB8_R",
+      "title": "Samuel - Ajisen – coordinar pruebas correo + portal LS-DA",
+      "tecnico": "Anyely",
+      "estado": "En Curso",
+      "fecha": "2026-03-30T08:00:00Z"
+    },
+    {
+      "id": "5UT7JzxJU0C5hAzvfIzSK2UAGdbL",
+      "title": "Samuel - Revisión Errores – 30/03",
+      "tecnico": "Anyely",
+      "estado": "En Curso",
+      "fecha": "2026-03-30T07:20:00Z"
+    },
+    {
+      "id": "T3HaRhnaW0C9eZTD8ADBPGUADOvL",
+      "title": "Samuel - Revisión Errores – 28/03",
+      "tecnico": "Anyely",
+      "estado": "En Curso",
+      "fecha": "2026-03-28T07:00:00Z"
+    },
+    {
+      "id": "KB_gR8o4uUGhvXMMsXmY7GUAChKV",
+      "title": "Samuel - Reporte semanal",
+      "tecnico": "Anyely",
+      "estado": "En Curso",
+      "fecha": "2026-03-27T15:30:00Z"
+    },
+    {
+      "id": "JPoFoIlym0e6U99pI91Hd2UAJ-vJ",
+      "title": "Samuel - Seguimiento integraciones",
+      "tecnico": "Anyely",
+      "estado": "En Curso",
+      "fecha": "2026-03-27T14:30:00Z"
+    },
+    {
+      "id": "jXfj-I2sokeiI08G4sUm6WUAALl0",
+      "title": "Samuel - Little Caesars – Haina",
+      "tecnico": "Anyely",
+      "estado": "En Curso",
+      "fecha": "2026-03-27T08:00:00Z"
+    },
+    {
+      "id": "QIS69Lrm9E-p_sD0U4_A7WUAAZut",
+      "title": "Samuel - Revisión Errores – 27/03",
+      "tecnico": "Anyely",
+      "estado": "En Curso",
+      "fecha": "2026-03-27T07:20:00Z"
+    },
+    {
+      "id": "KIoFP8bPxkW6dfJCeSvlxGUAIfQD",
+      "title": "Samuel - Reunión seguimiento – Samuel",
+      "tecnico": "Anyely",
+      "estado": "En Curso",
+      "fecha": "2026-03-26T11:00:00Z"
+    },
+    {
+      "id": "xSn8vO3pc0WXd4qQLHwsNWUABt49",
+      "title": "Samuel - Revisión Errores – 26/03",
+      "tecnico": "Anyely",
+      "estado": "En Curso",
+      "fecha": "2026-03-26T07:20:00Z"
+    },
+    {
+      "id": "Aym8MGzZ9E-xMMCm8e5SoGUAG8Gw",
+      "title": "Samuel - Little Caesars – Higuey",
+      "tecnico": "Anyely",
+      "estado": "En Curso",
+      "fecha": "2026-03-25T08:00:00Z"
+    },
+    {
+      "id": "UbiuOZZdfEi3YVT17AoVQGUAJ581",
+      "title": "Samuel - 📄 Propuesta/mejora 1/4 – Samuel",
+      "tecnico": "Anyely",
+      "estado": "En Curso",
+      "fecha": "2026-03-24T15:00:00Z"
+    },
+    {
+      "id": "MlYMFTUAWkexR04_KEsYNGUADgBb",
+      "title": "Samuel - Consolidado Siigo+Insurgentes+UniAndes",
+      "tecnico": "Anyely",
+      "estado": "En Curso",
+      "fecha": "2026-03-24T14:00:00Z"
+    },
+    {
+      "id": "UzEBRyydlEe7pINkaUO6iWUAGlMm",
+      "title": "Samuel - Plan de capacitación equipo",
+      "tecnico": "Anyely",
+      "estado": "En Curso",
+      "fecha": "2026-03-24T10:10:00Z"
+    },
+    {
+      "id": "Bo0_foMMW0WTvIgKpqX8UWUALJcr",
+      "title": "Samuel - Prueba servidor respaldo Coctel del Mar",
+      "tecnico": "Anyely",
+      "estado": "En Curso",
+      "fecha": "2026-03-24T09:10:00Z"
+    },
+    {
+      "id": "SfcHMbz5vkil80q-ybzgoWUAI3I0",
+      "title": "Samuel - Revisión plantilla Crepes Lab Simphony",
+      "tecnico": "Anyely",
+      "estado": "En Curso",
+      "fecha": "2026-03-24T08:10:00Z"
+    },
+    {
+      "id": "rQS5QejoLkq6Cl4K5aHAd2UAJmaq",
+      "title": "Samuel - Spoleto Andino",
+      "tecnico": "Anyely",
+      "estado": "En Curso",
+      "fecha": "2026-03-25T08:45:00Z"
+    },
+    {
+      "id": "t5QsUlUxCkKMdVor5NO6S2UAIE2a",
+      "title": "Samuel - Revisión Errores – 25/03",
+      "tecnico": "Anyely",
+      "estado": "En Curso",
+      "fecha": "2026-03-25T07:20:00Z"
+    },
+    {
+      "id": "3x6IYVgPAEaH1RMQn9Rv02UABf2v",
+      "title": "Samuel - Aldelo pendientes",
+      "tecnico": "Anyely",
+      "estado": "En Curso",
+      "fecha": "2026-03-24T07:40:00Z"
+    },
+    {
+      "id": "8IvY3m51mEuwAzQnTXIW8GUALMLq",
+      "title": "Samuel - Revisión Errores – 24/03",
+      "tecnico": "Anyely",
+      "estado": "En Curso",
+      "fecha": "2026-03-24T07:20:00Z"
+    },
+    {
+      "id": "DmcqmKjdK0-L1xxXYKC8HmUAJEgb",
+      "title": "Samuel - Organización entregables semana",
+      "tecnico": "Anyely",
+      "estado": "En Curso",
+      "fecha": "2026-03-28T07:20:00Z"
+    }
+  ],
+  "revisiones": {
+    "_F52X5ufbkCBVzdMEj6ifmUAN29s": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:36:32.085Z"
+    },
+    "7QpTxJ-5VkGiwQX0hXufYmUANl5w": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:36:33.115Z"
+    },
+    "xpd_cAu2XUChQXqd61W_N2UADP71": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:36:33.932Z"
+    },
+    "N_8gpLkPJECXavanUQy-sGUAPkzb": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:36:35.065Z"
+    },
+    "d-RA-BQ8bEeh1LMJJcZYVGUAFFGF": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:36:41.259Z"
+    },
+    "s4Xqk6-jSEeL-pHU7FeGFWUAJftG": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:36:42.975Z"
+    },
+    "AUq0WNadiECTHfs8VAlemmUAGU1o": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:36:44.975Z"
+    },
+    "oB-IlRVq6kCNoNINc5oTm2UAJJSc": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:36:46.006Z"
+    },
+    "1y1zCBDmPEKrmLS_QyGVY2UAFoL5": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:36:47.256Z"
+    },
+    "iSHhc5iw_UOReaZZw2j-3GUAO0SF": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:36:48.221Z"
+    },
+    "-Ka5lvNSPU6YzDWoW9t7NmUALVET": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:36:49.340Z"
+    },
+    "2PNqSw3fp0CIObk7BUP8AmUAJ2I5": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:36:50.603Z"
+    },
+    "pE6y8sgxvU2aIg90YOW8CmUADv9q": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:36:51.453Z"
+    },
+    "6PwYtgSrCEuXn68YKTtvuWUABts4": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:36:52.453Z"
+    },
+    "wY8CQmHsCEWb6weaccFw5WUAGfcg": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:36:53.753Z"
+    },
+    "mT_cHXsL2U2xFqu6Z7JN62UAC3bz": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:36:54.623Z"
+    },
+    "paLG8Y-jGUaHWbw0HidP0WUAAt-n": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:37:08.269Z"
+    },
+    "JKOXyJbtDkaxTVK3_T5di2UALVBS": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:37:09.603Z"
+    },
+    "ZbMCFYFQUEKJ3oO94zoxXGUAOuHM": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:37:11.302Z"
+    },
+    "i8AT6CcUqk-9oRnJEVHSP2UAJDzX": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:37:12.184Z"
+    },
+    "Li33LVvYmU-6hRory8Bws2UAFxGE": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:37:13.953Z"
+    },
+    "GvbO0sQWB0uAKjMBHA95E2UADIPI": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:37:14.937Z"
+    },
+    "aJ7CqViMBkGDSN9GgPWHW2UAETQY": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:37:16.186Z"
+    },
+    "4SuxtE4QNkeo6JLPMJs5DGUAE_dP": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:37:17.137Z"
+    },
+    "n2ERJinSxkq81H65-mulqWUABKfn": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:37:18.103Z"
+    },
+    "gxPnqZLboUCijTlnatpJ0mUAM2Wy": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:38:17.932Z"
+    },
+    "WPhq77P4NE2pHO3IaKPwZWUAMjsY": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:38:18.597Z"
+    },
+    "25uKKkh1CEu5wfOrL3NVumUACqBv": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:38:19.116Z"
+    },
+    "kOMXqldsUk6aM6kdnq0ueWUAFhBe": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:38:19.615Z"
+    },
+    "qZpf1nqrhUmbfLuSH4nD4GUALFdv": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:38:20.115Z"
+    },
+    "8htab66HgkyvMS0x1Q9vhWUANVUh": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:38:20.566Z"
+    },
+    "1DgWZbZNXU2B3QVK8J5R8GUAKpTe": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:38:20.998Z"
+    },
+    "epaKAYpGD0KkokOodYsGTWUAEIrs": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:38:21.798Z"
+    },
+    "ac_gHOpUSUOCOpj-t92nrWUAFVLf": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:38:22.214Z"
+    },
+    "XPgckKz2S0-T3gRvC2g1FGUAC3qr": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:38:22.998Z"
+    },
+    "QIqhROk0AE6s_2hQ-2YduWUAKnxw": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:38:24.862Z"
+    },
+    "KHh6U31-4kKeFtPndUTxEmUAL1wP": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:38:25.495Z"
+    },
+    "QSXkDutP6kC-UBQs_7M4iWUAGdOp": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:38:26.512Z"
+    },
+    "gM4ljwTw2kWNomAnRezj3WUAJaE8": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:38:29.229Z"
+    },
+    "Lfr_IuoxTkS3kW-S0PMS8GUAA3V_": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:38:30.214Z"
+    },
+    "Pp4fMYJ_ok6L9wDyX3gY6WUAIezC": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:38:31.621Z"
+    },
+    "-vkGWk-58E-PM6JsPluiGGUAPBtU": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:38:32.389Z"
+    },
+    "k2nYUf0OlUq9Jdr9uvYVXGUAEaCc": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:38:33.273Z"
+    },
+    "p6I0TkLV3EGkTEpeOh0e1GUAOSaz": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:38:34.207Z"
+    },
+    "xvH9sbd_AkGDCGaCwan8oWUAGtCo": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:38:35.557Z"
+    },
+    "2oePB6FuIUukW6dWB1E75WUANUdM": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:38:36.455Z"
+    },
+    "CytZ5sZvQUebvrjtHx_XvmUAKKdu": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:38:37.769Z"
+    },
+    "-pwTu8WZ50iU95l1sv74fGUAPX_w": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:38:38.918Z"
+    },
+    "ZktMiyy-AEClwpmPOpOHdmUAJvgH": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:38:39.784Z"
+    },
+    "bc9ZLQloYUymX_HRZxC1z2UAI0ns": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:38:40.803Z"
+    },
+    "5ujZWnxJl0ufIXwJ7gIwwGUAGE0u": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:38:42.192Z"
+    },
+    "e7wRJk11vk6GhbNCEN7ZxmUABeA2": {
+      "estado": "Pendiente",
+      "fecha": "2026-04-17T12:16:07.856Z"
+    },
+    "hr_5jLvre0Sgd3oQpkA9qGUADz8V": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:39:27.392Z"
+    },
+    "CP0q21reeU-8AkrnU2Bmz2UAPtwV": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:39:29.076Z"
+    },
+    "i9UNrwdiU06x2GAyuspFPGUAFV02": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:39:29.843Z"
+    },
+    "5OIchaBpoEuDZrSjKUXJImUABGRg": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:39:30.310Z"
+    },
+    "fo7IUXwPHUS1-4X8o_Ov2GUAJQS6": {
+      "estado": "OK",
+      "fecha": "2026-04-16T14:39:30.860Z"
+    },
+    "J1CgOmGnqEyGlKwmg3rx5WUAA8Oy": {
+      "estado": "OK",
+      "fecha": "2026-04-16T20:36:34.256Z"
+    },
+    "1Z3mKo6nQUOv8hPvbiMCgmUANVFv": {
+      "estado": "OK",
+      "fecha": "2026-04-16T20:37:19.927Z"
+    },
+    "cqy2SuTSwk2X_xE-_e0EeWUANbP_": {
+      "estado": "OK",
+      "fecha": "2026-04-16T20:37:27.278Z"
+    },
+    "SegkhfSyaUi92Sy7mhDOkWUAPRWh": {
+      "estado": "OK",
+      "fecha": "2026-04-16T20:37:53.071Z"
+    },
+    "fSeKc_YroEejNQo3Ict84GUAJ0fs": {
+      "estado": "OK",
+      "fecha": "2026-04-16T20:38:30.201Z"
+    },
+    "7FJBGTG290uM1rYm-muLK2UAACjG": {
+      "estado": "OK",
+      "fecha": "2026-04-16T21:27:12.705Z"
+    },
+    "kHm_f3JpNUKES4G_W4hI6mUAALC9": {
+      "estado": "OK",
+      "fecha": "2026-04-16T21:25:40.757Z"
+    },
+    "UpAIaoipW0ONNGq-bAobSWUAIqKI": {
+      "estado": "OK",
+      "fecha": "2026-04-17T14:26:34.864Z"
+    },
+    "6QvSli-CMUCc29Dyaijlo2UAGZNZ": {
+      "estado": "En Curso",
+      "fecha": "2026-04-17T14:26:59.077Z"
+    },
+    "YyZXGuP4wEyGjUjgdbG5TGUAFij7": {
+      "estado": "OK",
+      "fecha": "2026-04-17T14:27:03.858Z"
+    },
+    "91ZHfYkZiEKmt2QvHhAQJWUALlYQ": {
+      "estado": "OK",
+      "fecha": "2026-04-17T14:27:36.936Z"
+    }
+  }
+}
