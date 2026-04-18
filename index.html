@@ -95,31 +95,9 @@ function getSemanaRotacion(fechaInicio) {
 }
 
 function getTurnoActual() {
-  // Simulación de hora via ?hora=NN (solo modo admin, para pruebas)
-  const params = new URLSearchParams(window.location.search);
-  const horaParam = params.get('hora');
-  let hora;
-  if (ES_ADMIN && horaParam !== null && !isNaN(parseInt(horaParam, 10))) {
-    hora = parseInt(horaParam, 10);
-  } else {
-    hora = new Date().getHours();
-  }
-  if (hora >= 7 && hora < 16) return {
-    tipo: 'diurno',
+  return {
     nombre: 'Soporte disponible',
     mensaje: 'Nuestro equipo est\u00e1 listo para atenderle. Comun\u00edquese por WhatsApp o llamada.',
-    disponible: true
-  };
-  if (hora >= 16 && hora < 22) return {
-    tipo: 'tarde',
-    nombre: 'Soporte disponible',
-    mensaje: 'Estamos atendiendole. Comun\u00edquese con las l\u00edneas habilitadas.',
-    disponible: true
-  };
-  return {
-    tipo: 'noche',
-    nombre: 'Soporte disponible',
-    mensaje: 'Estamos atendiendole. Comun\u00edquese con las l\u00edneas habilitadas.',
     disponible: true
   };
 }
@@ -189,38 +167,88 @@ async function renderContactos() {
     turnos = null;
   }
 
-  // Construir set de teléfonos marcados como no disponibles (licencia/permiso) desde turnos.json
-  // Power Automate escribe noDisponible:true/false en cada contacto, según timesOff activo.
-  const telsNoDisp = {};
+  // Construir mapa de teléfono → datos de turno desde turnos.json
+  // Cada contacto ahora tiene: rol, tel, noDisponible, inicio (ISO), fin (ISO)
+  const turnosPorTel = {};
   if (turnos && Array.isArray(turnos.contactos)) {
     turnos.contactos.forEach(function(c) {
-      if (c && c.noDisponible && c.tel) {
-        const telClean = String(c.tel).replace(/\s/g, '');
-        telsNoDisp[telClean] = true;
+      if (c && c.tel) {
+        var telClean = String(c.tel).replace(/\s/g, '');
+        turnosPorTel[telClean] = c;
       }
     });
   }
+
+  // Verificar si una persona está en turno AHORA según inicio/fin de Shifts
+  var ahora = new Date();
+  // Simulación admin
+  if (ES_ADMIN) {
+    var hp = new URLSearchParams(window.location.search).get('hora');
+    if (hp !== null && !isNaN(parseInt(hp, 10))) {
+      ahora = new Date();
+      ahora.setHours(parseInt(hp, 10), 0, 0, 0);
+    }
+  }
+
+  function estaEnTurnoAhora(telRaw) {
+    var telClean = String(telRaw).replace(/\s/g, '');
+    var ct = turnosPorTel[telClean];
+    if (!ct) return false;
+    if (ct.noDisponible) return false;
+    if (ct.inicio && ct.fin) {
+      var ini = new Date(ct.inicio);
+      var fin = new Date(ct.fin);
+      return ahora >= ini && ahora < fin;
+    }
+    // Si no tiene inicio/fin (dato viejo), marcar como disponible por defecto
+    return !ct.noDisponible;
+  }
+
   function estaNoDispPorTel(telRaw) {
-    return telsNoDisp[String(telRaw).replace(/\s/g, '')] === true;
+    var telClean = String(telRaw).replace(/\s/g, '');
+    var ct = turnosPorTel[telClean];
+    return ct && ct.noDisponible === true;
   }
 
   grid.innerHTML = '';
   grid.style.display = '';
   fueraHorario.style.display = 'none';
 
-  if (turno.tipo === 'diurno') {
-    Object.keys(parejas.equipos).forEach(function(nombre) {
-      if (rotacionActual && nombre === rotacionActual.soporte1) return;
-      const persona = parejas.equipos[nombre];
-      if (estaNoDispPorTel(persona.tel)) return; // excluir licencia/permiso activo
+  // Buscar quién está en turno AHORA según Shifts (turnos.json con inicio/fin)
+  var enTurnoAhora = [];
+  Object.keys(parejas.equipos).forEach(function(nombre) {
+    var persona = parejas.equipos[nombre];
+    if (estaEnTurnoAhora(persona.tel)) {
+      enTurnoAhora.push(nombre);
+    }
+  });
+
+  var diaSemana = ahora.getDay(); // 0=dom, 6=sab
+  var esFinDeSemana = (diaSemana === 0 || diaSemana === 6);
+
+  if (enTurnoAhora.length > 0) {
+    // HAY turnos activos en Shifts: mostrar a quienes están en turno ahora
+    enTurnoAhora.forEach(function(nombre) {
+      var persona = parejas.equipos[nombre];
       grid.appendChild(crearTarjeta(nombre, persona.tel, persona.rol, 'Disponible', false, persona.cod));
     });
 
+    // Lunes a viernes: si hay pocos en turno (1-2), mostrar respaldo de rotación
+    if (!esFinDeSemana && enTurnoAhora.length <= 2 && rotacionActual) {
+      var s2 = rotacionActual.soporte2;
+      if (s2 && parejas.equipos[s2]
+          && enTurnoAhora.indexOf(s2) === -1
+          && !estaNoDispPorTel(parejas.equipos[s2].tel)) {
+        grid.appendChild(crearTarjeta(s2, parejas.equipos[s2].tel, parejas.equipos[s2].rol, 'Respaldo', true, parejas.equipos[s2].cod));
+      }
+    }
+
   } else {
-    // Tarde (16-22) y Noche (22-7): soporte1 (en turno) + soporte2 (respaldo) segun rotacion
+    // NO hay turnos activos en Shifts (ej: noche, madrugada)
+    // Fallback a rotación semanal: soporte1 + soporte2 cubren
     if (rotacionActual) {
-      const s1 = rotacionActual.soporte1;
-      const s2 = rotacionActual.soporte2;
+      var s1 = rotacionActual.soporte1;
+      var s2 = rotacionActual.soporte2;
       if (s1 && parejas.equipos[s1] && !estaNoDispPorTel(parejas.equipos[s1].tel)) {
         grid.appendChild(crearTarjeta(s1, parejas.equipos[s1].tel, parejas.equipos[s1].rol, 'Disponible', false, parejas.equipos[s1].cod));
       }
